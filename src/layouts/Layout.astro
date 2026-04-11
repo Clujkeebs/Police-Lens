@@ -1,4 +1,6 @@
 ---
+import SpeedInsights from "@vercel/speed-insights/astro";
+
 export interface Props {
   title: string;
   description: string;
@@ -259,5 +261,6 @@ const faqSchema = {
   </script>
   
   <script defer src="https://cdn.jsdelivr.net/npm/@vercel/analytics@1.3.2"></script>
+  <SpeedInsights />
 </body>
 </html>
