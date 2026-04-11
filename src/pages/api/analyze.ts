@@ -113,7 +113,7 @@ async function analyzeWithClaude(text, apiKey) {
       'anthropic-dangerous-direct-browser-access': 'true'
     },
     body: JSON.stringify({
-      model: 'claude-haiku-3-5-20250514',
+      model: 'claude-haiku',
       max_tokens: 4000,
       messages: [{
         role: 'user',
