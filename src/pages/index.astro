@@ -116,6 +116,15 @@ import PolicyAnalyzer from '../components/PolicyAnalyzer.astro';
     </div>
   </section>
 
+  <div class="ad-container">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-3526440256333845"
+         data-ad-slot="YOUR_AD_SLOT_1"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+
   <section class="how-it-works">
     <div class="container">
       <h2 class="section-title">Simple as 1-2-3</h2>
@@ -467,6 +476,23 @@ import PolicyAnalyzer from '../components/PolicyAnalyzer.astro';
 
   .cta-section {
     padding: 80px 24px;
+  }
+
+  .ad-container {
+    max-width: 728px;
+    margin: 0 auto 60px;
+    min-height: 90px;
+    background: var(--bg-card);
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .ad-container:empty {
+    display: none;
   }
 
   .cta-content {

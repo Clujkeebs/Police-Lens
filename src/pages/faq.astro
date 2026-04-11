@@ -162,6 +162,15 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
+      <div class="ad-container">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3526440256333845"
+             data-ad-slot="YOUR_AD_SLOT_2"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
+
       <section class="cta-section">
         <h2>Have More Questions?</h2>
         <p>Our AI analyzer can help you understand any privacy policy in plain English.</p>
@@ -250,6 +259,19 @@ import Layout from '../layouts/Layout.astro';
     background: var(--bg-secondary);
     border-radius: var(--radius-xl);
     margin-top: 64px;
+  }
+
+  .ad-container {
+    max-width: 728px;
+    margin: 48px auto;
+    min-height: 90px;
+    background: var(--bg-card);
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
   }
 
   .cta-section h2 {

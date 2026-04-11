@@ -379,7 +379,7 @@ const { initialUrl = '' } = Astro.props;
     localStorage.setItem('policylens_history', JSON.stringify(history.slice(0, 50)));
     
     const params = new URLSearchParams();
-    params.set('data', btoa(JSON.stringify(result)));
+    params.set('data', encodeURIComponent(JSON.stringify(result)));
     window.location.href = `/analyze?${params.toString()}`;
   }
 

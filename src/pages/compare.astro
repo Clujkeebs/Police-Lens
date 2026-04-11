@@ -14,8 +14,8 @@ let error = null;
 
 if (p1Param && p2Param) {
   try {
-    policy1 = JSON.parse(atob(p1Param));
-    policy2 = JSON.parse(atob(p2Param));
+    policy1 = JSON.parse(decodeURIComponent(p1Param));
+    policy2 = JSON.parse(decodeURIComponent(p2Param));
     
     const { comparePolicies } = await import('../scripts/analyzer.js');
     comparison = comparePolicies(policy1, policy2);

@@ -10,7 +10,7 @@ let error = null;
 
 if (dataParam) {
   try {
-    result = JSON.parse(atob(dataParam));
+    result = JSON.parse(decodeURIComponent(dataParam));
   } catch (e) {
     error = 'Invalid analysis data';
   }
@@ -132,14 +132,14 @@ if (dataParam) {
         
         if (dataParam) {
           try {
-            const currentResult = JSON.parse(atob(dataParam));
+            const currentResult = JSON.parse(decodeURIComponent(dataParam));
             currentResults.push(currentResult);
             localStorage.setItem('policylens_compare', JSON.stringify(currentResults.slice(0, 2)));
             
             if (currentResults.length >= 2) {
               const params = new URLSearchParams();
-              params.set('p1', btoa(JSON.stringify(currentResults[0])));
-              params.set('p2', btoa(JSON.stringify(currentResults[1])));
+              params.set('p1', encodeURIComponent(JSON.stringify(currentResults[0])));
+              params.set('p2', encodeURIComponent(JSON.stringify(currentResults[1])));
               localStorage.removeItem('policylens_compare');
               window.location.href = `/compare?${params.toString()}`;
             } else {
