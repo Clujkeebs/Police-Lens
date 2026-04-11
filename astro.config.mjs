@@ -5,6 +5,16 @@ export default defineConfig({
   site: 'https://policy-lens-ai-app.vercel.app',
   output: 'static',
   adapter: vercel({
-    runtime: 'nodejs22.x'
-  })
+    runtime: 'nodejs22.x',
+    compression: 'gzip'
+  }),
+  build: {
+    inlineStylesheets: 'auto'
+  },
+  vite: {
+    build: {
+      cssMinify: true,
+      minify: 'esbuild'
+    }
+  }
 });
