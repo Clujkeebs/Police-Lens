@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /analyze
+
+Sitemap: https://policylens.app/sitemap.xml
+
+Crawl-delay: 1

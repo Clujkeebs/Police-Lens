@@ -1,0 +1,8 @@
+{
+  "output": "hybrid",
+  "functions": {
+    "src/pages/api/**/*.ts": {
+      "runtime": "nodejs20.x"
+    }
+  }
+}
