@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ComparisonView from '../components/ComparisonView.astro';
+
+const p1Param = Astro.url.searchParams.get('p1');
+const p2Param = Astro.url.searchParams.get('p2');
+
+let policy1 = null;
+let policy2 = null;
+let comparison = null;
+let error = null;
+
+if (p1Param && p2Param) {
+  try {
+    policy1 = JSON.parse(atob(p1Param));
+    policy2 = JSON.parse(atob(p2Param));
+    
+    const { comparePolicies } = await import('../scripts/analyzer.js');
+    comparison = comparePolicies(policy1, policy2);
+  } catch (e) {
+    error = 'Could not load comparison data';
+  }
+} else {
+  error = 'Missing comparison data';
+}
+---
+
+<Layout
+  title="Policy Comparison"
+  description="Compare privacy policies side-by-side to make informed decisions about which services respect your privacy."
+  noindex={true}
+>
+  <section class="compare-page">
+    <div class="container">
+      <div class="page-header">
+        <a href="/" class="back-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"/>
+            <polyline points="12 19 5 12 12 5"/>
+          </svg>
+          New Analysis
+        </a>
+      </div>
+
+      {error ? (
+        <div class="error-state">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <h1>{error}</h1>
+          <p>Please analyze two policies and try the comparison feature again.</p>
+          <a href="/" class="btn btn-primary">Start Fresh</a>
+        </div>
+      ) : (
+        <ComparisonView comparison={comparison} policy1={policy1} policy2={policy2} />
+      )}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .compare-page {
+    padding: 40px 24px 80px;
+    min-height: calc(100vh - 200px);
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    margin-bottom: 32px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--accent-cyan);
+  }
+
+  .error-state {
+    text-align: center;
+    padding: 80px 24px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .error-state svg {
+    color: #ef4444;
+    margin-bottom: 24px;
+  }
+
+  .error-state h1 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+
+  .error-state p {
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+  }
+</style>

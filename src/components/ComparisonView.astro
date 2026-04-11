@@ -1,0 +1,478 @@
+---
+export interface Props {
+  comparison: {
+    riskScores: Record<string, number>;
+    riskLevels: Record<string, string>;
+    categories: Record<string, any>;
+    differences: Array<{ category: string; type: string; message: string }>;
+    similarities: string[];
+    summary: {
+      winner: string;
+      saferScore: number;
+      riskierScore: number;
+      recommendation: string;
+    };
+  };
+  policy1: { domain: string; url?: string; title: string };
+  policy2: { domain: string; url?: string; title: string };
+}
+
+const { comparison, policy1, policy2 } = Astro.props;
+const domains = Object.keys(comparison.riskScores);
+---
+
+<div class="comparison-view">
+  <div class="comparison-header">
+    <h2>Policy Comparison</h2>
+    <p class="comparison-intro">Comparing privacy policies side-by-side to help you make an informed decision.</p>
+  </div>
+
+  <div class="winner-banner" class:list={[{ winner: comparison.summary.winner === policy1.domain }]}>
+    <div class="winner-content">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M8 21h8M12 17v4M7 4h10l-1 9H8L7 4z"/>
+        <path d="M7 4c0-1 1-2 2-2h6c1 0 2 1 2 2"/>
+      </svg>
+      <div>
+        <span class="winner-label">Better Privacy Choice</span>
+        <strong>{comparison.summary.winner}</strong>
+        <p>{comparison.summary.recommendation}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="score-comparison">
+    <div class="score-card" class:list={[{ safer: policy1.domain === comparison.summary.winner }]}>
+      <h3>{policy1.title || policy1.domain}</h3>
+      {policy1.url && <a href={policy1.url} target="_blank" rel="noopener" class="policy-url">{policy1.url}</a>}
+      <div class="score-display" style={`--score: ${comparison.riskScores[policy1.domain]}`}>
+        <span class="score-number">{Math.round(comparison.riskScores[policy1.domain])}</span>
+        <span class="score-text">Risk Score</span>
+      </div>
+      <span class={`risk-badge ${comparison.riskLevels[policy1.domain]}`}>
+        {comparison.riskLevels[policy1.domain].toUpperCase()} RISK
+      </span>
+    </div>
+
+    <div class="vs-divider">
+      <span>VS</span>
+    </div>
+
+    <div class="score-card" class:list={[{ safer: policy2.domain === comparison.summary.winner }]}>
+      <h3>{policy2.title || policy2.domain}</h3>
+      {policy2.url && <a href={policy2.url} target="_blank" rel="noopener" class="policy-url">{policy2.url}</a>}
+      <div class="score-display" style={`--score: ${comparison.riskScores[policy2.domain]}`}>
+        <span class="score-number">{Math.round(comparison.riskScores[policy2.domain])}</span>
+        <span class="score-text">Risk Score</span>
+      </div>
+      <span class={`risk-badge ${comparison.riskLevels[policy2.domain]}`}>
+        {comparison.riskLevels[policy2.domain].toUpperCase()} RISK
+      </span>
+    </div>
+  </div>
+
+  {comparison.differences.length > 0 && (
+    <div class="differences-section">
+      <h3>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+        Key Differences
+      </h3>
+      <div class="differences-list">
+        {comparison.differences.map(diff => (
+          <div class="difference-item">
+            <span class={`diff-type ${diff.type}`}>{diff.type.replace('_', ' ')}</span>
+            <p>{diff.message}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {comparison.similarities.length > 0 && (
+    <div class="similarities-section">
+      <h3>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        Common Concerns
+      </h3>
+      <div class="similarities-list">
+        {comparison.similarities.map(sim => (
+          <div class="similarity-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="16" x2="12" y2="12"/>
+              <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+            <p>{sim}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  <div class="category-comparison">
+    <h3>Category Comparison</h3>
+    <div class="category-table">
+      <div class="category-row header">
+        <div class="category-cell">Category</div>
+        <div class="category-cell">{policy1.domain}</div>
+        <div class="category-cell">{policy2.domain}</div>
+      </div>
+      {Object.entries(comparison.categories).map(([key, cat]: [string, any]) => {
+        const d1 = cat[policy1.domain];
+        const d2 = cat[policy2.domain];
+        return (
+          <div class="category-row">
+            <div class="category-cell category-name">{key}</div>
+            <div class="category-cell">
+              {d1 ? (
+                <div class={`severity-indicator ${d1.severity}`}>
+                  <span class="severity-dot"></span>
+                  <span>{d1.matchCount} mentions</span>
+                </div>
+              ) : (
+                <span class="no-data">-</span>
+              )}
+            </div>
+            <div class="category-cell">
+              {d2 ? (
+                <div class={`severity-indicator ${d2.severity}`}>
+                  <span class="severity-dot"></span>
+                  <span>{d2.matchCount} mentions</span>
+                </div>
+              ) : (
+                <span class="no-data">-</span>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+
+  <div class="comparison-actions">
+    <a href="/" class="btn btn-secondary">Analyze Another Policy</a>
+    <button id="compare-again-btn" class="btn btn-primary">Compare Again</button>
+  </div>
+</div>
+
+<style>
+  .comparison-view {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .comparison-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .comparison-header h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .comparison-intro {
+    color: var(--text-secondary);
+  }
+
+  .winner-banner {
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+
+  .winner-banner.winner {
+    border-color: #22c55e;
+    background: rgba(34, 197, 94, 0.05);
+  }
+
+  .winner-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .winner-banner svg {
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .winner-banner.winner svg {
+    color: #22c55e;
+  }
+
+  .winner-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .winner-content strong {
+    display: block;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .winner-content p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .score-comparison {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .score-card {
+    flex: 1;
+    min-width: 250px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .score-card.safer {
+    border-color: #22c55e;
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
+  }
+
+  .score-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .policy-url {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 16px;
+    word-break: break-all;
+  }
+
+  .score-display {
+    margin: 16px 0;
+  }
+
+  .score-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--accent-cyan);
+  }
+
+  .score-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .risk-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .risk-badge.low { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+  .risk-badge.medium { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+  .risk-badge.high { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+  .vs-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--bg-secondary);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .vs-divider span {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .differences-section, .similarities-section, .category-comparison {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .differences-list, .similarities-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .difference-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+  }
+
+  .diff-type {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .diff-type.frequency { background: rgba(0, 212, 255, 0.2); color: var(--accent-cyan); }
+  .diff-type.uniqueness { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
+  .diff-type.unique_risk { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+  .difference-item p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .similarity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(251, 191, 36, 0.1);
+    border-radius: var(--radius-md);
+  }
+
+  .similarity-item svg {
+    color: #fbbf24;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .similarity-item p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .category-table {
+    overflow-x: auto;
+  }
+
+  .category-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .category-row:last-child {
+    border-bottom: none;
+  }
+
+  .category-row.header {
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+  }
+
+  .category-cell {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .category-name {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .severity-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .severity-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .severity-indicator.high .severity-dot { background: #ef4444; }
+  .severity-indicator.medium .severity-dot { background: #fbbf24; }
+  .severity-indicator.low .severity-dot { background: #22c55e; }
+  .severity-indicator.info .severity-dot { background: var(--accent-cyan); }
+  .severity-indicator.warning .severity-dot { background: #f97316; }
+
+  .no-data {
+    color: var(--text-muted);
+  }
+
+  .comparison-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .score-comparison {
+      flex-direction: column;
+    }
+
+    .vs-divider {
+      width: 100%;
+      height: 40px;
+      border-radius: var(--radius-md);
+    }
+
+    .category-row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .category-row.header {
+      display: none;
+    }
+
+    .category-cell::before {
+      content: attr(data-label) ": ";
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+  }
+</style>

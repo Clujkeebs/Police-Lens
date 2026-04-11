@@ -1,0 +1,272 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact Us"
+  description="Get in touch with the PolicyLens team. We'd love to hear from you - whether you have questions, feedback, or partnership inquiries."
+  keywords="contact policylens, privacy policy feedback, privacy tool support"
+>
+  <section class="contact-hero">
+    <div class="container">
+      <h1>Get in <span class="gradient-text">Touch</span></h1>
+      <p class="hero-subtitle">Have questions, feedback, or partnership ideas? We'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <section class="contact-content">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-form-wrapper">
+          <form name="contact" method="POST" data-netlify="true" class="contact-form">
+            <input type="hidden" name="form-name" value="contact" />
+            
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name" />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="your.email@example.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject" required>
+                <option value="">Select a topic</option>
+                <option value="general">General Inquiry</option>
+                <option value="feedback">Feedback / Suggestions</option>
+                <option value="bug">Bug Report</option>
+                <option value="feature">Feature Request</option>
+                <option value="partnership">Partnership / Business</option>
+                <option value="press">Press Inquiry</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required rows="6" placeholder="Tell us what's on your mind..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+              Send Message
+            </button>
+          </form>
+        </div>
+
+        <div class="contact-info">
+          <div class="info-card">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="/">Analyze a Policy</a></li>
+              <li><a href="/about">How It Works</a></li>
+              <li><a href="/privacy-policy">Privacy Policy</a></li>
+              <li><a href="/terms-of-service">Terms of Service</a></li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Response Time</h3>
+            <p>We typically respond to inquiries within 24-48 hours on business days.</p>
+          </div>
+
+          <div class="info-card">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Twitter">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="GitHub">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-hero {
+    padding: 80px 24px 60px;
+    text-align: center;
+    background: radial-gradient(ellipse at top, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+  }
+
+  .contact-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .contact-content {
+    padding: 60px 24px 80px;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 48px;
+  }
+
+  .contact-form-wrapper {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group label {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 14px 16px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+
+  .form-group select {
+    cursor: pointer;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+
+  .btn-full {
+    width: 100%;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+
+  .info-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .info-card ul {
+    list-style: none;
+  }
+
+  .info-card li {
+    margin-bottom: 12px;
+  }
+
+  .info-card li:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-card a {
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+  }
+
+  .info-card a:hover {
+    color: var(--accent-cyan);
+  }
+
+  .info-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+  }
+
+  .social-link:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+      order: -1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+</style>

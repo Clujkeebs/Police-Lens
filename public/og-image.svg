@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#12121a"/>
+    </linearGradient>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff"/>
+      <stop offset="100%" style="stop-color:#ff0080"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <g transform="translate(100, 200)">
+    <circle cx="50" cy="50" r="40" fill="none" stroke="url(#grad)" stroke-width="4"/>
+    <path d="M35 50 L45 60 L65 40" fill="none" stroke="url(#grad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <text x="180" y="260" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="white">PolicyLens</text>
+  
+  <text x="100" y="350" font-family="Arial, sans-serif" font-size="28" fill="#a0a0b0">Understand What You're Actually Agreeing To</text>
+  
+  <text x="100" y="420" font-family="Arial, sans-serif" font-size="20" fill="#6a6a7a">Free Privacy Policy &amp; Terms of Service Analyzer</text>
+  
+  <g transform="translate(100, 480)">
+    <rect x="0" y="0" width="200" height="50" rx="8" fill="#00d4ff"/>
+    <text x="100" y="32" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#0a0a0f" text-anchor="middle">Analyze Now</text>
+  </g>
+  
+  <circle cx="1050" cy="100" r="200" fill="url(#grad)" opacity="0.1"/>
+  <circle cx="1150" cy="550" r="150" fill="url(#grad)" opacity="0.1"/>
+</svg>

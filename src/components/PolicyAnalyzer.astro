@@ -1,0 +1,460 @@
+---
+export interface Props {
+  initialUrl?: string;
+}
+
+const { initialUrl = '' } = Astro.props;
+---
+
+<div class="analyzer-container">
+  <div class="ai-badge">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+      <path d="M2 17l10 5 10-5"/>
+      <path d="M2 12l10 5 10-5"/>
+    </svg>
+    AI-Powered Analysis
+  </div>
+
+  <div class="input-tabs">
+    <button class="tab-btn active" data-tab="url">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+      </svg>
+      Analyze URL
+    </button>
+    <button class="tab-btn" data-tab="text">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+      Paste Text
+    </button>
+  </div>
+
+  <div class="tab-content active" id="url-tab">
+    <div class="input-wrapper">
+      <input 
+        type="url" 
+        id="policy-url" 
+        class="url-input" 
+        placeholder="https://example.com/privacy-policy"
+        value={initialUrl}
+      />
+      <button id="analyze-url-btn" class="btn btn-primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        Analyze
+      </button>
+    </div>
+    <p class="input-hint">Enter a URL to a privacy policy, terms of service, or any legal document</p>
+  </div>
+
+  <div class="tab-content" id="text-tab">
+    <div class="input-wrapper vertical">
+      <textarea 
+        id="policy-text" 
+        class="policy-textarea" 
+        placeholder="Paste your privacy policy or terms of service text here..."
+      ></textarea>
+      <button id="analyze-text-btn" class="btn btn-primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+        Analyze Text
+      </button>
+    </div>
+    <p class="input-hint">Paste the full text of a privacy policy or terms of service</p>
+  </div>
+
+  <div id="loading-state" class="loading-state hidden">
+    <div class="loader"></div>
+    <p class="loading-title">Analyzing Policy...</p>
+    <p class="loading-detail">AI is reviewing the document for privacy concerns</p>
+    <div class="loading-steps">
+      <span class="step active">Extracting text</span>
+      <span class="step-divider"></span>
+      <span class="step">Identifying risks</span>
+      <span class="step-divider"></span>
+      <span class="step">Generating summary</span>
+    </div>
+  </div>
+
+  <div id="error-state" class="error-state hidden">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="12" y1="8" x2="12" y2="12"/>
+      <line x1="12" y1="16" x2="12.01" y2="16"/>
+    </svg>
+    <p id="error-message">An error occurred</p>
+    <button id="retry-btn" class="btn btn-secondary">Try Again</button>
+  </div>
+</div>
+
+<style>
+  .analyzer-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .ai-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(255, 0, 128, 0.15));
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    margin-bottom: 24px;
+  }
+
+  .ai-badge svg {
+    color: var(--accent-magenta);
+  }
+
+  .input-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 4px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+  }
+
+  .tab-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 24px;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .tab-btn:hover {
+    color: var(--text-primary);
+  }
+
+  .tab-btn.active {
+    background: var(--bg-card);
+    color: var(--accent-cyan);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  .input-wrapper {
+    display: flex;
+    gap: 12px;
+  }
+
+  .input-wrapper.vertical {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .url-input {
+    flex: 1;
+    padding: 16px 20px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+
+  .url-input:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1);
+  }
+
+  .policy-textarea {
+    min-height: 200px;
+    padding: 16px 20px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-family: var(--font-mono);
+    line-height: 1.7;
+    resize: vertical;
+    transition: all 0.2s ease;
+  }
+
+  .policy-textarea:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1);
+  }
+
+  .input-hint {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .loading-state {
+    text-align: center;
+    padding: 48px 24px;
+  }
+
+  .loader {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 24px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--accent-cyan);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .loading-title {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .loading-detail {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+
+  .loading-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .loading-steps .step {
+    padding: 6px 12px;
+    background: var(--bg-secondary);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .loading-steps .step.active {
+    background: rgba(0, 212, 255, 0.2);
+    color: var(--accent-cyan);
+  }
+
+  .step-divider {
+    width: 4px;
+    height: 4px;
+    background: var(--text-muted);
+    border-radius: 50%;
+  }
+
+  .error-state {
+    text-align: center;
+    padding: 48px 24px;
+  }
+
+  .error-state svg {
+    color: #ef4444;
+    margin-bottom: 16px;
+  }
+
+  .error-state p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  @media (max-width: 600px) {
+    .analyzer-container {
+      padding: 20px;
+    }
+
+    .input-wrapper {
+      flex-direction: column;
+    }
+
+    .url-input {
+      font-size: 16px;
+    }
+
+    .loading-steps {
+      flex-direction: column;
+    }
+
+    .step-divider {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  const urlInput = document.getElementById('policy-url') as HTMLInputElement;
+  const textInput = document.getElementById('policy-text') as HTMLTextAreaElement;
+  const analyzeUrlBtn = document.getElementById('analyze-url-btn');
+  const analyzeTextBtn = document.getElementById('analyze-text-btn');
+  const loadingState = document.getElementById('loading-state');
+  const errorState = document.getElementById('error-state');
+  const errorMessage = document.getElementById('error-message');
+  const retryBtn = document.getElementById('retry-btn');
+
+  function switchTab(tabId: string) {
+    tabBtns.forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
+    });
+    tabContents.forEach(content => {
+      content.classList.toggle('active', content.id === `${tabId}-tab`);
+    });
+  }
+
+  function showLoading() {
+    if (loadingState) loadingState.classList.remove('hidden');
+    if (errorState) errorState.classList.add('hidden');
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+  }
+
+  function hideLoading() {
+    if (loadingState) loadingState.classList.add('hidden');
+  }
+
+  function showError(message: string) {
+    hideLoading();
+    if (errorState) errorState.classList.remove('hidden');
+    if (errorMessage) errorMessage.textContent = message;
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('hidden'));
+  }
+
+  function handleAnalysisSuccess(result: any) {
+    const history = JSON.parse(localStorage.getItem('policylens_history') || '[]');
+    history.unshift({
+      id: Date.now(),
+      domain: result.domain || 'Manual Analysis',
+      url: result.url || null,
+      title: result.title,
+      riskScore: result.analysis.riskScore,
+      riskLevel: result.analysis.riskLevel,
+      timestamp: result.analyzedAt || new Date().toISOString(),
+      aiPowered: result.aiPowered || false
+    });
+    localStorage.setItem('policylens_history', JSON.stringify(history.slice(0, 50)));
+    
+    const params = new URLSearchParams();
+    params.set('data', btoa(JSON.stringify(result)));
+    window.location.href = `/analyze?${params.toString()}`;
+  }
+
+  async function callAnalyzeApi(payload: { url?: string; text?: string }) {
+    const response = await fetch('/api/analyze', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({ error: 'Unknown error' }));
+      throw new Error(error.error || `API error: ${response.status}`);
+    }
+
+    return response.json();
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.getAttribute('data-tab');
+      if (tabId) switchTab(tabId);
+    });
+  });
+
+  analyzeUrlBtn?.addEventListener('click', async () => {
+    const url = urlInput?.value.trim();
+    if (!url) {
+      showError('Please enter a URL to analyze');
+      return;
+    }
+
+    showLoading();
+    if (analyzeUrlBtn) analyzeUrlBtn.setAttribute('disabled', 'true');
+
+    try {
+      const result = await callAnalyzeApi({ url });
+      handleAnalysisSuccess(result);
+    } catch (error: any) {
+      showError(error.message || 'Failed to analyze the URL');
+      if (analyzeUrlBtn) analyzeUrlBtn.removeAttribute('disabled');
+    }
+  });
+
+  analyzeTextBtn?.addEventListener('click', async () => {
+    const text = textInput?.value.trim();
+    if (!text || text.length < 100) {
+      showError('Please paste a longer text (at least 100 characters)');
+      return;
+    }
+
+    showLoading();
+    if (analyzeTextBtn) analyzeTextBtn.setAttribute('disabled', 'true');
+
+    try {
+      const result = await callAnalyzeApi({ text });
+      handleAnalysisSuccess(result);
+    } catch (error: any) {
+      showError(error.message || 'Failed to analyze the text');
+      if (analyzeTextBtn) analyzeTextBtn.removeAttribute('disabled');
+    }
+  });
+
+  retryBtn?.addEventListener('click', () => {
+    if (errorState) errorState.classList.add('hidden');
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('hidden'));
+    const activeTab = document.querySelector('.tab-btn.active')?.getAttribute('data-tab');
+    if (activeTab) switchTab(activeTab);
+  });
+
+  urlInput?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      analyzeUrlBtn?.click();
+    }
+  });
+</script>

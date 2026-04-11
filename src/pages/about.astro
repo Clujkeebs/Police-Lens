@@ -1,0 +1,393 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="How PolicyLens Works"
+  description="Learn how PolicyLens uses advanced analysis to break down privacy policies and terms of service into clear, actionable insights. Understand data collection, sharing practices, and your rights."
+  keywords="how policy analysis works, privacy policy breakdown, terms of service analysis, data privacy tool, privacy checker"
+>
+  <section class="about-hero">
+    <div class="container">
+      <h1>How PolicyLens <span class="gradient-text">Works</span></h1>
+      <p class="hero-subtitle">Turning complex legal documents into clear, actionable insights</p>
+    </div>
+  </section>
+
+  <section class="about-content">
+    <div class="container">
+      <div class="content-block">
+        <h2>Our Mission</h2>
+        <p>Privacy policies and terms of service are often written to be intentionally difficult to understand. Studies show that the average American would need to spend <strong>76 full work days</strong> reading all the privacy policies they encounter in a year.</p>
+        <p>PolicyLens was created to bridge this gap. We believe you shouldn't need a law degree to understand your digital rights.</p>
+      </div>
+
+      <div class="content-block">
+        <h2>How Analysis Works</h2>
+        <p>PolicyLens uses a sophisticated rule-based analysis engine that examines privacy policies and terms of service documents to identify key patterns and potential concerns.</p>
+        
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+              </svg>
+            </div>
+            <div class="step-content">
+              <h3>1. Text Extraction</h3>
+              <p>Whether you paste text directly or provide a URL, we extract the policy content and prepare it for analysis.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+              </svg>
+            </div>
+            <div class="step-content">
+              <h3>2. Pattern Detection</h3>
+              <p>Our engine scans for 100+ patterns across 12 key categories including data collection, sharing practices, user rights, and security measures.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            </div>
+            <div class="step-content">
+              <h3>3. Red Flag Detection</h3>
+              <p>We flag concerning clauses like unlimited liability, class action waivers, data selling provisions, and other potentially problematic terms.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"/>
+                <line x1="12" y1="20" x2="12" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+            </div>
+            <div class="step-content">
+              <h3>4. Risk Scoring</h3>
+              <p>Based on all detected patterns, we calculate a comprehensive risk score from 0-100 to help you quickly assess the policy's privacy implications.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <h2>Analysis Categories</h2>
+        <p>We analyze policies across 12 key categories:</p>
+        
+        <div class="categories-grid">
+          <div class="category-item">
+            <h4>Data Collection</h4>
+            <p>What information is collected about you</p>
+          </div>
+          <div class="category-item">
+            <h4>Data Sharing</h4>
+            <p>Who else gets access to your data</p>
+          </div>
+          <div class="category-item">
+            <h4>Data Retention</h4>
+            <p>How long your data is kept</p>
+          </div>
+          <div class="category-item">
+            <h4>User Rights</h4>
+            <p>Your control over your data</p>
+          </div>
+          <div class="category-item">
+            <h4>Security Measures</h4>
+            <p>How your data is protected</p>
+          </div>
+          <div class="category-item">
+            <h4>Advertising</h4>
+            <p>Use of data for targeted ads</p>
+          </div>
+          <div class="category-item">
+            <h4>Children's Privacy</h4>
+            <p>Special protections for minors</p>
+          </div>
+          <div class="category-item">
+            <h4>International Transfers</h4>
+            <p>Cross-border data transfers</p>
+          </div>
+          <div class="category-item">
+            <h4>Liability</h4>
+            <p>Service provider limitations</p>
+          </div>
+          <div class="category-item">
+            <h4>Account Termination</h4>
+            <p>Service cancellation policies</p>
+          </div>
+          <div class="category-item">
+            <h4>Policy Changes</h4>
+            <p>How policies may change</p>
+          </div>
+          <div class="category-item">
+            <h4>Legal Rights</h4>
+            <p>Your legal recourse options</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <h2>What We Look For</h2>
+        
+        <div class="comparison-columns">
+          <div class="column red">
+            <h3>Red Flags</h3>
+            <ul>
+              <li>Data selling provisions</li>
+              <li>Unlimited liability clauses</li>
+              <li>Class action waivers</li>
+              <li>Keystroke or screen recording</li>
+              <li>Continuous location tracking</li>
+              <li>Vague data sharing language</li>
+              <li>Automatic data retention</li>
+              <li>Lack of deletion rights</li>
+            </ul>
+          </div>
+          <div class="column green">
+            <h3>Good Signs</h3>
+            <ul>
+              <li>End-to-end encryption</li>
+              <li>GDPR/CCPA compliance statements</li>
+              <li>Clear data deletion processes</li>
+              <li>Minimal data collection</li>
+              <li>Regular security audits</li>
+              <li>Bug bounty programs</li>
+              <li>No third-party ad networks</li>
+              <li>Open source components</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <h2>Privacy & Security</h2>
+        <p>Your privacy matters to us. Here's what you should know:</p>
+        <ul class="privacy-points">
+          <li><strong>No Account Required:</strong> We don't require sign-ups or logins. Your analysis history is stored locally in your browser.</li>
+          <li><strong>No Data Storage:</strong> We don't store your pasted policies or analysis results on our servers.</li>
+          <li><strong>URL Fetching:</strong> When you provide a URL, we fetch it once to extract the policy content. We don't maintain copies.</li>
+          <li><strong>No Tracking:</strong> We don't use tracking pixels, fingerprinting, or analytics that could compromise your privacy.</li>
+        </ul>
+      </div>
+
+      <div class="cta-block">
+        <h2>Ready to Analyze?</h2>
+        <p>Start understanding privacy policies in seconds.</p>
+        <a href="/" class="btn btn-primary">Try PolicyLens Free</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .about-hero {
+    padding: 80px 24px 60px;
+    text-align: center;
+    background: radial-gradient(ellipse at top, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+  }
+
+  .about-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+  }
+
+  .about-content {
+    padding: 60px 24px 80px;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .content-block {
+    margin-bottom: 60px;
+  }
+
+  .content-block h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+  }
+
+  .content-block p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .process-steps {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .process-step {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+  }
+
+  .step-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: var(--radius-md);
+    color: var(--accent-cyan);
+    flex-shrink: 0;
+  }
+
+  .step-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .step-content p {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .category-item {
+    padding: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+  }
+
+  .category-item h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .category-item p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .comparison-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .column {
+    padding: 24px;
+    border-radius: var(--radius-lg);
+  }
+
+  .column.red {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+
+  .column.green {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+  }
+
+  .column h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .column.red h3 { color: #ef4444; }
+  .column.green h3 { color: #22c55e; }
+
+  .column ul {
+    list-style: none;
+  }
+
+  .column li {
+    padding: 8px 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .column li:last-child {
+    border-bottom: none;
+  }
+
+  .privacy-points {
+    list-style: none;
+    margin-top: 20px;
+  }
+
+  .privacy-points li {
+    padding: 16px 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .privacy-points li:last-child {
+    border-bottom: none;
+  }
+
+  .privacy-points strong {
+    color: var(--text-primary);
+  }
+
+  .cta-block {
+    text-align: center;
+    padding: 48px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+  }
+
+  .cta-block h2 {
+    font-size: 1.75rem;
+    margin-bottom: 12px;
+  }
+
+  .cta-block p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .comparison-columns {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,153 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AnalysisResult from '../components/AnalysisResult.astro';
+
+const dataParam = Astro.url.searchParams.get('data');
+let result = null;
+let error = null;
+
+if (dataParam) {
+  try {
+    result = JSON.parse(atob(dataParam));
+  } catch (e) {
+    error = 'Invalid analysis data';
+  }
+} else {
+  error = 'No analysis data provided';
+}
+---
+
+<Layout
+  title={result ? `Analysis: ${result.title}` : 'Analysis Results'}
+  description={result ? `Privacy policy analysis for ${result.title}. Risk Score: ${result.analysis.riskScore}/100` : 'View your privacy policy analysis'}
+  noindex={true}
+>
+  <section class="analyze-page">
+    <div class="container">
+      {error ? (
+        <div class="error-state">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <h1>{error}</h1>
+          <p>The analysis data could not be loaded. This may have expired or been corrupted.</p>
+          <a href="/" class="btn btn-primary">Try Again</a>
+        </div>
+      ) : (
+        <>
+          <div class="page-nav">
+            <a href="/" class="back-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"/>
+                <polyline points="12 19 5 12 12 5"/>
+              </svg>
+              New Analysis
+            </a>
+            <button id="compare-btn" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"/>
+                <rect x="14" y="3" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/>
+                <rect x="3" y="14" width="7" height="7"/>
+              </svg>
+              Compare
+            </button>
+          </div>
+
+          <AnalysisResult result={result} />
+        </>
+      )}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .analyze-page {
+    padding: 40px 24px 80px;
+    min-height: calc(100vh - 200px);
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .page-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--accent-cyan);
+  }
+
+  .error-state {
+    text-align: center;
+    padding: 80px 24px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .error-state svg {
+    color: #ef4444;
+    margin-bottom: 24px;
+  }
+
+  .error-state h1 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+
+  .error-state p {
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const compareBtn = document.getElementById('compare-btn');
+    if (compareBtn) {
+      compareBtn.addEventListener('click', () => {
+        const currentResults = JSON.parse(localStorage.getItem('policylens_compare') || '[]');
+        const urlParams = new URLSearchParams(window.location.search);
+        const dataParam = urlParams.get('data');
+        
+        if (dataParam) {
+          try {
+            const currentResult = JSON.parse(atob(dataParam));
+            currentResults.push(currentResult);
+            localStorage.setItem('policylens_compare', JSON.stringify(currentResults.slice(0, 2)));
+            
+            if (currentResults.length >= 2) {
+              const params = new URLSearchParams();
+              params.set('p1', btoa(JSON.stringify(currentResults[0])));
+              params.set('p2', btoa(JSON.stringify(currentResults[1])));
+              localStorage.removeItem('policylens_compare');
+              window.location.href = `/compare?${params.toString()}`;
+            } else {
+              alert('Select another policy to compare. Results saved - analyze another policy and click Compare again.');
+            }
+          } catch (e) {
+            console.error('Error saving comparison:', e);
+          }
+        }
+      });
+    }
+  });
+</script>

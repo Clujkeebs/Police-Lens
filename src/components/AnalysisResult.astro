@@ -1,0 +1,626 @@
+---
+export interface Props {
+  result: {
+    domain: string;
+    url?: string;
+    title: string;
+    analysis: {
+      riskScore: number;
+      riskLevel: 'low' | 'medium' | 'high';
+      confidenceScore: number;
+      wordCount: number;
+      categories: Record<string, any>;
+      redFlags: Array<{ message: string; severity: string }>;
+      goodSigns: Array<{ message: string }>;
+      summary: {
+        overview: string;
+        detailedPoints: Array<{ category: string; severity: string; points: string[] }>;
+      };
+    };
+    keyClauses?: Array<{ text: string; keywords: string[] }>;
+  };
+}
+
+const { result } = Astro.props;
+const { analysis } = result;
+
+const riskColor = analysis.riskLevel === 'low' ? '#22c55e' : analysis.riskLevel === 'medium' ? '#fbbf24' : '#ef4444';
+const riskBg = analysis.riskLevel === 'low' ? 'rgba(34, 197, 94, 0.15)' : analysis.riskLevel === 'medium' ? 'rgba(251, 191, 36, 0.15)' : 'rgba(239, 68, 68, 0.15)';
+---
+
+<div class="analysis-result">
+  <header class="result-header">
+    <div class="result-title">
+      <h1>{result.title}</h1>
+      {result.url && <a href={result.url} target="_blank" rel="noopener" class="result-url">{result.url}</a>}
+    </div>
+    <button id="share-btn" class="btn btn-secondary share-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="18" cy="5" r="3"/>
+        <circle cx="6" cy="12" r="3"/>
+        <circle cx="18" cy="19" r="3"/>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+      </svg>
+      Share
+    </button>
+  </header>
+
+  <div class="risk-meter">
+    <div class="risk-score" style={`--score: ${analysis.riskScore}; --color: ${riskColor}; --bg: ${riskBg}`}>
+      <svg viewBox="0 0 100 100" class="score-ring">
+        <circle cx="50" cy="50" r="45" class="ring-bg"/>
+        <circle cx="50" cy="50" r="45" class="ring-progress" style={`stroke-dashoffset: ${283 - (283 * analysis.riskScore / 100)}`}/>
+      </svg>
+      <div class="score-value">
+        <span class="score-number">{Math.round(analysis.riskScore)}</span>
+        <span class="score-label">Risk Score</span>
+      </div>
+    </div>
+    <div class="risk-info">
+      <span class="risk-level" style={`color: ${riskColor}; background: ${riskBg}`}>
+        {analysis.riskLevel.toUpperCase()} RISK
+      </span>
+      <p class="risk-description">
+        {analysis.riskLevel === 'low' ? 'This policy appears to have reasonable privacy protections.' :
+         analysis.riskLevel === 'medium' ? 'This policy has some concerns you should review.' :
+         'This policy has significant privacy implications.'}
+      </p>
+      <div class="confidence">
+        <span class="confidence-label">Analysis Confidence:</span>
+        <div class="confidence-bar">
+          <div class="confidence-fill" style={`width: ${analysis.confidenceScore}%`}></div>
+        </div>
+        <span class="confidence-value">{analysis.confidenceScore}%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-card">
+    <h2>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+      </svg>
+      Summary
+    </h2>
+    <p class="overview">{analysis.summary.overview}</p>
+    {analysis.summary.detailedPoints.length > 0 && (
+      <div class="detailed-points">
+        {analysis.summary.detailedPoints.map(point => (
+          <div class="point-item">
+            <span class={`severity-dot ${point.severity}`}></span>
+            <div>
+              <strong>{point.category}</strong>
+              {point.points.map(p => <p>{p}.</p>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+
+  {analysis.redFlags.length > 0 && (
+    <div class="alerts-section">
+      <h2>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        Red Flags ({analysis.redFlags.length})
+      </h2>
+      <div class="alerts-list">
+        {analysis.redFlags.map(flag => (
+          <div class={`alert-item alert-${flag.severity}`}>
+            <span class={`alert-badge badge-${flag.severity}`}>{flag.severity}</span>
+            <p>{flag.message}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {analysis.goodSigns.length > 0 && (
+    <div class="good-signs-section">
+      <h2>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        Positive Indicators ({analysis.goodSigns.length})
+      </h2>
+      <div class="good-signs-list">
+        {analysis.goodSigns.map(sign => (
+          <div class="good-sign-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <p>{sign.message}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  <div class="categories-section">
+    <h2>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 3h18v18H3zM21 9H3M9 21V9"/>
+      </svg>
+      Category Breakdown
+    </h2>
+    <div class="categories-grid">
+      {Object.entries(analysis.categories).map(([key, cat]: [string, any]) => (
+        <div class={`category-card ${cat.severity}`}>
+          <div class="category-header">
+            <h3>{cat.category}</h3>
+            <span class={`severity-badge ${cat.severity}`}>{cat.severity}</span>
+          </div>
+          <p class="category-desc">{cat.description}</p>
+          <div class="category-stats">
+            <span class="match-count">{cat.matchCount} mentions</span>
+            <div class="keyword-tags">
+              {cat.matchedKeywords.slice(0, 3).map((kw: string) => (
+                <span class="keyword-tag">{kw}</span>
+              ))}
+              {cat.matchedKeywords.length > 3 && (
+                <span class="keyword-tag more">+{cat.matchedKeywords.length - 3}</span>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {result.keyClauses && result.keyClauses.length > 0 && (
+    <div class="clauses-section">
+      <h2>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="8" y1="6" x2="21" y2="6"/>
+          <line x1="8" y1="12" x2="21" y2="12"/>
+          <line x1="8" y1="18" x2="21" y2="18"/>
+          <line x1="3" y1="6" x2="3.01" y2="6"/>
+          <line x1="3" y1="12" x2="3.01" y2="12"/>
+          <line x1="3" y1="18" x2="3.01" y2="18"/>
+        </svg>
+        Key Clauses
+      </h2>
+      <div class="clauses-list">
+        {result.keyClauses.map((clause, i) => (
+          <div class="clause-item">
+            <span class="clause-number">{i + 1}</span>
+            <p>{clause.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  <div class="meta-info">
+    <span>Analyzed {result.domain}</span>
+    <span>•</span>
+    <span>{analysis.wordCount.toLocaleString()} words analyzed</span>
+    <span>•</span>
+    <span>{new Date(result.fetchedAt).toLocaleDateString()}</span>
+  </div>
+</div>
+
+<style>
+  .analysis-result {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .result-title h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .result-url {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    word-break: break-all;
+  }
+
+  .share-btn {
+    flex-shrink: 0;
+  }
+
+  .risk-meter {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 48px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+
+  .risk-score {
+    position: relative;
+    width: 160px;
+    height: 160px;
+  }
+
+  .score-ring {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .ring-bg {
+    fill: none;
+    stroke: var(--border-color);
+    stroke-width: 8;
+  }
+
+  .ring-progress {
+    fill: none;
+    stroke: var(--color);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 283;
+    transition: stroke-dashoffset 1s ease;
+  }
+
+  .score-value {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .score-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color);
+  }
+
+  .score-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .risk-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .risk-level {
+    display: inline-flex;
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    width: fit-content;
+  }
+
+  .risk-description {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .confidence {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .confidence-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .confidence-bar {
+    flex: 1;
+    min-width: 100px;
+    max-width: 200px;
+    height: 6px;
+    background: var(--border-color);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .confidence-fill {
+    height: 100%;
+    background: var(--accent-cyan);
+    border-radius: 3px;
+    transition: width 1s ease;
+  }
+
+  .confidence-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-cyan);
+  }
+
+  .summary-card, .alerts-section, .good-signs-section, .categories-section, .clauses-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+  }
+
+  .overview {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .detailed-points {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .point-item {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+  }
+
+  .severity-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .severity-dot.high { background: #ef4444; }
+  .severity-dot.medium { background: #fbbf24; }
+  .severity-dot.low { background: #22c55e; }
+  .severity-dot.info { background: var(--accent-cyan); }
+
+  .point-item strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+  }
+
+  .point-item p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .alerts-list, .good-signs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .alert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border-radius: var(--radius-md);
+  }
+
+  .alert-high { background: rgba(239, 68, 68, 0.1); }
+  .alert-medium { background: rgba(251, 191, 36, 0.1); }
+  .alert-low { background: rgba(59, 130, 246, 0.1); }
+
+  .alert-badge {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .badge-high { background: #ef4444; color: white; }
+  .badge-medium { background: #fbbf24; color: black; }
+  .badge-low { background: #3b82f6; color: white; }
+
+  .alert-item p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .good-sign-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(34, 197, 94, 0.1);
+    border-radius: var(--radius-md);
+  }
+
+  .good-sign-item svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .good-sign-item p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .category-card {
+    padding: 20px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--border-color);
+    transition: all 0.2s ease;
+  }
+
+  .category-card:hover {
+    background: var(--bg-card-hover);
+  }
+
+  .category-card.high { border-left-color: #ef4444; }
+  .category-card.medium { border-left-color: #fbbf24; }
+  .category-card.low { border-left-color: #22c55e; }
+  .category-card.info { border-left-color: var(--accent-cyan); }
+  .category-card.warning { border-left-color: #f97316; }
+
+  .category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .category-header h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .severity-badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .severity-badge.high { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+  .severity-badge.medium { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+  .severity-badge.low { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+  .severity-badge.info { background: rgba(0, 212, 255, 0.2); color: var(--accent-cyan); }
+  .severity-badge.warning { background: rgba(249, 115, 22, 0.2); color: #f97316; }
+
+  .category-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .category-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .match-count {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  .keyword-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .keyword-tag {
+    padding: 3px 8px;
+    background: var(--bg-primary);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  .keyword-tag.more {
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+  }
+
+  .clauses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .clause-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+  }
+
+  .clause-number {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .clause-item p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-family: var(--font-mono);
+  }
+
+  .meta-info {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .risk-meter {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .risk-info {
+      align-items: center;
+    }
+
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
