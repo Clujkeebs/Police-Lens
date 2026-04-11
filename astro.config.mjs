@@ -1,16 +1,10 @@
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';
 
 export default defineConfig({
   site: 'https://policy-lens-ai-app.vercel.app',
-  output: 'hybrid',
-  adapter: vercel(),
-  build: {
-    assets: 'assets'
-  },
-  vite: {
-    build: {
-      cssMinify: true
-    }
-  }
+  output: 'static',
+  adapter: vercel({
+    runtime: 'nodejs22.x'
+  })
 });
