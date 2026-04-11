@@ -1,0 +1,898 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "Mobile App Privacy Policy Guide - App Store Compliance";
+const description = "Complete guide to mobile app privacy policy requirements. Learn about App Store and Google Play requirements, device permissions, and data collection disclosure.";
+const keywords = "mobile app privacy policy guide, app store privacy requirements, Google Play privacy policy, iOS app privacy, device permissions disclosure";
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <main class="page-container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="separator">›</span>
+      <a href="/guides">Guides</a>
+      <span class="separator">›</span>
+      <span class="current">Mobile App Privacy Policy</span>
+    </nav>
+
+    <article class="guide-content">
+      <header class="page-header">
+        <h1>Mobile App Privacy Policy Guide</h1>
+        <p class="subtitle">App Store and Google Play compliance guide</p>
+      </header>
+
+      <section class="intro">
+        <p>Mobile apps face unique privacy requirements from both app stores and privacy regulations. This guide covers Apple's App Store requirements, Google Play requirements, device permissions disclosure, and how to properly document your data collection practices.</p>
+      </section>
+
+      <section class="app-store-requirements">
+        <h2>App Store Requirements</h2>
+        
+        <div class="store-section">
+          <h3>Apple App Store (iOS)</h3>
+          <p>Apple requires all apps to submit privacy information through App Store Connect. This information is displayed on your app's product page.</p>
+          
+          <div class="data-types">
+            <h4>Data Types to Declare</h4>
+            <ul>
+              <li><strong>Contact Info:</strong> Names, phone numbers, email addresses</li>
+              <li><strong>Identifiers:</strong> Device IDs, user IDs</li>
+              <li><strong>Usage Data:</strong> Product interaction, analytics</li>
+              <li><strong>Diagnostics:</strong> Crash logs, performance data</li>
+              <li><strong>Location:</strong> Precise location, approximate location</li>
+              <li><strong>Sensitive Info:</strong> Health data, financial info, biometrics</li>
+              <li><strong>Contacts:</strong> Contact information from device</li>
+              <li><strong>Photos or Videos:</strong> Media library access</li>
+              <li><strong>Audio:</strong> Audio recordings</li>
+              <li><strong>Gameplay Content:</strong> Gameplay data, scores</li>
+              <li><strong>Browsing History:</strong> Web browsing data</li>
+              <li><strong>Search History:</strong> Search queries</li>
+              <li><strong>Purchases:</strong> Purchase history</li>
+              <li><strong>Coarse Location:</strong> Approximate location</li>
+            </ul>
+          </div>
+          
+          <div class="tracking-section">
+            <h4>App Tracking Transparency</h4>
+            <p>Since iOS 14.5, apps must request permission before tracking users across other companies' apps and websites. You must:</p>
+            <ul>
+              <li>Implement the App Tracking Transparency framework</li>
+              <li>Present a prompt explaining why you're tracking (or not track)</li>
+              <li>Respect the user's choice</li>
+              <li>Only enable tracking if the user authorizes it</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="store-section">
+          <h3>Google Play (Android)</h3>
+          <p>Google requires apps to complete a Data Safety section in the Google Play Console.</p>
+          
+          <div class="data-safety">
+            <h4>Data Safety Requirements</h4>
+            <ul>
+              <li>Declare what data your app collects</li>
+              <li>Explain how data is shared and secured</li>
+              <li>Identify if data is encrypted in transit</li>
+              <li>State if users can request deletion</li>
+              <li>Provide target audience and age rating</li>
+              <li>Link to your full privacy policy</li>
+            </ul>
+          </div>
+          
+          <div class="google-requirements">
+            <h4>Google Play Enforcement</h4>
+            <p>Google Play has strict enforcement:</p>
+            <ul>
+              <li>Apps without privacy policies may be removed</li>
+              <li>Misleading data declarations can result in violations</li>
+              <li>Apps must be honest about data collection</li>
+              <li>SDKs must also comply with policies</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="device-permissions">
+        <h2>Device Permissions</h2>
+        
+        <p>Mobile apps commonly request various device permissions. Each requires disclosure:</p>
+        
+        <div class="permissions-grid">
+          <div class="permission">
+            <h3>Camera</h3>
+            <p>Used for: Taking photos, recording videos, video calls, barcode scanning</p>
+            <p class="disclosure"><strong>Disclosure:</strong> Explain why you need camera access and what you do with captured media. Note if photos are stored locally or uploaded to servers.</p>
+          </div>
+          
+          <div class="permission">
+            <h3>Microphone</h3>
+            <p>Used for: Voice recording, voice commands, video recording with audio</p>
+            <p class="disclosure"><strong>Disclosure:</strong> State what audio is recorded, how long it's retained, and whether it's sent to servers or processed on-device.</p>
+          </div>
+          
+          <div class="permission">
+            <h3>Location</h3>
+            <p>Used for: Navigation, location-based features, geo-tagging, proximity features</p>
+            <p class="disclosure"><strong>Disclosure:</strong> Distinguish between precise (GPS) and approximate (network-based) location. Explain if location is tracked continuously or only when using specific features.</p>
+          </div>
+          
+          <div class="permission">
+            <h3>Contacts</h3>
+            <p>Used for: Finding friends, referrals, contact syncing</p>
+            <p class="disclosure"><strong>Disclosure:</strong> Explain what contact data is accessed, how it's used, whether it's stored, and if it's shared with third parties.</p>
+          </div>
+          
+          <div class="permission">
+            <h3>Photos/Media</h3>
+            <p>Used for: Saving images, accessing photo library, uploading media</p>
+            <p class="disclosure"><strong>Disclosure:</strong> Specify which photos are accessed, whether you can read or write, and how media is processed.</p>
+          </div>
+          
+          <div class="permission">
+            <h3>Bluetooth</h3>
+            <p>Used for: Connecting to devices, peer-to-peer features, beacons</p>
+            <p class="disclosure"><strong>Disclosure:</strong> Explain device pairing purposes and any data exchanged via Bluetooth.</p>
+          </div>
+          
+          <div class="permission">
+            <h3>Notifications</h3>
+            <p>Used for: Push notifications, reminders, updates</p>
+            <p class="disclosure"><strong>Disclosure:</strong> Note types of notifications sent and whether they can be disabled.</p>
+          </div>
+          
+          <div class="permission">
+            <h3>Device ID & Call Info</h3>
+            <p>Used for: Analytics, fraud prevention, user identification</p>
+            <p class="disclosure"><strong>Disclosure:</strong> Explain what identifiers are collected (Advertising ID, device ID), why they're used, and how long they're retained.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="data-collection">
+        <h2>Data Collection Disclosure</h2>
+        
+        <p>Your privacy policy must clearly explain what data you collect:</p>
+        
+        <div class="collection-categories">
+          <div class="category">
+            <h3>Data You Collect</h3>
+            <ul>
+              <li>Account information (name, email, phone)</li>
+              <li>Profile information (photos, bio, preferences)</li>
+              <li>Payment and transaction data</li>
+              <li>Location data (precise or approximate)</li>
+              <li>Device information (type, OS version, ID)</li>
+              <li>Usage data and analytics</li>
+              <li>Communications (messages, support tickets)</li>
+              <li>Content you create or upload</li>
+            </ul>
+          </div>
+          
+          <div class="category">
+            <h3>How You Use Data</h3>
+            <ul>
+              <li>Provide core app functionality</li>
+              <li>Personalize user experience</li>
+              <li>Process transactions and payments</li>
+              <li>Send notifications and updates</li>
+              <li>Improve and develop the app</li>
+              <li>Prevent fraud and ensure security</li>
+              <li>Comply with legal obligations</li>
+              <li>Marketing and advertising (with consent)</li>
+            </ul>
+          </div>
+          
+          <div class="category">
+            <h3>Third-Party Sharing</h3>
+            <ul>
+              <li>Analytics providers (Google Analytics, Firebase)</li>
+              <li>Advertising networks (AdMob, Facebook Ads)</li>
+              <li>Payment processors (Stripe, PayPal)</li>
+              <li>Customer support tools (Zendesk, Intercom)</li>
+              <li>Cloud services (AWS, Firebase)</li>
+              <li>Social media platforms (if social features)</li>
+              <li>Legal authorities (if required)</li>
+            </ul>
+          </div>
+          
+          <div class="category">
+            <h3>Data Retention</h3>
+            <ul>
+              <li>Account data retained while account active</li>
+              <li>Delete upon account deletion or request</li>
+              <li>Logs retained for limited periods</li>
+              <li>Legal holds may extend retention</li>
+              <li>Backups deleted within defined periods</li>
+              <li>Anonymized data may be retained longer</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="highlight-box warning">
+          <h3>Children's Privacy (COPPA)</h3>
+          <p>If your app targets children under 13 (or 16 in some jurisdictions), you must comply with COPPA. This includes restricting data collection, obtaining verifiable parental consent, and not using children's data for behavioral advertising.</p>
+        </div>
+      </section>
+
+      <section class="privacy-labels">
+        <h2>Privacy Labels & Nutrition Labels</h2>
+        
+        <p>Both Apple and Google display privacy information directly in the app stores:</p>
+        
+        <div class="labels-section">
+          <h3>Apple Privacy Nutrition Labels</h3>
+          <p>App Store displays privacy labels in three categories:</p>
+          
+          <div class="label-categories">
+            <div class="label-category">
+              <h4>Data Used to Track You</h4>
+              <p>Lists data linked to users across other companies' apps/websites</p>
+            </div>
+            
+            <div class="label-category">
+              <h4>Data Linked to You</h4>
+              <p>Data that may be linked to user identity</p>
+            </div>
+            
+            <div class="label-category">
+              <h4>Data Not Linked to You</h4>
+              <p>Data that cannot be linked to user identity</p>
+            </div>
+          </div>
+          
+          <p class="label-note">Complete these labels accurately in App Store Connect. Apple may reject apps with inaccurate privacy information.</p>
+        </div>
+        
+        <div class="labels-section">
+          <h3>Google Play Data Safety Section</h3>
+          <p>Google Play requires a Data Safety form with these elements:</p>
+          
+          <div class="google-labels">
+            <ul>
+              <li>Is data collected?</li>
+              <li>Why is data collected?</li>
+              <li>Is data encrypted?</li>
+              <li>Can users delete data?</li>
+              <li>Target audience age rating</li>
+              <li>Link to privacy policy</li>
+              <li>Security practices disclosure</li>
+            </ul>
+          </div>
+          
+          <p class="label-note">Google may remove apps that don't complete this section or provide misleading information.</p>
+        </div>
+      </section>
+
+      <section class="third-party-sdks">
+        <h2>Third-Party SDKs & Libraries</h2>
+        
+        <p>Your app likely uses SDKs that collect data. You're responsible for disclosing their practices:</p>
+        
+        <div class="sdk-grid">
+          <div class="sdk">
+            <h3>Analytics SDKs</h3>
+            <p>Google Analytics, Firebase Analytics, Amplitude, Mixpanel</p>
+            <p class="sdk-notes">Collect device info, usage patterns, events. Review each SDK's privacy policy and declare their data collection.</p>
+          </div>
+          
+          <div class="sdk">
+            <h3>Advertising SDKs</h3>
+            <p>Google AdMob, Facebook Audience Network, Unity Ads, AppLovin</p>
+            <p class="sdk-notes">Collect identifiers, location, usage data for ad targeting. Implement consent mechanisms where required.</p>
+          </div>
+          
+          <div class="sdk">
+            <h3>Crash Reporting</h3>
+            <p>Firebase Crashlytics, Bugsnag, Sentry</p>
+            <p class="sdk-notes">Collect device info, crash logs, stack traces. Usually considered diagnostic data.</p>
+          </div>
+          
+          <div class="sdk">
+            <h3>Authentication</h3>
+            <p>Firebase Auth, Auth0, AWS Cognito</p>
+            <p class="sdk-notes">Collect email, phone, identity data for authentication purposes.</p>
+          </div>
+          
+          <div class="sdk">
+            <h3>Push Notifications</h3>
+            <p>Firebase Cloud Messaging, OneSignal</p>
+            <p class="sdk-notes">Collect device tokens for notification delivery. May collect engagement data.</p>
+          </div>
+          
+          <div class="sdk">
+            <h3>Social SDKs</h3>
+            <p>Facebook SDK, Twitter SDK, LinkedIn SDK</p>
+            <p class="sdk-notes">May collect data for login, sharing, and social features. Review each provider's data practices.</p>
+          </div>
+        </div>
+        
+        <div class="highlight-box">
+          <h3>SDK Responsibility</h3>
+          <p>You're ultimately responsible for what's in your app, even if an SDK collects data. Maintain a current list of all SDKs and their data practices, and include them in your disclosure.</p>
+        </div>
+      </section>
+
+      <section class="gdpr-mobile">
+        <h2>GDPR Compliance for Mobile Apps</h2>
+        
+        <p>If your app has EU users, GDPR applies. Key requirements:</p>
+        
+        <div class="gdpr-items">
+          <div class="gdpr-item">
+            <h3>Consent</h3>
+            <p>Obtain clear, informed consent before collecting non-essential data. Consent must be freely given, specific, informed, and unambiguous.</p>
+          </div>
+          
+          <div class="gdpr-item">
+            <h3>Privacy by Design</h3>
+            <p>Build privacy into your app from the start. Minimize data collection, use encryption, and provide user controls.</p>
+          </div>
+          
+          <div class="gdpr-item">
+            <h3>Data Subject Rights</h3>
+            <p>Enable users to access, correct, delete, and port their data. Respond within 30 days.</p>
+          </div>
+          
+          <div class="gdpr-item">
+            <h3>International Transfers</h3>
+            <p>If using servers outside the EU, disclose transfer mechanisms (SCCs, adequacy decisions) and ensure adequate protection.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ccpa-mobile">
+        <h2>CCPA/CPRA for Mobile Apps</h2>
+        
+        <p>California users have specific rights under CCPA/CPRA:</p>
+        
+        <ul class="ccpa-list">
+          <li><strong>Right to Know:</strong> Disclose all data collected, sources, purposes</li>
+          <li><strong>Right to Delete:</strong> Delete personal information upon request</li>
+          <li><strong>Right to Opt-Out:</strong> Allow opt-out of data sale/sharing</li>
+          <li><strong>Right to Correct:</strong> Allow correction of inaccurate data</li>
+          <li><strong>Limit Use of Sensitive Data:</strong> Get consent for sensitive data use</li>
+          <li><strong>Non-Discrimination:</strong> Don't penalize for exercising rights</li>
+        </ul>
+        
+        <div class="threshold-notice">
+          <h3>Mobile App Considerations</h3>
+          <p>Mobile apps often collect more data than websites, increasing CCPA relevance. Device identifiers, location data, usage patterns, and in-app behavior all count as personal information under CCPA.</p>
+        </div>
+      </section>
+
+      <section class="checklist">
+        <h2>Mobile App Privacy Checklist</h2>
+        
+        <div class="checklist-columns">
+          <div class="checklist-col">
+            <h3>App Store Submissions</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> Apple privacy labels completed</li>
+              <li><input type="checkbox" /> Google Data Safety section done</li>
+              <li><input type="checkbox" /> Privacy policy URL submitted</li>
+              <li><input type="checkbox" /> ATT prompt implemented</li>
+              <li><input type="checkbox" /> Age rating accurate</li>
+            </ul>
+          </div>
+          
+          <div class="checklist-col">
+            <h3>Permissions</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> All permissions reviewed</li>
+              <li><input type="checkbox" /> Usage descriptions accurate</li>
+              <li><input type="checkbox" /> Permissions requested as needed</li>
+              <li><input type="checkbox" /> Graceful degradation for denied</li>
+              <li><input type="checkbox" /> Optional features noted</li>
+            </ul>
+          </div>
+          
+          <div class="checklist-col">
+            <h3>SDK Management</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> SDK list documented</li>
+              <li><input type="checkbox" /> Each SDK's data practices noted</li>
+              <li><input type="checkbox" /> SDK privacy policies linked</li>
+              <li><input type="checkbox" /> SDK updates reviewed</li>
+              <li><input type="checkbox" /> Unused SDKs removed</li>
+            </ul>
+          </div>
+          
+          <div class="checklist-col">
+            <h3>User Rights</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> In-app privacy controls</li>
+              <li><input type="checkbox" /> Data export functionality</li>
+              <li><input type="checkbox" /> Account deletion option</li>
+              <li><input type="checkbox" /> Consent management</li>
+              <li><input type="checkbox" /> Request handling process</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="highlight-box">
+        <h3>Pro Tip</h3>
+        <p>Before each app update, review your privacy disclosures. New features may introduce new data collection or permissions that require updated privacy labels and policy revisions.</p>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-box final">
+          <h3>Audit Your Mobile App Privacy</h3>
+          <p>PolicyLens can analyze your mobile app's privacy policy for compliance gaps, ensuring you meet App Store and Google Play requirements while properly disclosing data collection.</p>
+          <a href="/analyze" class="cta-button">Analyze My Privacy Policy</a>
+        </div>
+      </section>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    font-family: var(--font-body, system-ui, sans-serif);
+    color: var(--text-primary, #1a1a2e);
+    background: var(--bg-primary, #ffffff);
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary, #6b7280);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumbs a {
+    color: var(--accent, #4f46e5);
+    text-decoration: none;
+  }
+
+  .breadcrumbs a:hover {
+    text-decoration: underline;
+  }
+
+  .separator {
+    color: var(--text-tertiary, #9ca3af);
+  }
+
+  .current {
+    color: var(--text-secondary, #6b7280);
+  }
+
+  .page-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+    color: var(--text-primary, #1a1a2e);
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0;
+  }
+
+  .intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  section h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0 0 1.25rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.75rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .store-section {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid var(--border, #e5e7eb);
+    margin-bottom: 1.5rem;
+  }
+
+  .store-section h3 {
+    margin-top: 0;
+    color: var(--accent, #4f46e5);
+  }
+
+  .data-types ul, .google-requirements ul, .tracking-section ul, .data-safety ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .data-types li, .google-requirements li, .tracking-section li, .data-safety li {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #6b7280);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .data-types strong, .google-requirements strong {
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .permissions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .permission {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .permission h3 {
+    font-size: 1.125rem;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .permission p {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+  }
+
+  .permission .disclosure {
+    background: #eff6ff;
+    border-radius: 6px;
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    color: #1e40af;
+    margin: 0;
+  }
+
+  .collection-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .category {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .category h3 {
+    font-size: 1rem;
+    margin: 0 0 0.75rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .category ul {
+    margin: 0;
+    padding-left: 1rem;
+  }
+
+  .category li {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #6b7280);
+    margin-bottom: 0.35rem;
+    line-height: 1.4;
+  }
+
+  .highlight-box {
+    padding: 1.25rem 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid;
+    margin: 1.5rem 0;
+    background: #ecfdf5;
+    border-left-color: #10b981;
+  }
+
+  .highlight-box h3 {
+    color: #065f46;
+    margin: 0 0 0.5rem;
+  }
+
+  .highlight-box p {
+    color: #065f46;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .highlight-box.warning {
+    background: #fef3c7;
+    border-left-color: #f59e0b;
+  }
+
+  .highlight-box.warning h3 {
+    color: #92400e;
+  }
+
+  .highlight-box.warning p {
+    color: #92400e;
+  }
+
+  .labels-section {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+    margin-bottom: 1.5rem;
+  }
+
+  .labels-section h3 {
+    margin-top: 0;
+    color: var(--accent, #4f46e5);
+  }
+
+  .label-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .label-category {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .label-category h4 {
+    font-size: 0.9rem;
+    margin: 0 0 0.25rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .label-category p {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0;
+  }
+
+  .label-note {
+    background: #eff6ff;
+    border-radius: 6px;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    color: #1e40af;
+    margin: 1rem 0 0;
+  }
+
+  .google-labels ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .google-labels li {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #6b7280);
+    margin-bottom: 0.5rem;
+  }
+
+  .sdk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .sdk {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .sdk h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .sdk p {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0 0 0.5rem;
+  }
+
+  .sdk-notes {
+    font-size: 0.8rem !important;
+    color: var(--text-tertiary, #9ca3af) !important;
+    font-style: italic;
+  }
+
+  .gdpr-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .gdpr-item {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .gdpr-item h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .gdpr-item p {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0;
+  }
+
+  .ccpa-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .ccpa-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+    color: var(--text-secondary, #6b7280);
+  }
+
+  .ccpa-list li:last-child {
+    border-bottom: none;
+  }
+
+  .ccpa-list strong {
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .threshold-notice {
+    background: #fef3c7;
+    border-radius: 10px;
+    padding: 1.25rem;
+    border-left: 4px solid #f59e0b;
+    margin-top: 1.5rem;
+  }
+
+  .threshold-notice h3 {
+    color: #92400e;
+    margin: 0 0 0.5rem;
+  }
+
+  .threshold-notice p {
+    color: #92400e;
+    margin: 0;
+  }
+
+  .checklist-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .checklist-col {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .checklist-col h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+  }
+
+  .checklist-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .checklist-items li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+  }
+
+  .checklist-items input[type="checkbox"] {
+    width: 1.125rem;
+    height: 1.125rem;
+    accent-color: var(--accent, #4f46e5);
+  }
+
+  .cta-section .cta-box {
+    background: linear-gradient(135deg, var(--accent, #4f46e5), #7c3aed);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 12px;
+  }
+
+  .cta-section .cta-box h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .cta-section .cta-box p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 1.5rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: white;
+    color: var(--accent, #4f46e5);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 640px) {
+    .page-container {
+      padding: 1.5rem 1rem;
+    }
+
+    .page-header h1 {
+      font-size: 1.75rem;
+    }
+
+    .checklist-columns {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

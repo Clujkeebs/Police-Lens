@@ -7,6 +7,7 @@ export interface Props {
   ogType?: string;
   canonical?: string;
   noindex?: boolean;
+  schemaType?: 'website' | 'article' | 'faq' | 'about';
 }
 
 const {
@@ -16,12 +17,98 @@ const {
   ogImage = "/og-image.svg",
   ogType = "website",
   canonical,
-  noindex = false
+  noindex = false,
+  schemaType = "website"
 } = Astro.props;
 
 const siteUrl = "https://policylens.app";
 const currentUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
 const fullTitle = title.includes("PolicyLens") ? title : `${title} | PolicyLens`;
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PolicyLens",
+  "description": description,
+  "url": siteUrl,
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "1247"
+  }
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PolicyLens",
+  "url": siteUrl,
+  "logo": `${siteUrl}/favicon.svg`,
+  "description": "Free AI-powered privacy policy and terms of service analyzer",
+  "sameAs": [
+    "https://twitter.com/policylens",
+    "https://github.com/policylens"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "support@policylens.app",
+    "contactType": "customer support"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is PolicyLens free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, PolicyLens is completely free to use. No signup required, no credit card needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does AI privacy policy analysis work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PolicyLens uses advanced AI to analyze privacy policies and terms of service documents. It identifies data collection practices, third-party sharing, red flags, and provides a risk score with plain English explanations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What privacy regulations does PolicyLens check for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PolicyLens analyzes policies for compliance with GDPR, CCPA, COPPA, and other major privacy regulations. It identifies key clauses and flags potential compliance issues."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data safe when using PolicyLens?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. PolicyLens does not store your pasted policies or analysis results on our servers. All data is processed temporarily and no personal information is collected."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I compare multiple privacy policies?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! PolicyLens allows you to analyze and compare multiple privacy policies side-by-side, making it easy to see which service best protects your privacy."
+      }
+    }
+  ]
+};
 ---
 
 <!DOCTYPE html>
@@ -42,6 +129,7 @@ const fullTitle = title.includes("PolicyLens") ? title : `${title} | PolicyLens`
   <meta name="color-scheme" content="dark" />
   
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
   <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
   
   <meta property="og:type" content={ogType} />
@@ -60,30 +148,15 @@ const fullTitle = title.includes("PolicyLens") ? title : `${title} | PolicyLens`
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
   <meta name="twitter:creator" content="@policylens" />
+  <meta name="twitter:site" content="@policylens" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "PolicyLens",
-    "description": description,
-    "url": siteUrl,
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "Web Browser",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "1247"
-    }
-  })} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  {schemaType === 'faq' && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
   
   <link rel="stylesheet" href="/styles/global.css" />
 </head>
@@ -111,6 +184,8 @@ const fullTitle = title.includes("PolicyLens") ? title : `${title} | PolicyLens`
       <ul class="nav-links">
         <li><a href="/">Analyze</a></li>
         <li><a href="/about">How It Works</a></li>
+        <li><a href="/privacy-laws/gdpr">Privacy Laws</a></li>
+        <li><a href="/faq">FAQ</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
     </nav>
@@ -144,6 +219,15 @@ const fullTitle = title.includes("PolicyLens") ? title : `${title} | PolicyLens`
           <ul>
             <li><a href="/">Analyze Policy</a></li>
             <li><a href="/about">How It Works</a></li>
+            <li><a href="/privacy-policy-analyzer">Free Checker</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/privacy-laws/gdpr">GDPR Guide</a></li>
+            <li><a href="/privacy-laws/ccpa">CCPA Guide</a></li>
+            <li><a href="/faq">FAQ</a></li>
           </ul>
         </div>
         <div class="footer-column">
@@ -151,11 +235,6 @@ const fullTitle = title.includes("PolicyLens") ? title : `${title} | PolicyLens`
           <ul>
             <li><a href="/privacy-policy">Privacy Policy</a></li>
             <li><a href="/terms-of-service">Terms of Service</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h4>Support</h4>
-          <ul>
             <li><a href="/contact">Contact Us</a></li>
           </ul>
         </div>

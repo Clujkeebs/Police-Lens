@@ -1,0 +1,708 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "Shopify Privacy Policy Guide - Complete Compliance";
+const description = "Complete guide to Shopify privacy policy setup. Learn about built-in privacy tools, cookie consent requirements, and third-party app considerations for Shopify merchants.";
+const keywords = "Shopify privacy policy guide, Shopify GDPR compliance, Shopify cookie consent, Shopify privacy settings, Shopify merchant privacy";
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <main class="page-container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="separator">›</span>
+      <a href="/guides">Guides</a>
+      <span class="separator">›</span>
+      <span class="current">Shopify Privacy Policy</span>
+    </nav>
+
+    <article class="guide-content">
+      <header class="page-header">
+        <h1>Shopify Privacy Policy Guide</h1>
+        <p class="subtitle">Complete privacy compliance guide for Shopify merchants</p>
+      </header>
+
+      <section class="intro">
+        <p>Shopify powers millions of e-commerce businesses worldwide, making privacy compliance essential for merchants. This guide covers Shopify's built-in privacy tools, what you need to add, cookie consent requirements, and how to handle third-party apps.</p>
+      </section>
+
+      <section class="built-in">
+        <h2>Shopify's Built-in Privacy Tools</h2>
+        
+        <p>Shopify provides several native privacy features that merchants can leverage:</p>
+        
+        <div class="tools-grid">
+          <div class="tool">
+            <h3>Privacy Settings</h3>
+            <p>Access through Settings &gt; Privacy. Configure your privacy policy, customer data options, and legal pages.</p>
+            <ul>
+              <li>Set privacy policy page</li>
+              <li>Configure checkout privacy</li>
+              <li>Manage customer data</li>
+              <li>Handle data requests</li>
+            </ul>
+          </div>
+          
+          <div class="tool">
+            <h3>Legal Pages</h3>
+            <p>Shopify generates standard legal pages automatically:</p>
+            <ul>
+              <li>Privacy policy template</li>
+              <li>Terms of service</li>
+              <li>Refund policy</li>
+              <li>Shipping policy</li>
+            </ul>
+          </div>
+          
+          <div class="tool">
+            <h3>Customer Data</h3>
+            <p>Manage customer information securely:</p>
+            <ul>
+              <li>View customer profiles</li>
+              <li>Export customer data</li>
+              <li>Process deletion requests</li>
+              <li>Handle order data</li>
+            </ul>
+          </div>
+          
+          <div class="tool">
+            <h3>Checkout Settings</h3>
+            <p>Configure checkout privacy options:</p>
+            <ul>
+              <li>Email marketing consent</li>
+              <li>Checkout branding</li>
+              <li>Payment privacy</li>
+              <li>Tax handling</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="merchant-add">
+        <h2>What Merchants Need to Add</h2>
+        
+        <p>While Shopify provides the foundation, you must add specific disclosures:</p>
+        
+        <div class="required-items">
+          <div class="required-item">
+            <h3>Data Collection Disclosure</h3>
+            <p>Clearly state what customer data you collect beyond basic checkout information. Include email addresses, phone numbers, shipping addresses, purchase history, and any optional information collected through forms or surveys.</p>
+          </div>
+          
+          <div class="required-item">
+            <h3>Third-Party Disclosure</h3>
+            <p>List all third parties that receive customer data, including payment processors (Stripe, PayPal), shipping carriers (UPS, FedEx), email marketing services (Klaviyo, Mailchimp), and analytics tools (Google Analytics, Facebook Pixel).</p>
+          </div>
+          
+          <div class="required-item">
+            <h3>Data Retention Policy</h3>
+            <p>Specify how long you retain customer data. Shopify stores order data indefinitely by default, but you should disclose your specific retention periods for different data types.</p>
+          </div>
+          
+          <div class="required-item">
+            <h3>International Transfers</h3>
+            <p>If your business operates internationally or uses cloud services with servers abroad, disclose cross-border data transfers and the legal mechanisms you use (Standard Contractual Clauses, adequacy decisions, etc.).</p>
+          </div>
+          
+          <div class="required-item">
+            <h3>Contact Information</h3>
+            <p>Provide clear contact details for privacy inquiries, including your business address, email, and phone number. Designate a privacy contact person if required by your jurisdiction.</p>
+          </div>
+          
+          <div class="required-item">
+            <h3>Cookie-Specific Disclosure</h3>
+            <p>List all cookies used on your store, categorize them by purpose (essential, functional, analytics, marketing), and explain how users can manage or disable them.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cookie-consent">
+        <h2>Cookie Consent Requirements</h2>
+        
+        <p>Cookie consent requirements vary by jurisdiction but generally require:</p>
+        
+        <div class="consent-grid">
+          <div class="consent-item">
+            <h3>Prior Consent</h3>
+            <p>Users must consent before non-essential cookies are set. This means no marketing cookies, analytics cookies, or tracking pixels until the user explicitly accepts.</p>
+          </div>
+          
+          <div class="consent-item">
+            <h3>Granular Options</h3>
+            <p>Provide users with choices beyond "accept all." Allow them to accept essential cookies while declining analytics or marketing cookies.</p>
+          </div>
+          
+          <div class="consent-item">
+            <h3>Easy Withdrawal</h3>
+            <p>Users must be able to withdraw consent as easily as they gave it. Include a link or button in your footer to manage cookie preferences.</p>
+          </div>
+          
+          <div class="consent-item">
+            <h3>Clear Information</h3>
+            <p>Explain what each cookie category does, why it's used, and its duration. Avoid vague descriptions or burying information in long privacy policies.</p>
+          </div>
+        </div>
+        
+        <div class="highlight-box warning">
+          <h3>GDPR & ePrivacy Directive</h3>
+          <p>In EU jurisdictions, you need explicit consent for all non-essential cookies. The ePrivacy Directive requires prior consent for storing or accessing information on user devices. Violations can result in significant fines.</p>
+        </div>
+        
+        <h3>Recommended Cookie Consent Solutions</h3>
+        <div class="plugins-grid">
+          <div class="plugin">
+            <h3>Cookiebot</h3>
+            <p>Automated cookie scanning, consent management, and compliance with GDPR, CCPA, and ePrivacy. Integrates with Shopify via app or script.</p>
+          </div>
+          
+          <div class="plugin">
+            <h3>OneTrust</h3>
+            <p>Enterprise-grade consent management platform with cookie scanning, preference centers, and cross-border compliance support.</p>
+          </div>
+          
+          <div class="plugin">
+            <h3>TrustArc</h3>
+            <p>Comprehensive privacy management with cookie consent, assessments, and continuous compliance monitoring.</p>
+          </div>
+          
+          <div class="plugin">
+            <h3>Shopify Native</h3>
+            <p>Shopify's built-in cookie consent for European shops provides basic compliance but may need supplementation for full GDPR compliance.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="third-party">
+        <h2>Third-Party App Considerations</h2>
+        
+        <p>Each app you install on your Shopify store may collect additional data. You're responsible for disclosing this:</p>
+        
+        <div class="app-checklist">
+          <h3>App Privacy Audit Checklist</h3>
+          <ul>
+            <li><strong>Review each app's privacy policy:</strong> Every app has its own privacy practices</li>
+            <li><strong>Identify data each app collects:</strong> Create an inventory of all data flows</li>
+            <li><strong>Check data sharing practices:</strong> Some apps share data with third parties</li>
+            <li><strong>Verify app security:</strong> Ensure apps follow security best practices</li>
+            <li><strong>Review app permissions:</strong> Understand what access each app has</li>
+            <li><strong>Document app data use:</strong> Maintain records for compliance</li>
+            <li><strong>Update your disclosure:</strong> Add new apps to your privacy policy</li>
+            <li><strong>Review regularly:</strong> Check app updates for privacy changes</li>
+          </ul>
+        </div>
+        
+        <div class="common-apps">
+          <h3>Common Shopify Apps and Their Data Practices</h3>
+          
+          <div class="app-category">
+            <h4>Email Marketing</h4>
+            <p>Apps like Klaviyo, Mailchimp, and Omnisend collect email addresses, purchase history, and behavioral data. They often integrate with third-party advertising platforms.</p>
+          </div>
+          
+          <div class="app-category">
+            <h4>Analytics</h4>
+            <p>Google Analytics, Facebook Pixel, and similar tools collect browsing behavior, device information, and conversion data. They often share data with advertising networks.</p>
+          </div>
+          
+          <div class="app-category">
+            <h4>Customer Support</h4>
+            <p>Help desk apps like Zendesk, Gorgias, and Intercom collect customer communications, browsing context, and order information.</p>
+          </div>
+          
+          <div class="app-category">
+            <h4>Shipping & Fulfillment</h4>
+            <p>Shipping apps share order and address data with carriers. Some use warehouses or fulfillment centers that process customer information.</p>
+          </div>
+          
+          <div class="app-category">
+            <h4>Reviews & Social Proof</h4>
+            <p>Review apps like Yotpo, Trustpilot, and Judge.me collect customer feedback, may display on public pages, and sometimes share data with marketing partners.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ccpa-compliance">
+        <h2>CCPA/CPRA Compliance for Shopify</h2>
+        
+        <p>If you have California customers, you must comply with CCPA (and its successor CPRA):</p>
+        
+        <ul class="ccpa-list">
+          <li><strong>Right to Know:</strong> Disclose what personal information you collect</li>
+          <li><strong>Right to Delete:</strong> Process deletion requests within 45 days</li>
+          <li><strong>Right to Opt-Out:</strong> Provide opt-out for sale/sharing of personal information</li>
+          <li><strong>Right to Correct:</strong> Allow customers to correct inaccurate data</li>
+          <li><strong>Limit Use of Sensitive Data:</strong> Get explicit consent for sensitive data</li>
+          <li><strong>"Do Not Sell" Link:</strong> Add prominent link in homepage footer</li>
+          <li><strong>Financial Incentive Disclosure:</strong> If offering loyalty programs or incentives tied to data</li>
+        </ul>
+        
+        <div class="threshold-notice">
+          <h3>Who Must Comply?</h3>
+          <p>CCPA applies if you: have $25M+ annual revenue, buy/sell/share 100k+ California residents' data annually, or derive 50%+ revenue from selling personal information. CPRA modified thresholds for household data.</p>
+        </div>
+      </section>
+
+      <section class="gdpr-compliance">
+        <h2>GDPR Compliance for Shopify</h2>
+        
+        <p>If you have EU customers, GDPR requires:</p>
+        
+        <div class="gdpr-items">
+          <div class="gdpr-item">
+            <h3>Lawful Basis</h3>
+            <p>Document your lawful basis for processing. For e-commerce, this typically includes contractual necessity (processing orders), consent (marketing emails), and legitimate interest (fraud prevention).</p>
+          </div>
+          
+          <div class="gdpr-item">
+            <h3>Data Subject Rights</h3>
+            <p>Respond to requests within 30 days. You must handle access requests, rectification, erasure, data portability, and object to processing.</p>
+          </div>
+          
+          <div class="gdpr-item">
+            <h3>Data Protection Officer</h3>
+            <p>Designate a DPO if your core activities involve regular monitoring or large-scale processing of special categories of data.</p>
+          </div>
+          
+          <div class="gdpr-item">
+            <h3>Records of Processing</h3>
+            <p>Maintain records of all processing activities, including purposes, data categories, recipients, retention periods, and security measures.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="checklist">
+        <h2>Shopify Privacy Checklist</h2>
+        
+        <div class="checklist-columns">
+          <div class="checklist-col">
+            <h3>Core Requirements</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> Privacy policy published</li>
+              <li><input type="checkbox" /> Cookie policy added</li>
+              <li><input type="checkbox" /> Contact info displayed</li>
+              <li><input type="checkbox" /> Terms of service published</li>
+              <li><input type="checkbox" /> Refund policy accessible</li>
+            </ul>
+          </div>
+          
+          <div class="checklist-col">
+            <h3>Cookie Consent</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> Consent banner implemented</li>
+              <li><input type="checkbox" /> Granular options provided</li>
+              <li><input type="checkbox" /> Prior consent enforced</li>
+              <li><input type="checkbox" /> Withdrawal mechanism ready</li>
+              <li><input type="checkbox" /> Cookie inventory complete</li>
+            </ul>
+          </div>
+          
+          <div class="checklist-col">
+            <h3>App Management</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> App inventory documented</li>
+              <li><input type="checkbox" /> App policies reviewed</li>
+              <li><input type="checkbox" /> Third parties listed</li>
+              <li><input type="checkbox" /> Data flows mapped</li>
+              <li><input type="checkbox" /> Updates reviewed</li>
+            </ul>
+          </div>
+          
+          <div class="checklist-col">
+            <h3>Compliance</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> GDPR requirements met</li>
+              <li><input type="checkbox" /> CCPA requirements assessed</li>
+              <li><input type="checkbox" /> Deletion process ready</li>
+              <li><input type="checkbox" /> Export functionality tested</li>
+              <li><input type="checkbox" /> Response templates ready</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="highlight-box">
+        <h3>Pro Tip</h3>
+        <p>Schedule quarterly reviews of your installed apps and their privacy implications. Apps are frequently updated, and new apps may introduce new data collection that needs disclosure in your privacy policy.</p>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-box final">
+          <h3>Audit Your Shopify Privacy Policy</h3>
+          <p>PolicyLens can analyze your Shopify store's privacy policy and identify gaps in your compliance. We'll check for missing disclosures, third-party tracking issues, and cookie consent requirements.</p>
+          <a href="/analyze" class="cta-button">Analyze My Privacy Policy</a>
+        </div>
+      </section>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    font-family: var(--font-body, system-ui, sans-serif);
+    color: var(--text-primary, #1a1a2e);
+    background: var(--bg-primary, #ffffff);
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary, #6b7280);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumbs a {
+    color: var(--accent, #4f46e5);
+    text-decoration: none;
+  }
+
+  .breadcrumbs a:hover {
+    text-decoration: underline;
+  }
+
+  .separator {
+    color: var(--text-tertiary, #9ca3af);
+  }
+
+  .current {
+    color: var(--text-secondary, #6b7280);
+  }
+
+  .page-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+    color: var(--text-primary, #1a1a2e);
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0;
+  }
+
+  .intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  section h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0 0 1.25rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.75rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .tools-grid, .plugins-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .tool, .plugin {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .tool h3, .plugin h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .tool p, .plugin p {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+  }
+
+  .tool ul, .plugin ul {
+    margin: 0;
+    padding-left: 1rem;
+  }
+
+  .tool li, .plugin li {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #6b7280);
+    margin-bottom: 0.35rem;
+    line-height: 1.4;
+  }
+
+  .required-items, .consent-grid, .gdpr-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .required-item, .consent-item, .gdpr-item {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .required-item h3, .consent-item h3, .gdpr-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .required-item p, .consent-item p, .gdpr-item p {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .highlight-box {
+    padding: 1.25rem 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid;
+    margin: 1.5rem 0;
+    background: #ecfdf5;
+    border-left-color: #10b981;
+  }
+
+  .highlight-box h3 {
+    color: #065f46;
+    margin: 0 0 0.5rem;
+  }
+
+  .highlight-box p {
+    color: #065f46;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .highlight-box.warning {
+    background: #fef3c7;
+    border-left-color: #f59e0b;
+  }
+
+  .highlight-box.warning h3 {
+    color: #92400e;
+    margin: 0 0 0.5rem;
+  }
+
+  .highlight-box.warning p {
+    color: #92400e;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .app-checklist ul {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid var(--border, #e5e7eb);
+    list-style: none;
+  }
+
+  .app-checklist li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+    color: var(--text-secondary, #6b7280);
+    line-height: 1.5;
+  }
+
+  .app-checklist li:last-child {
+    border-bottom: none;
+  }
+
+  .app-checklist strong {
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .common-apps {
+    margin-top: 1.5rem;
+  }
+
+  .app-category {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+    margin-bottom: 1rem;
+  }
+
+  .app-category h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .app-category p {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .ccpa-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .ccpa-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+    color: var(--text-secondary, #6b7280);
+    line-height: 1.5;
+  }
+
+  .ccpa-list li:last-child {
+    border-bottom: none;
+  }
+
+  .ccpa-list strong {
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .threshold-notice {
+    background: #fef3c7;
+    border-radius: 10px;
+    padding: 1.25rem;
+    border-left: 4px solid #f59e0b;
+    margin-top: 1.5rem;
+  }
+
+  .threshold-notice h3 {
+    color: #92400e;
+    margin: 0 0 0.5rem;
+  }
+
+  .threshold-notice p {
+    color: #92400e;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .checklist-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .checklist-col {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .checklist-col h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .checklist-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .checklist-items li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+  }
+
+  .checklist-items input[type="checkbox"] {
+    width: 1.125rem;
+    height: 1.125rem;
+    accent-color: var(--accent, #4f46e5);
+  }
+
+  .cta-section .cta-box {
+    background: linear-gradient(135deg, var(--accent, #4f46e5), #7c3aed);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 12px;
+  }
+
+  .cta-section .cta-box h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .cta-section .cta-box p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 1.5rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: white;
+    color: var(--accent, #4f46e5);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 640px) {
+    .page-container {
+      padding: 1.5rem 1rem;
+    }
+
+    .page-header h1 {
+      font-size: 1.75rem;
+    }
+
+    .subtitle {
+      font-size: 1.125rem;
+    }
+
+    .checklist-columns {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

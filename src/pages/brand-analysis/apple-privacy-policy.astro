@@ -1,0 +1,397 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "Apple Privacy Policy Analysis";
+const description = "Analysis of Apple's privacy policy covering App Store data, iCloud encryption, health data, and Apple's privacy-first approach with App Tracking Transparency.";
+const keywords = "Apple privacy policy analysis, iCloud privacy, App Tracking Transparency, Apple health data privacy, Apple App Store";
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <div class="container">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a>
+      <span class="separator">›</span>
+      <a href="/brand-analysis">Brand Analysis</a>
+      <span class="separator">›</span>
+      <span class="current">Apple</span>
+    </nav>
+
+    <article class="brand-analysis">
+      <header class="brand-header">
+        <div class="brand-badge apple">Lower Risk</div>
+        <h1>Apple Privacy Policy Analysis</h1>
+        <p class="brand-tagline">Examining Apple's privacy practices across iOS, macOS, and services</p>
+      </header>
+
+      <section class="analysis-section">
+        <h2>App Store Data Practices</h2>
+        <p>Apple's App Store processes millions of transactions daily, collecting data that includes payment information, app downloads, and usage analytics. However, Apple's approach to this data differs significantly from advertising-driven competitors.</p>
+        
+        <div class="key-finding info">
+          <h4>Limited Data Collection</h4>
+          <p>Apple collects only the minimum data necessary for App Store functionality, distinguishing itself from competitors who leverage data for advertising revenue.</p>
+        </div>
+
+        <ul class="data-list">
+          <li><strong>Account Information:</strong> Apple ID, name, email, payment method (encrypted)</li>
+          <li><strong>Purchase History:</strong> Apps downloaded, in-app purchases, subscriptions</li>
+          <li><strong>App Analytics:</strong> Crash reports, usage statistics (opt-in, device-based only)</li>
+          <li><strong>Search Queries:</strong> App Store search terms (not linked to identity)</li>
+          <li><strong>Device Information:</strong> Device type, OS version, available storage</li>
+        </ul>
+
+        <p>Apple emphasizes that App Store search data is not linked to individual user identities and is used only to improve search results relevance.</p>
+      </section>
+
+      <section class="analysis-section">
+        <h2>iCloud Encryption and Security</h2>
+        <p>Apple has positioned iCloud as one of the most secure cloud storage options available, implementing end-to-end encryption for most data types. This represents a significant differentiator in the cloud storage market.</p>
+
+        <ul class="data-list">
+          <li><strong>End-to-End Encryption:</strong> Photos, messages, backups, device backups</li>
+          <li><strong>Keychain:</strong> Passwords and credit cards encrypted with Secure Enclave</li>
+          <li><strong>Health Data:</strong> Health and Activity data encrypted end-to-end</li>
+          <li><strong>iMessage:</strong> Messages encrypted end-to-end with keys stored on devices</li>
+          <li><strong>Face ID/Touch ID:</strong> Biometric data never leaves device</li>
+        </ul>
+
+        <div class="key-finding info">
+          <h4>Advanced Protection Mode</h4>
+          <p>Apple's Optional Advanced Data Protection provides end-to-end encryption for all iCloud data types, including device backups, photos, and messages. Even Apple cannot access this data.</p>
+        </div>
+
+        <p><strong>Important Limitation:</strong> iCloud Mail, Contacts, and Calendar are not end-to-end encrypted due to protocol limitations, though they remain encrypted in transit and at rest.</p>
+      </section>
+
+      <section class="analysis-section">
+        <h2>Health and Fitness Data</h2>
+        <p>Apple's Health app and related features collect sensitive personal health information including heart rate, sleep patterns, workout data, and medical records from participating healthcare providers.</p>
+
+        <ul class="data-list">
+          <li>Heart rate, heart rate variability, and ECG readings</li>
+          <li>Sleep tracking and sleep stages analysis</li>
+          <li>Workout data from Apple Watch and connected devices</li>
+          <li>Steps, calories, and activity measurements</li>
+          <li>Medical records imported from healthcare providers (US only)</li>
+          <li>Mindfulness and respiratory tracking data</li>
+        </ul>
+
+        <div class="key-finding info">
+          <h4>On-Device Processing</h4>
+          <p>Most health data analysis occurs on-device using the Neural Engine, minimizing data transmission to Apple's servers. HealthKit data is encrypted and can only be accessed by apps with explicit user permission.</p>
+        </div>
+
+        <p>Health data cannot be used by Apple for advertising and is not included in any Apple advertising products or services.</p>
+      </section>
+
+      <section class="analysis-section">
+        <h2>Apple's Privacy-First Approach</h2>
+        <p>Apple has positioned privacy as a core differentiator, implementing several industry-leading privacy features that set it apart from competitors.</p>
+
+        <ul class="data-list">
+          <li><strong>App Tracking Transparency:</strong> Apps must ask permission to track across other companies' apps and websites</li>
+          <li><strong>Privacy Labels:</strong> App Store shows privacy nutrition labels for all apps</li>
+          <li><strong>Privacy Report:</strong> Safari shows which trackers are blocked</li>
+          <li><strong>Mail Privacy Protection:</strong> Blocks tracking pixels in emails</li>
+          <li><strong>Intelligent Tracking Prevention:</strong> Safari limits cross-site tracking</li>
+          <li><strong>Siri Processing:</strong> Most Siri requests processed on-device</li>
+        </ul>
+
+        <div class="key-finding info">
+          <h4>Business Model Alignment</h4>
+          <p>Unlike competitors dependent on advertising revenue from data, Apple's primary revenue comes from hardware and services sales, reducing the incentive for aggressive data collection.</p>
+        </div>
+      </section>
+
+      <section class="analysis-section">
+        <h2>App Tracking Transparency</h2>
+        <p>Introduced in iOS 14.5, App Tracking Transparency (ATT) requires apps to obtain explicit user permission before tracking them across apps and websites owned by other companies. This represents the most significant privacy regulation by a platform company.</p>
+
+        <ul class="data-list">
+          <li>Apps must show a prompt asking for tracking permission</li>
+          <li>Users can change tracking permissions at any time in Settings</li>
+          <li>Apps cannot require tracking as condition of app functionality</li>
+          <li>Tracking includes sharing user data with third parties for advertising</li>
+          <li>Device IP address used for advertising is considered tracking</li>
+        </ul>
+
+        <div class="key-finding warning">
+          <h4>Industry Impact</h4>
+          <p>ATT has significantly impacted advertising companies, with Meta reporting billions in lost revenue. The feature demonstrates Apple's willingness to sacrifice advertising revenue for user privacy.</p>
+        </div>
+
+        <p>Early adoption estimates suggest approximately 80% of iOS users choose to opt out of tracking when prompted, indicating strong user interest in privacy controls.</p>
+      </section>
+
+      <section class="analysis-section">
+        <h2>AI-Powered Analysis Summary</h2>
+        <div class="summary-box">
+          <h3>Privacy Risk Assessment: <span class="risk-low">RELATIVELY LOW</span></h3>
+          <p>Apple stands out as the major technology company with the strongest privacy posture, though no system is perfect. The company's hardware-centric business model aligns with privacy protection.</p>
+          
+          <h4>Key Strengths:</h4>
+          <ul>
+            <li>End-to-end encryption for most iCloud data types</li>
+            <li>On-device processing for sensitive features like Siri and Health</li>
+            <li>App Tracking Transparency with user opt-in requirements</li>
+            <li>Privacy nutrition labels on App Store</li>
+            <li>Health data excluded from advertising entirely</li>
+            <li>Business model does not depend on data monetization</li>
+          </ul>
+
+          <h4>Areas of Concern:</h4>
+          <ul>
+            <li>iCloud Mail, Contacts, Calendar not end-to-end encrypted</li>
+            <li>Some location data collected for services like Find My</li>
+            <li>App Store search data still collected (anonymized)</li>
+            <li>Device analytics and crash reports (though optional)</li>
+            <li>Third-party app data practices remain beyond Apple's control</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <h3>Analyze Apple's Actual Privacy Policy</h3>
+        <p>Paste Apple's current privacy policy to get our AI-powered analysis with specific clause breakdowns, risk scoring, and plain English explanations.</p>
+        <a href="/" class="btn-primary">Analyze Policy Now</a>
+      </section>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .breadcrumbs {
+    padding: 24px 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+
+  .breadcrumbs a {
+    color: var(--text-secondary);
+  }
+
+  .breadcrumbs a:hover {
+    color: var(--accent-cyan);
+  }
+
+  .separator {
+    margin: 0 8px;
+    color: var(--text-muted);
+  }
+
+  .current {
+    color: var(--text-primary);
+  }
+
+  .brand-analysis {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+
+  .brand-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .brand-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+
+  .brand-badge.apple {
+    background: linear-gradient(135deg, rgba(162, 170, 183, 0.2), rgba(0, 0, 0, 0.2));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #a2aab7;
+  }
+
+  .brand-header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .brand-tagline {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .analysis-section {
+    margin-bottom: 40px;
+    padding: 32px;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+  }
+
+  .analysis-section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--accent-cyan);
+  }
+
+  .analysis-section h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 24px 0 12px;
+    color: var(--text-primary);
+  }
+
+  .analysis-section p {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+
+  .key-finding {
+    padding: 20px;
+    border-radius: var(--radius-md);
+    margin: 24px 0;
+    border-left: 4px solid;
+  }
+
+  .key-finding h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .key-finding p {
+    margin: 0;
+    font-size: 15px;
+  }
+
+  .key-finding.warning {
+    background: rgba(255, 193, 7, 0.1);
+    border-color: #ffc107;
+  }
+
+  .key-finding.warning h4 {
+    color: #ffc107;
+  }
+
+  .key-finding.danger {
+    background: rgba(255, 82, 82, 0.1);
+    border-color: #ff5252;
+  }
+
+  .key-finding.danger h4 {
+    color: #ff5252;
+  }
+
+  .key-finding.info {
+    background: rgba(0, 212, 255, 0.1);
+    border-color: var(--accent-cyan);
+  }
+
+  .key-finding.info h4 {
+    color: var(--accent-cyan);
+  }
+
+  .data-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .data-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+  }
+
+  .data-list li:last-child {
+    border-bottom: none;
+  }
+
+  .data-list li strong {
+    color: var(--text-primary);
+  }
+
+  .summary-box {
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+  }
+
+  .summary-box h3 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+
+  .risk-low {
+    color: #4caf50;
+    font-weight: 700;
+  }
+
+  .summary-box h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    margin: 20px 0 12px;
+  }
+
+  .summary-box ul {
+    list-style: disc;
+    margin-left: 20px;
+    color: var(--text-secondary);
+  }
+
+  .summary-box ul li {
+    margin-bottom: 8px;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 48px 32px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 128, 0.1));
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+    margin-top: 40px;
+  }
+
+  .cta-section h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+
+  .cta-section p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 16px 32px;
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+    color: white;
+  }
+</style>

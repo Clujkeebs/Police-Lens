@@ -1,0 +1,592 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="GDPR vs CCPA: Key Differences Comparison Guide"
+  description="Comprehensive comparison of GDPR and CCPA. Understand the differences in consent models, consumer rights, business thresholds, and compliance requirements."
+  keywords="GDPR vs CCPA, GDPR CCPA comparison, opt-in vs opt-out, EU privacy law vs California, data protection comparison"
+>
+  <section class="article-page">
+    <div class="container">
+      <nav class="breadcrumbs">
+        <a href="/">Home</a>
+        <span>/</span>
+        <a href="/privacy-laws">Privacy Laws</a>
+        <span>/</span>
+        <span>GDPR vs CCPA</span>
+      </nav>
+
+      <header class="article-header">
+        <h1>GDPR vs CCPA: <span class="gradient-text">Key Differences</span></h1>
+        <p class="lead">A detailed side-by-side comparison of the European GDPR and California CCPA privacy regulations, including consent models, consumer rights, and business thresholds.</p>
+        <div class="meta">
+          <span>12 min read</span>
+          <span>•</span>
+          <span>Updated April 2026</span>
+        </div>
+      </header>
+
+      <div class="content-wrapper">
+        <aside class="toc-sidebar">
+          <h4>Table of Contents</h4>
+          <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#consent">Consent Models</a></li>
+            <li><a href="#threshold">Business Thresholds</a></li>
+            <li><a href="#rights">Consumer Rights</a></li>
+            <li><a href="#penalties">Penalties</a></li>
+            <li><a href="#geography">Geographic Scope</a></li>
+            <li><a href="#comparison-table">Full Comparison Table</a></li>
+            <li><a href="#compliance">Compliance for Both</a></li>
+          </ul>
+        </aside>
+
+        <article class="article-content">
+          <section id="overview">
+            <h2>GDPR vs CCPA Overview</h2>
+            <p>The <strong>General Data Protection Regulation (GDPR)</strong> and the <strong>California Consumer Privacy Act (CCPA)</strong> are two of the most influential privacy regulations in the world. While both aim to protect consumer data, they differ significantly in their approach, scope, and requirements.</p>
+            <p>Understanding these differences is essential for businesses that operate internationally or serve customers in both the EU and California.</p>
+            
+            <div class="highlight-box">
+              <h3>Key Difference at a Glance</h3>
+              <ul>
+                <li><strong>GDPR:</strong> Consent-based (opt-in), applies to any organization processing EU data</li>
+                <li><strong>CCPA:</strong> Opt-out model, only applies to businesses meeting revenue/data thresholds</li>
+                <li><strong>GDPR:</strong> Stricter, broader rights, higher penalties</li>
+                <li><strong>CCPA:</strong> More flexible, business-friendly thresholds</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="consent">
+            <h2>Consent Models: Opt-In vs Opt-Out</h2>
+            <p>The most fundamental difference between GDPR and CCPA is their consent model:</p>
+
+            <h3>GDPR: Opt-In Consent</h3>
+            <p>GDPR uses an <strong>opt-in</strong> model. Organizations must obtain explicit, affirmative consent before collecting or processing personal data. Key requirements:</p>
+            <ul>
+              <li>Consent must be freely given, specific, informed, and unambiguous</li>
+              <li>Pre-ticked boxes, silence, or inactivity do not constitute consent</li>
+              <li>Consent must be as easy to withdraw as to give</li>
+              <li>Processing cannot begin until consent is obtained</li>
+              <li>Separate consent required for different processing purposes</li>
+            </ul>
+
+            <h3>CCPA: Opt-Out Model</h3>
+            <p>CCPA uses an <strong>opt-out</strong> model. Organizations can collect data by default, but must provide consumers the ability to stop (opt-out of) certain practices:</p>
+            <ul>
+              <li>Data collection is allowed unless consumer explicitly says no</li>
+              <li>Must provide "Do Not Sell or Share My Personal Information" link</li>
+              <li>Must honor opt-out requests within 45 days</li>
+              <li>Can "limit use" of sensitive personal information</li>
+              <li>Children under 16 must opt-in (consent) for data sales</li>
+            </ul>
+
+            <div class="warning-box">
+              <h3>Implications for Businesses</h3>
+              <p>Under GDPR, you must get consent before collecting any data. Under CCPA, you can collect data by default but must provide clear opt-out mechanisms. Many businesses choose to implement GDPR-style consent everywhere for simplicity.</p>
+            </div>
+          </section>
+
+          <section id="threshold">
+            <h2>Business Thresholds</h2>
+            <p>GDPR and CCPA differ significantly in who they apply to:</p>
+
+            <h3>GDPR: No Thresholds</h3>
+            <p>GDPR applies to <strong>any organization</strong> that processes personal data of EU residents, regardless of size:</p>
+            <ul>
+              <li>No revenue threshold</li>
+              <li>No minimum number of data subjects</li>
+              <li>Applies to small businesses, startups, and individuals</li>
+              <li>Applies to non-profits and public bodies</li>
+              <li>Even one EU visitor triggers compliance</li>
+            </ul>
+
+            <h3>CCPA: Specific Thresholds</h3>
+            <p>CCPA only applies to businesses meeting <strong>one or more</strong> thresholds:</p>
+            <ul>
+              <li><strong>Revenue:</strong> Annual gross revenue exceeding $25 million</li>
+              <li><strong>Data Volume:</strong> Buy, sell, or share 100,000+ consumers' data annually</li>
+              <li><strong>Revenue from Data:</strong> 50%+ of revenue from selling personal information</li>
+              <li><strong>Joint Ventures:</strong> Control/control by business meeting thresholds</li>
+            </ul>
+
+            <div class="comparison-table">
+              <div class="compare-item">
+                <h4>GDPR Applicability</h4>
+                <ul>
+                  <li>All businesses processing EU data</li>
+                  <li>No size requirements</li>
+                  <li>Even with one EU visitor</li>
+                  <li>Applies globally if serving EU</li>
+                </ul>
+              </div>
+              <div class="compare-item">
+                <h4>CCPA Applicability</h4>
+                <ul>
+                  <li>Large businesses only</li>
+                  <li>$25M+ revenue threshold</li>
+                  <li>100K+ consumers data volume</li>
+                  <li>Primarily US-focused</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="rights">
+            <h2>Consumer Rights Comparison</h2>
+            <p>Both regulations grant consumers rights over their data, but GDPR provides more extensive rights:</p>
+
+            <h3>GDPR Data Subject Rights</h3>
+            <ul>
+              <li><strong>Right to be Informed:</strong> Know what data is collected</li>
+              <li><strong>Right of Access:</strong> Get copy of personal data</li>
+              <li><strong>Right to Rectification:</strong> Correct inaccurate data</li>
+              <li><strong>Right to Erasure:</strong> "Right to be forgotten"</li>
+              <li><strong>Right to Restrict Processing:</strong> Limit how data is used</li>
+              <li><strong>Right to Data Portability:</strong> Transfer data to another service</li>
+              <li><strong>Right to Object:</strong> Object to specific processing</li>
+              <li><strong>Rights Related to Automated Decision-Making:</strong> Contest AI decisions</li>
+            </ul>
+
+            <h3>CCPA Consumer Rights</h3>
+            <ul>
+              <li><strong>Right to Know:</strong> Categories of data collected</li>
+              <li><strong>Right to Delete:</strong> Request data deletion</li>
+              <li><strong>Right to Opt-Out:</strong> Stop sale/sharing of data</li>
+              <li><strong>Right to Correct:</strong> Fix inaccurate data (CPRA)</li>
+              <li><strong>Right to Limit Use of Sensitive Data:</strong> Restrict sensitive data use</li>
+              <li><strong>Right to Non-Discrimination:</strong> Not penalized for exercising rights</li>
+            </ul>
+
+            <h3>Key Differences in Rights</h3>
+            <ul>
+              <li><strong>Portability:</strong> GDPR requires machine-readable format; CCPA doesn't</li>
+              <li><strong>Automated Decisions:</strong> GDPR has specific AI rights; CCPA doesn't</li>
+              <li><strong>Scope of Access:</strong> GDPR allows specific data access; CCPA mostly categorical</li>
+              <li><strong>Sensitive Data:</strong> CCPA has specific sensitive data provisions not in GDPR</li>
+            </ul>
+          </section>
+
+          <section id="penalties">
+            <h2>Penalties and Enforcement</h2>
+            <p>Both regulations have significant penalties, but GDPR is notably harsher:</p>
+
+            <h3>GDPR Penalties</h3>
+            <ul>
+              <li><strong>Tier 1:</strong> Up to €10 million or 2% of global annual revenue</li>
+              <li><strong>Tier 2:</strong> Up to €20 million or 4% of global annual revenue</li>
+              <li><strong>Which applies:</strong> Tier 2 for principle violations, rights violations</li>
+              <li><strong>Enforcement:</strong> Individual EU member state authorities</li>
+            </ul>
+
+            <h3>CCPA Penalties</h3>
+            <ul>
+              <li><strong>Non-intentional:</strong> Up to $2,500 per violation</li>
+              <li><strong>Intentional:</strong> Up to $7,500 per violation</li>
+              <li><strong>Private Right of Action:</strong> $100-$750 per data breach incident</li>
+              <li><strong>Enforcement:</strong> California Privacy Protection Agency</li>
+            </ul>
+
+            <div class="highlight-box">
+              <h3>Real-World Impact</h3>
+              <p>For a company with $100 million in global revenue: GDPR max penalty = €4 million ($4.3M). For CCPA with 1 million affected consumers: max penalty = $7.5 million. However, GDPR applies to any EU visitor; CCPA only if thresholds are met.</p>
+            </div>
+          </section>
+
+          <section id="geography">
+            <h2>Geographic Scope</h2>
+            <p>One of the most important differences is who is covered:</p>
+
+            <h3>GDPR: Global Reach</h3>
+            <p>GDPR applies to any organization worldwide that processes personal data of EU residents:</p>
+            <ul>
+              <li>Applies to US, Asian, and global businesses</li>
+              <li>Triggered by having EU visitors/users/customers</li>
+              <li>Even a single EU visitor triggers compliance</li>
+              <li>Must comply even if not physically in EU</li>
+            </ul>
+
+            <h3>CCPA: California Focus</h3>
+            <p>CCPA primarily affects businesses doing business in California:</p>
+            <ul>
+              <li>Must "do business in California"</li>
+              <li>Primarily affects US-based businesses</li>
+              <li>Many international businesses unaffected</li>
+              <li>Can affect global companies with CA operations</li>
+            </ul>
+
+            <p><strong>Bottom Line:</strong> If you have any EU visitors, GDPR likely applies. If you don't meet CCPA thresholds, you may not need to comply even with California customers.</p>
+          </section>
+
+          <section id="comparison-table">
+            <h2>Full Comparison Table</h2>
+            
+            <div class="full-comparison">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Aspect</th>
+                    <th>GDPR</th>
+                    <th>CCPA</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Effective Date</strong></td>
+                    <td>May 25, 2018</td>
+                    <td>January 1, 2020</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Consent Model</strong></td>
+                    <td>Opt-in (must get consent first)</td>
+                    <td>Opt-out (can collect until told to stop)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Business Threshold</strong></td>
+                    <td>None - applies to all</td>
+                    <td>$25M+ revenue or 100K+ consumers</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Geographic Scope</strong></td>
+                    <td>Worldwide (EU residents)</td>
+                    <td>California residents (US-focused)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Max Penalty</strong></td>
+                    <td>€20M or 4% global revenue</td>
+                    <td>$7,500 per violation</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Data Subject Rights</strong></td>
+                    <td>8 rights (extensive)</td>
+                    <td>6 rights (more limited)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Data Portability</strong></td>
+                    <td>Required (machine-readable)</td>
+                    <td>Not explicitly required</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Breach Notification</strong></td>
+                    <td>72 hours to authorities</td>
+                    <td>Not specifically required</td>
+                  </tr>
+                  <tr>
+                    <td><strong>DPO Required</strong></td>
+                    <td>Sometimes (large-scale processing)</td>
+                    <td>Not required</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Privacy Policy</strong></td>
+                    <td>Detailed, comprehensive</td>
+                    <td>Specific categories required</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Children's Data</strong></td>
+                    <td>16 (can be 13 with parental consent)</td>
+                    <td>13 (opt-in for sales under 16)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sensitive Data</strong></td>
+                    <td>Special category data (health, etc.)</td>
+                    <td>Sensitive PI (financial, location)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="compliance">
+            <h2>Compliance: How to Handle Both</h2>
+            <p>If your business needs to comply with both GDPR and CCPA, here's a practical approach:</p>
+
+            <div class="checklist">
+              <h3>Start with GDPR (Strictest)</h3>
+              <ul>
+                <li>Implement opt-in consent for all data collection</li>
+                <li>Build comprehensive data subject request systems</li>
+                <li>Create detailed privacy policy covering all requirements</li>
+                <li>Appoint DPO if required</li>
+                <li>Establish 72-hour breach notification process</li>
+              </ul>
+
+              <h3>Add CCPA Requirements</h3>
+              <ul>
+                <li>Add "Do Not Sell or Share" link to homepage/footer</li>
+                <li>Add "Limit Use of Sensitive Data" link</li>
+                <li>Support Global Privacy Control (GPC) signals</li>
+                <li>Update for California-specific definitions</li>
+                <li>Ensure non-discrimination for rights exercises</li>
+              </ul>
+
+              <h3>Simplify with One Approach</h3>
+              <p>Many businesses find it easiest to adopt GDPR-style practices universally, which naturally satisfies CCPA requirements. This includes:</p>
+              <ul>
+                <li>Clear, opt-in consent for all data collection</li>
+                <li>Detailed privacy policy with all required disclosures</li>
+                <li>Robust data subject rights request handling</li>
+                <li>Easy-to-access opt-out mechanisms</li>
+                <li>Data minimization and purpose limitation</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="cta-box">
+            <h2>Analyze Your Privacy Policy</h2>
+            <p>PolicyLens can check if your privacy policy meets requirements for both GDPR and CCPA compliance.</p>
+            <a href="/" class="btn btn-primary">Analyze Your Policy Free</a>
+          </section>
+        </article>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .article-page {
+    padding: 40px 0 80px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .breadcrumbs a {
+    color: var(--accent-cyan);
+  }
+
+  .article-header {
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .article-header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto 16px;
+  }
+
+  .meta {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+  }
+
+  .toc-sidebar {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+
+  .toc-sidebar h4 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .toc-sidebar ul {
+    list-style: none;
+  }
+
+  .toc-sidebar li {
+    margin-bottom: 8px;
+  }
+
+  .toc-sidebar a {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    display: block;
+    padding: 6px 0;
+    transition: color 0.2s;
+  }
+
+  .toc-sidebar a:hover {
+    color: var(--accent-cyan);
+  }
+
+  .article-content {
+    max-width: 800px;
+  }
+
+  .article-content section {
+    margin-bottom: 48px;
+  }
+
+  .article-content h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 48px 0 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .article-content h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .article-content h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 32px 0 16px;
+  }
+
+  .article-content p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .article-content ul {
+    color: var(--text-secondary);
+    margin: 16px 0 24px 24px;
+  }
+
+  .article-content li {
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+
+  .highlight-box, .warning-box, .checklist, .comparison-table {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin: 24px 0;
+  }
+
+  .highlight-box {
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+  }
+
+  .warning-box {
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+  }
+
+  .highlight-box h3, .warning-box h3, .checklist h3 {
+    margin-top: 0;
+  }
+
+  .comparison-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .compare-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+
+  .compare-item h4 {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  .full-comparison {
+    overflow-x: auto;
+  }
+
+  .full-comparison table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+  }
+
+  .full-comparison th,
+  .full-comparison td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .full-comparison th {
+    background: var(--bg-secondary);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .full-comparison td {
+    color: var(--text-secondary);
+  }
+
+  .full-comparison td:first-child {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .cta-box {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    padding: 40px;
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  .cta-box h2 {
+    border: none;
+    margin: 0 0 12px;
+    padding: 0;
+  }
+
+  .cta-box p {
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .content-wrapper {
+      grid-template-columns: 1fr;
+    }
+
+    .toc-sidebar {
+      display: none;
+    }
+
+    .comparison-table {
+      grid-template-columns: 1fr;
+    }
+
+    .full-comparison {
+      font-size: 0.9rem;
+    }
+  }
+</style>

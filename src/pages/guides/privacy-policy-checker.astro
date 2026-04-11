@@ -1,0 +1,519 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "Free Privacy Policy Checker Tool - Analyze Your Policy Now";
+const description = "Use our free privacy policy checker tool to analyze your privacy policy for GDPR, CCPA, and CCRA compliance. Get detailed recommendations in minutes.";
+const keywords = "privacy policy checker, free privacy policy analyzer, GDPR compliance checker, privacy policy audit tool, online privacy policy review";
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <main class="page-container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="separator">›</span>
+      <a href="/guides">Guides</a>
+      <span class="separator">›</span>
+      <span class="current">Privacy Policy Checker</span>
+    </nav>
+
+    <article class="guide-content">
+      <header class="page-header">
+        <h1>Free Privacy Policy Checker Tool</h1>
+        <p class="subtitle">Instantly analyze your privacy policy for GDPR, CCPA, and CCRA compliance</p>
+      </header>
+
+      <section class="intro">
+        <p>Our free privacy policy checker analyzes your privacy policy document against international privacy regulations. Simply paste your policy or enter your website URL, and our tool will scan for compliance issues, missing required sections, and improvement opportunities.</p>
+        <div class="cta-box tool-cta">
+          <h3>Try Our Free Privacy Policy Checker</h3>
+          <p>Paste your privacy policy below or enter your website URL to get an instant analysis</p>
+          <div class="tool-input">
+            <input type="url" placeholder="https://yourwebsite.com/privacy-policy" />
+            <button>Analyze Policy</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="benefits">
+        <h2>Benefits of Checking Your Privacy Policy</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <h3>GDPR Compliance</h3>
+            <p>Ensure your policy meets all General Data Protection Regulation requirements, including lawful basis, data subject rights, and cross-border transfer provisions.</p>
+          </div>
+          <div class="benefit-card">
+            <h3>CCPA/CPRA Ready</h3>
+            <p>Verify compliance with California Consumer Privacy Act and California Privacy Rights Act, including opt-out mechanisms and deletion rights.</p>
+          </div>
+          <div class="benefit-card">
+            <h3>Risk Reduction</h3>
+            <p>Identify gaps and vulnerabilities that could lead to regulatory fines or consumer complaints before they become legal issues.</p>
+          </div>
+          <div class="benefit-card">
+            <h3>Consumer Trust</h3>
+            <p>A transparent, comprehensive privacy policy builds trust with customers and demonstrates your commitment to data protection.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="how-to-use">
+        <h2>How to Use the Privacy Policy Checker</h2>
+        <ol class="steps">
+          <li>
+            <h3>Step 1: Enter Your Policy</h3>
+            <p>Paste your existing privacy policy text into the analyzer, or enter your website URL if it's published online.</p>
+          </li>
+          <li>
+            <h3>Step 2: Select Compliance Frameworks</h3>
+            <p>Choose which regulations you want to check against: GDPR, CCPA/CPRA, or both. You can also add industry-specific requirements.</p>
+          </li>
+          <li>
+            <h3>Step 3: Review Analysis Results</h3>
+            <p>Get an instant breakdown of your policy with specific issues flagged, severity levels, and recommended fixes.</p>
+          </li>
+          <li>
+            <h3>Step 4: Implement Recommendations</h3>
+            <p>Use our detailed guidance to update your policy and close any compliance gaps identified in the analysis.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="analysis-includes">
+        <h2>What the Analysis Includes</h2>
+        <div class="analysis-grid">
+          <div class="analysis-item">
+            <h3>Required Sections</h3>
+            <p>Checks for all mandatory disclosures including data collected, purposes, legal basis, retention periods, and third-party sharing.</p>
+          </div>
+          <div class="analysis-item">
+            <h3>User Rights</h3>
+            <p>Verifies inclusion of data subject rights: access, rectification, erasure, portability, and objection.</p>
+          </div>
+          <div class="analysis-item">
+            <h3>Contact Information</h3>
+            <p>Confirms presence of valid contact details for privacy inquiries and data protection officer information.</p>
+          </div>
+          <div class="analysis-item">
+            <h3>Cookie & Tracking</h3>
+            <p>Reviews cookie disclosures, tracking technologies used, and opt-out mechanisms provided.</p>
+          </div>
+          <div class="analysis-item">
+            <h3>Children's Privacy</h3>
+            <p>Checks for COPPA compliance and age-gating provisions for services directed to children.</p>
+          </div>
+          <div class="analysis-item">
+            <h3>International Transfers</h3>
+            <p>Validates cross-border data transfer mechanisms and adequacy provisions for international users.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="highlights">
+        <div class="highlight-box warning">
+          <h3>Important</h3>
+          <p>Privacy regulations carry significant penalties. GDPR fines can reach €20 million or 4% of annual global revenue. CCPA violations cost $2,500 per inadvertent violation and $7,500 for intentional violations.</p>
+        </div>
+      </section>
+
+      <section class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <details class="faq-item">
+          <summary>How long does the analysis take?</summary>
+          <p>The analysis completes in under 30 seconds for most privacy policies. Large policies with extensive provisions may take slightly longer but rarely exceed one minute.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does the tool store my privacy policy?</summary>
+          <p>No, we do not store your privacy policy. All analysis is performed in real-time and the document is discarded immediately after analysis completes. Your data remains completely confidential.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What regulations does the checker support?</summary>
+          <p>Currently supports GDPR (EU), UK GDPR, CCPA/CPRA (California), and CDPA (Virginia). Additional regulations including PIPEDA (Canada) and LGPD (Brazil) are coming soon.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I check multiple policies?</summary>
+          <p>Yes, you can analyze unlimited policies. For businesses managing multiple properties, we offer bulk analysis capabilities in our premium plan.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is the analysis legally binding?</summary>
+          <p>The tool provides automated analysis and recommendations based on regulatory requirements. It does not constitute legal advice. For critical compliance needs, consult with a qualified privacy attorney.</p>
+        </details>
+      </section>
+
+      <section class="checklist">
+        <h2>Pre-Check Checklist</h2>
+        <p>Before analyzing your policy, ensure you have the following information ready:</p>
+        <ul class="checklist-items">
+          <li><input type="checkbox" /> Current privacy policy document or URL</li>
+          <li><input type="checkbox" /> List of all data collected from users</li>
+          <li><input type="checkbox" /> Third-party services and vendors you share data with</li>
+          <li><input type="checkbox" /> Cookie and tracking technologies used</li>
+          <li><input type="checkbox" /> Countries where you operate or target users</li>
+          <li><input type="checkbox" /> Target audience age ranges</li>
+        </ul>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-box final">
+          <h3>Ready to Check Your Privacy Policy?</h3>
+          <p>Get a comprehensive analysis of your privacy policy in minutes. Our free tool checks for GDPR, CCPA, and 50+ compliance requirements.</p>
+          <a href="/analyzer" class="cta-button">Try PolicyLens Free</a>
+        </div>
+      </section>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    font-family: var(--font-body, system-ui, sans-serif);
+    color: var(--text-primary, #1a1a2e);
+    background: var(--bg-primary, #ffffff);
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary, #6b7280);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumbs a {
+    color: var(--accent, #4f46e5);
+    text-decoration: none;
+  }
+
+  .breadcrumbs a:hover {
+    text-decoration: underline;
+  }
+
+  .separator {
+    color: var(--text-tertiary, #9ca3af);
+  }
+
+  .current {
+    color: var(--text-secondary, #6b7280);
+  }
+
+  .guide-content {
+    max-width: 100%;
+  }
+
+  .page-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+    color: var(--text-primary, #1a1a2e);
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0;
+  }
+
+  .intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  section h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0 0 1.25rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .cta-box {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .cta-box h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .cta-box p {
+    margin: 0 0 1rem;
+    color: var(--text-secondary, #6b7280);
+  }
+
+  .tool-input {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .tool-input input {
+    flex: 1;
+    min-width: 250px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border, #d1d5db);
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+
+  .tool-input button {
+    padding: 0.75rem 1.5rem;
+    background: var(--accent, #4f46e5);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .tool-input button:hover {
+    background: var(--accent-hover, #4338ca);
+  }
+
+  .benefits-grid, .analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .benefit-card, .analysis-item {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .benefit-card h3, .analysis-item h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .benefit-card p, .analysis-item p {
+    margin: 0;
+    color: var(--text-secondary, #6b7280);
+    line-height: 1.6;
+  }
+
+  .steps {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    counter-reset: steps;
+  }
+
+  .steps li {
+    position: relative;
+    padding-left: 3.5rem;
+    margin-bottom: 1.5rem;
+    counter-increment: steps;
+  }
+
+  .steps li::before {
+    content: counter(steps);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--accent, #4f46e5);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  .steps li h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .steps li p {
+    margin: 0;
+    color: var(--text-secondary, #6b7280);
+    line-height: 1.6;
+  }
+
+  .highlight-box {
+    padding: 1.25rem 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid;
+  }
+
+  .highlight-box.warning {
+    background: #fef3c7;
+    border-left-color: #f59e0b;
+  }
+
+  .highlight-box.warning h3 {
+    color: #92400e;
+    margin: 0 0 0.5rem;
+  }
+
+  .highlight-box.warning p {
+    color: #92400e;
+    margin: 0;
+  }
+
+  .faq {
+    margin-top: 2rem;
+  }
+
+  .faq-item {
+    background: var(--bg-secondary, #f8fafc);
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+  }
+
+  .faq-item summary {
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    font-weight: 500;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::after {
+    content: "+";
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-secondary, #6b7280);
+  }
+
+  .faq-item[open] summary::after {
+    content: "−";
+  }
+
+  .faq-item p {
+    padding: 0 1.25rem 1.25rem;
+    margin: 0;
+    color: var(--text-secondary, #6b7280);
+    line-height: 1.6;
+  }
+
+  .checklist-items {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .checklist-items li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+  }
+
+  .checklist-items li:last-child {
+    border-bottom: none;
+  }
+
+  .checklist-items input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    accent-color: var(--accent, #4f46e5);
+  }
+
+  .cta-section .cta-box {
+    background: linear-gradient(135deg, var(--accent, #4f46e5), #7c3aed);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .cta-section .cta-box h3 {
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  .cta-section .cta-box p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: white;
+    color: var(--accent, #4f46e5);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 640px) {
+    .page-container {
+      padding: 1.5rem 1rem;
+    }
+
+    .page-header h1 {
+      font-size: 1.75rem;
+    }
+
+    .subtitle {
+      font-size: 1.125rem;
+    }
+
+    .tool-input {
+      flex-direction: column;
+    }
+
+    .tool-input input {
+      min-width: 100%;
+    }
+
+    .steps li {
+      padding-left: 3rem;
+    }
+
+    .steps li::before {
+      width: 2rem;
+      height: 2rem;
+      font-size: 0.875rem;
+    }
+  }
+</style>

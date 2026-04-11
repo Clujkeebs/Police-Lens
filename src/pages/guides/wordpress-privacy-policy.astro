@@ -1,0 +1,584 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "WordPress Privacy Policy Guide - Setup & Compliance";
+const description = "Complete guide to WordPress privacy policy setup. Learn about built-in privacy tools, GDPR/CCPA compliance, and recommended plugins.";
+const keywords = "WordPress privacy policy guide, WordPress GDPR compliance, WordPress privacy settings, WordPress privacy plugins, WP privacy policy";
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <main class="page-container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="separator">›</span>
+      <a href="/guides">Guides</a>
+      <span class="separator">›</span>
+      <span class="current">WordPress Privacy Policy</span>
+    </nav>
+
+    <article class="guide-content">
+      <header class="page-header">
+        <h1>WordPress Privacy Policy Guide</h1>
+        <p class="subtitle">Complete setup for WordPress privacy compliance</p>
+      </header>
+
+      <section class="intro">
+        <p>WordPress powers over 40% of websites globally, making privacy compliance crucial for millions of site owners. This guide covers WordPress's built-in privacy features and how to ensure your site meets GDPR, CCPA, and other privacy requirements.</p>
+      </section>
+
+      <section class="built-in">
+        <h2>WordPress Built-in Privacy Tools</h2>
+        
+        <div class="tools-grid">
+          <div class="tool">
+            <h3>Privacy Settings</h3>
+            <p>WordPress includes a Privacy settings page under Settings. Use this to:</p>
+            <ul>
+              <li>Set your privacy policy page</li>
+              <li>Configure data export tools</li>
+              <li>Enable erasure requests</li>
+              <li>Control comment privacy</li>
+            </ul>
+          </div>
+          
+          <div class="tool">
+            <h3>Privacy Policy Page</h3>
+            <p>WordPress can generate a privacy policy skeleton:</p>
+            <ul>
+              <li>Go to Settings &gt; Privacy</li>
+              <li>Create or select policy page</li>
+              <li>Add suggested policy sections</li>
+              <li>Customize for your site</li>
+            </ul>
+          </div>
+          
+          <div class="tool">
+            <h3>Personal Data Export</h3>
+            <p>WordPress includes export functionality:</p>
+            <ul>
+              <li>Tools &gt; Export Personal Data</li>
+              <li>Generates downloadable file</li>
+              <li>Includes user-provided data</li>
+              <li>Meets GDPR Article 15</li>
+            </ul>
+          </div>
+          
+          <div class="tool">
+            <h3>Erasure Requests</h3>
+            <p>Handle deletion requests natively:</p>
+            <ul>
+              <li>Tools &gt; Erase Personal Data</li>
+              <li>Process manually or automatically</li>
+              <li>Remove from comments/users</li>
+              <li>Maintain audit trail</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="required-pages">
+        <h2>Required Privacy Pages</h2>
+        
+        <p>Your WordPress site should include these essential pages:</p>
+        
+        <div class="pages-list">
+          <div class="page-item">
+            <h3>Privacy Policy</h3>
+            <p>Full disclosure of your data practices. Must include what data you collect, why, how long you keep it, and user rights. Link to this from your footer.</p>
+          </div>
+          
+          <div class="page-item">
+            <h3>Cookie Policy</h3>
+            <p>If using cookies (which WordPress does by default), disclose cookie usage, types, purposes, and how users can manage them.</p>
+          </div>
+          
+          <div class="page-item">
+            <h3>Terms of Service</h3>
+            <p>While not strictly privacy, ToS often includes privacy-related terms and conditions of use for your site.</p>
+          </div>
+          
+          <div class="page-item">
+            <h3>Contact/Privacy Page</h3>
+            <p>Dedicated page for privacy inquiries, including how to exercise data subject rights.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="gdpr">
+        <h2>GDPR Compliance for WordPress</h2>
+        
+        <p>The General Data Protection Regulation applies if you target EU users. Requirements include:</p>
+        
+        <div class="compliance-items">
+          <div class="compliance-item">
+            <h3>Lawful Basis</h3>
+            <p>Document your lawful basis for processing (consent, contract, legitimate interest). WordPress comment forms and contact forms process data based on user action.</p>
+          </div>
+          
+          <div class="compliance-item">
+            <h3>Data Subject Rights</h3>
+            <p>WordPress's built-in tools handle access and erasure requests. Ensure you're responding within the 30-day window.</p>
+          </div>
+          
+          <div class="compliance-item">
+            <h3>Privacy by Design</h3>
+            <p>Only collect necessary data. Disable features you don't need, such as comments or user registration if unused.</p>
+          </div>
+          
+          <div class="compliance-item">
+            <h3>International Transfers</h3>
+            <p>If your hosting or third-party services involve transfers outside the EU, disclose this and your transfer mechanism.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ccpa">
+        <h2>CCPA/CPRA Compliance</h2>
+        
+        <p>California residents have specific rights under CCPA and CPRA. For WordPress sites:</p>
+        
+        <ul class="ccpa-list">
+          <li><strong>Right to Know:</strong> Disclose what personal information you collect</li>
+          <li><strong>Right to Delete:</strong> Use WordPress erasure tools</li>
+          <li><strong>Right to Opt-Out:</strong> Provide opt-out for sale/sharing of data</li>
+          <li><strong>Right to Non-Discrimination:</strong> Don't penalize users for exercising rights</li>
+          <li><strong>"Do Not Sell" Link:</strong> Add to footer per CPRA requirements</li>
+          <li><strong>Financial Incentive:</strong> Disclose if offering privacy-linked incentives</li>
+        </ul>
+        
+        <div class="highlight-box warning">
+          <h3>Important</h3>
+          <p>CCPA applies to businesses with $25M+ annual revenue, 100k+ California consumers data, or 50%+ revenue from data sales. CPRA has modified thresholds for household data.</p>
+        </div>
+      </section>
+
+      <section class="plugins">
+        <h2>Recommended Privacy Plugins</h2>
+        
+        <p>While WordPress has solid built-in features, these plugins enhance privacy compliance:</p>
+        
+        <div class="plugins-grid">
+          <div class="plugin">
+            <h3>Cookie Law Info</h3>
+            <p>Adds GDPR-compliant cookie banner with granular consent options. Free and premium versions available.</p>
+          </div>
+          
+          <div class="plugin">
+            <h3>GDPR Cookie Consent Banner</h3>
+            <p>Simple banner implementation with customizable appearance and consent categories.</p>
+          </div>
+          
+          <div class="plugin">
+            <h3>Wordfence Security</h3>
+            <p>Security plugin that helps protect user data through firewall, malware scanning, and login protection.</p>
+          </div>
+          
+          <div class="plugin">
+            <h3>Complianz</h3>
+            <p>All-in-one compliance suite for GDPR, CCPA, and other regulations. Includes cookie banner, policy generator, and scanner.</p>
+          </div>
+          
+          <div class="plugin">
+            <h3>MonsterInsights</h3>
+            <p>Google Analytics integration with GDPR-compliant IP anonymization and consent mode support.</p>
+          </div>
+          
+          <div class="plugin">
+            <h3>WP Mail SMTP</h3>
+            <p>Properly configure email sending to ensure transactional emails (confirmations, notifications) are delivered securely.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="checklist">
+        <h2>WordPress Privacy Checklist</h2>
+        
+        <div class="checklist-columns">
+          <div class="checklist-col">
+            <h3>Settings</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> Privacy policy page created</li>
+              <li><input type="checkbox" /> Privacy settings configured</li>
+              <li><input type="checkbox" /> User registration reviewed</li>
+              <li><input type="checkbox" /> Comment settings reviewed</li>
+              <li><input type="checkbox" /> Contact form configured</li>
+            </ul>
+          </div>
+          
+          <div class="checklist-col">
+            <h3>Pages</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> Privacy policy published</li>
+              <li><input type="checkbox" /> Cookie policy included</li>
+              <li><input type="checkbox" /> Terms of service published</li>
+              <li><input type="checkbox" /> Contact page updated</li>
+              <li><input type="checkbox" /> Footer links added</li>
+            </ul>
+          </div>
+          
+          <div class="checklist-col">
+            <h3>Tools</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> Export tool tested</li>
+              <li><input type="checkbox" /> Erasure tool tested</li>
+              <li><input type="checkbox" /> Request handling in place</li>
+              <li><input type="checkbox" /> Response template ready</li>
+              <li><input type="checkbox" /> Records maintained</li>
+            </ul>
+          </div>
+          
+          <div class="checklist-col">
+            <h3>Plugins</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> Cookie banner installed</li>
+              <li><input type="checkbox" /> Consent categories set</li>
+              <li><input type="checkbox" /> Security plugin active</li>
+              <li><input type="checkbox" /> Analytics configured</li>
+              <li><input type="checkbox" /> Updates automated</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="highlight-box">
+        <h3>Pro Tip</h3>
+        <p>Test your data export and erasure tools with a test user account before you need to use them. This ensures the process works correctly and you can respond to user requests within required timeframes.</p>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-box final">
+          <h3>Audit Your WordPress Site</h3>
+          <p>PolicyLens can scan your WordPress site and identify privacy compliance issues, including missing disclosures, outdated policies, and configuration problems.</p>
+          <a href="/analyzer" class="cta-button">Run Free WordPress Audit</a>
+        </div>
+      </section>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    font-family: var(--font-body, system-ui, sans-serif);
+    color: var(--text-primary, #1a1a2e);
+    background: var(--bg-primary, #ffffff);
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary, #6b7280);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumbs a {
+    color: var(--accent, #4f46e5);
+    text-decoration: none;
+  }
+
+  .breadcrumbs a:hover {
+    text-decoration: underline;
+  }
+
+  .separator {
+    color: var(--text-tertiary, #9ca3af);
+  }
+
+  .current {
+    color: var(--text-secondary, #6b7280);
+  }
+
+  .page-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+    color: var(--text-primary, #1a1a2e);
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0;
+  }
+
+  .intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  section h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0 0 1.25rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .tools-grid, .plugins-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .tool, .plugin {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .tool h3, .plugin h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .tool p, .plugin p {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+  }
+
+  .tool ul, .plugin ul {
+    margin: 0;
+    padding-left: 1rem;
+  }
+
+  .tool li, .plugin li {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #6b7280);
+    margin-bottom: 0.35rem;
+    line-height: 1.4;
+  }
+
+  .pages-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .page-item {
+    background: var(--bg-secondary, #f8fafc);
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .page-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .page-item p {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .compliance-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .compliance-item {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .compliance-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .compliance-item p {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .ccpa-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .ccpa-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+    color: var(--text-secondary, #6b7280);
+    line-height: 1.5;
+  }
+
+  .ccpa-list li:last-child {
+    border-bottom: none;
+  }
+
+  .ccpa-list strong {
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .highlight-box {
+    padding: 1.25rem 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid;
+    margin: 1.5rem 0;
+  }
+
+  .highlight-box.warning {
+    background: #fef3c7;
+    border-left-color: #f59e0b;
+  }
+
+  .highlight-box.warning h3 {
+    color: #92400e;
+    margin: 0 0 0.5rem;
+  }
+
+  .highlight-box.warning p {
+    color: #92400e;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .highlight-box {
+    background: #ecfdf5;
+    border-left-color: #10b981;
+  }
+
+  .highlight-box h3 {
+    color: #065f46;
+    margin: 0 0 0.5rem;
+  }
+
+  .highlight-box p {
+    color: #065f46;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .checklist-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .checklist-col {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .checklist-col h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .checklist-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .checklist-items li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+  }
+
+  .checklist-items input[type="checkbox"] {
+    width: 1.125rem;
+    height: 1.125rem;
+    accent-color: var(--accent, #4f46e5);
+  }
+
+  .cta-section .cta-box {
+    background: linear-gradient(135deg, var(--accent, #4f46e5), #7c3aed);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 12px;
+  }
+
+  .cta-section .cta-box h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .cta-section .cta-box p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 1.5rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: white;
+    color: var(--accent, #4f46e5);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 640px) {
+    .page-container {
+      padding: 1.5rem 1rem;
+    }
+
+    .page-header h1 {
+      font-size: 1.75rem;
+    }
+
+    .subtitle {
+      font-size: 1.125rem;
+    }
+
+    .checklist-columns {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

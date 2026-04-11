@@ -1,0 +1,283 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  schemaType?: 'article' | 'faq';
+}
+
+const { title, description, keywords, schemaType = 'article' } = Astro.props;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "author": {
+    "@type": "Organization",
+    "name": "PolicyLens"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PolicyLens",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://policylens.app/favicon.svg"
+    }
+  },
+  "datePublished": "2026-04-10",
+  "dateModified": "2026-04-11"
+};
+---
+
+<Layout title={title} description={description} keywords={keywords} schemaType={schemaType}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} slot="head" />
+  
+  <article class="content-page">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="/">Home</a>
+        <span>/</span>
+        <slot name="breadcrumb" />
+        <span>/</span>
+        <span>{title}</span>
+      </div>
+      
+      <header class="page-header">
+        <h1>{title}</h1>
+        <p class="page-description">{description}</p>
+        <div class="page-meta">
+          <span class="read-time">10 min read</span>
+          <span class="updated">Updated April 2026</span>
+        </div>
+      </header>
+      
+      <div class="content-wrapper">
+        <aside class="toc-sidebar">
+          <h3>Table of Contents</h3>
+          <nav class="toc">
+            <slot name="toc" />
+          </nav>
+        </aside>
+        
+        <div class="content-body">
+          <slot />
+        </div>
+      </div>
+      
+      <section class="cta-section">
+        <h2>Ready to Check a Privacy Policy?</h2>
+        <p>Use our free AI-powered analyzer to see what's in any privacy policy.</p>
+        <a href="/" class="btn btn-primary">Analyze a Policy Free</a>
+      </section>
+      
+      <section class="related-content">
+        <h3>Related Resources</h3>
+        <div class="related-grid">
+          <slot name="related" />
+        </div>
+      </section>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .content-page {
+    padding: 40px 0 80px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .breadcrumbs a {
+    color: var(--accent-cyan);
+  }
+
+  .page-header {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .page-header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .page-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 48px;
+  }
+
+  .toc-sidebar {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+
+  .toc-sidebar h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+  }
+
+  .toc {
+    font-size: 0.9rem;
+  }
+
+  .toc :global(a) {
+    display: block;
+    padding: 8px 0;
+    color: var(--text-secondary);
+    border-left: 2px solid transparent;
+    padding-left: 12px;
+    transition: all 0.2s ease;
+  }
+
+  .toc :global(a:hover) {
+    color: var(--accent-cyan);
+    border-left-color: var(--accent-cyan);
+  }
+
+  .content-body {
+    max-width: 800px;
+  }
+
+  .content-body :global(h2) {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 48px 0 24px;
+    padding-top: 24px;
+  }
+
+  .content-body :global(h3) {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 32px 0 16px;
+  }
+
+  .content-body :global(h4) {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 24px 0 12px;
+  }
+
+  .content-body :global(p) {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .content-body :global(ul), .content-body :global(ol) {
+    margin: 16px 0 24px 24px;
+    color: var(--text-secondary);
+  }
+
+  .content-body :global(li) {
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+
+  .content-body :global(.highlight-box) {
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin: 24px 0;
+  }
+
+  .content-body :global(.warning-box) {
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin: 24px 0;
+  }
+
+  .content-body :global(.checklist) {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin: 24px 0;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 64px 24px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    margin: 64px 0;
+  }
+
+  .cta-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 12px;
+  }
+
+  .cta-section p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  .related-content {
+    margin-top: 64px;
+  }
+
+  .related-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 24px;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .content-wrapper {
+      grid-template-columns: 1fr;
+    }
+
+    .toc-sidebar {
+      position: static;
+      display: none;
+    }
+  }
+</style>

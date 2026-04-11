@@ -1,0 +1,515 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "Website Privacy Audit Guide - Complete 2026 Checklist";
+const description = "Learn how to perform a comprehensive website privacy audit. Step-by-step guide covering GDPR, CCPA compliance and common privacy issues.";
+const keywords = "website privacy audit, privacy compliance audit, GDPR audit checklist, CCPA compliance audit, data privacy review";
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <main class="page-container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="separator">›</span>
+      <a href="/guides">Guides</a>
+      <span class="separator">›</span>
+      <span class="current">Website Privacy Audit</span>
+    </nav>
+
+    <article class="guide-content">
+      <header class="page-header">
+        <h1>Website Privacy Audit Guide</h1>
+        <p class="subtitle">Complete step-by-step process to audit your website's privacy compliance</p>
+      </header>
+
+      <section class="intro">
+        <p>A website privacy audit is a systematic review of how your website collects, uses, stores, and shares user data. Regular audits are essential for maintaining compliance with GDPR, CCPA/CPRA, and other privacy regulations. This guide walks you through the complete audit process.</p>
+      </section>
+
+      <section class="audit-process">
+        <h2>Step-by-Step Audit Process</h2>
+        
+        <div class="step">
+          <h3>Step 1: Inventory Your Data Collection</h3>
+          <p>Map all data points collected through your website:</p>
+          <ul>
+            <li>Contact form submissions (names, emails, phone numbers)</li>
+            <li>Account registration information</li>
+            <li>Payment and transaction data</li>
+            <li>Cookies and tracking technologies</li>
+            <li>Analytics data and user behavior patterns</li>
+            <li>Server logs and access records</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <h3>Step 2: Document Data Flows</h3>
+          <p>Create a data flow diagram showing:</p>
+          <ul>
+            <li>Where each type of data is collected</li>
+            <li>How data is processed and stored</li>
+            <li>Who has access to the data</li>
+            <li>Third parties who receive data</li>
+            <li>Data retention periods</li>
+            <li>Data deletion procedures</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <h3>Step 3: Review Privacy Policy</h3>
+          <p>Verify your privacy policy accurately reflects your actual data practices:</p>
+          <ul>
+            <li>All collected data types are listed</li>
+            <li>Purpose for each data type is clear</li>
+            <li>Third-party sharing is disclosed</li>
+            <li>User rights are explained</li>
+            <li>Contact information is current</li>
+            <li>Cookie practices are documented</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <h3>Step 4: Check Consent Mechanisms</h3>
+          <p>Verify proper consent collection and management:</p>
+          <ul>
+            <li>Cookie consent banner is functional</li>
+            <li>Consent is granular and optional</li>
+            <li>Users can withdraw consent easily</li>
+            <li>Consent records are maintained</li>
+            <li>Pre-checked boxes are not used</li>
+            <li>Consent is obtained before data collection</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <h3>Step 5: Review Third-Party Services</h3>
+          <p>Audit all third-party integrations:</p>
+          <ul>
+            <li>Analytics tools (Google Analytics, etc.)</li>
+            <li>Advertising platforms</li>
+            <li>Payment processors</li>
+            <li>CRM and email marketing tools</li>
+            <li>Hosting and infrastructure providers</li>
+            <li>API integrations</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <h3>Step 6: Test Data Subject Requests</h3>
+          <p>Verify your systems can fulfill user rights requests:</p>
+          <ul>
+            <li>Access requests (data export)</li>
+            <li>Deletion requests (right to be forgotten)</li>
+            <li>Rectification requests (data correction)</li>
+            <li>Portability requests</li>
+            <li>Opt-out requests</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <h3>Step 7: Review Security Measures</h3>
+          <p>Ensure adequate data protection:</p>
+          <ul>
+            <li>SSL/TLS encryption is enabled</li>
+            <li>Data is encrypted at rest</li>
+            <li>Access controls are in place</li>
+            <li>Regular security audits conducted</li>
+            <li>Breach notification procedures exist</li>
+            <li>Employee training completed</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="what-to-look">
+        <h2>What to Look For During Your Audit</h2>
+        
+        <div class="look-items">
+          <div class="look-item">
+            <h3>Unauthorized Data Collection</h3>
+            <p>Check for hidden or unexpected data collection through plugins, themes, or scripts that may be collecting more data than necessary.</p>
+          </div>
+          <div class="look-item">
+            <h3>Outdated Privacy Policies</h3>
+            <p>Policies that don't reflect current practices or failed to update when adding new features or third-party services.</p>
+          </div>
+          <div class="look-item">
+            <h3>Inadequate Consent</h3>
+            <p>Missing, unclear, or forced consent mechanisms that don't meet GDPR or CCPA requirements.</p>
+          </div>
+          <div class="look-item">
+            <h3>Third-Party Data Leaks</h3>
+            <p>Sharing data with vendors without proper disclosure or contractual protections in place.</p>
+          </div>
+          <div class="look-item">
+            <h3>Insecure Data Storage</h3>
+            <p>Storing personal data without encryption, proper access controls, or adequate retention policies.</p>
+          </div>
+          <div class="look-item">
+            <h3>Missing Data Subject Rights</h3>
+            <p>Inability to fulfill user requests for access, deletion, or portability within required timeframes.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="common-issues">
+        <h2>Common Compliance Issues</h2>
+        
+        <div class="issues-list">
+          <div class="issue">
+            <h3>1. Vague Data Descriptions</h3>
+            <p>Using generic terms like "user information" instead of specific data types (name, email, IP address, etc.)</p>
+          </div>
+          <div class="issue">
+            <h3>2. Missing Cookie Disclosures</h3>
+            <p>Failing to list all cookies, especially third-party tracking cookies used for advertising.</p>
+          </div>
+          <div class="issue">
+            <h3>3. No Opt-Out Mechanism</h3>
+            <p>Not providing a way for users to opt out of data collection or sale in CCPA-required jurisdictions.</p>
+          </div>
+          <div class="issue">
+            <h3>4. Unclear Retention Periods</h3>
+            <p>Not specifying how long data is kept or the criteria used to determine retention periods.</p>
+          </div>
+          <div class="issue">
+            <h3>5. Missing Contact Information</h3>
+            <p>Failing to provide a valid way for users to contact the business about privacy concerns.</p>
+          </div>
+          <div class="issue">
+            <h3>6. No International Transfer Disclosure</h3>
+            <p>Not informing users about cross-border data transfers when using US-based services.</p>
+          </div>
+          <div class="issue">
+            <h3>7. Children's Privacy Gaps</h3>
+            <p>Not addressing age verification or parental consent for services that may attract children.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="checklist">
+        <h2>Privacy Audit Checklist</h2>
+        <p>Use this checklist to track your audit progress:</p>
+        
+        <div class="checklist-grid">
+          <div class="checklist-column">
+            <h3>Data Collection</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> Inventory all data fields</li>
+              <li><input type="checkbox" /> Document data sources</li>
+              <li><input type="checkbox" /> Identify data processors</li>
+              <li><input type="checkbox" /> Map data flows</li>
+              <li><input type="checkbox" /> Review necessity of each data point</li>
+              <li><input type="checkbox" /> Check data minimization</li>
+            </ul>
+          </div>
+          <div class="checklist-column">
+            <h3>Legal Compliance</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> Privacy policy reviewed</li>
+              <li><input type="checkbox" /> Consent mechanisms verified</li>
+              <li><input type="checkbox" /> Cookie policy updated</li>
+              <li><input type="checkbox" /> Third-party agreements reviewed</li>
+              <li><input type="checkbox" /> Data processing agreements in place</li>
+              <li><input type="checkbox" /> International transfers documented</li>
+            </ul>
+          </div>
+          <div class="checklist-column">
+            <h3>User Rights</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> Access request process works</li>
+              <li><input type="checkbox" /> Deletion request process works</li>
+              <li><input type="checkbox" /> Rectification process works</li>
+              <li><input type="checkbox" /> Portability export works</li>
+              <li><input type="checkbox" /> Opt-out process works</li>
+              <li><input type="checkbox" /> Response times documented</li>
+            </ul>
+          </div>
+          <div class="checklist-column">
+            <h3>Security</h3>
+            <ul class="checklist-items">
+              <li><input type="checkbox" /> SSL certificate valid</li>
+              <li><input type="checkbox" /> Encryption at rest</li>
+              <li><input type="checkbox" /> Access logs reviewed</li>
+              <li><input type="checkbox" /> Backups tested</li>
+              <li><input type="checkbox" /> Incident response plan exists</li>
+              <li><input type="checkbox" /> Employee training current</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="highlight-box">
+        <h3>Pro Tip</h3>
+        <p>Schedule quarterly privacy audits if you frequently update your website, or at minimum annually. Every time you add new features, integrations, or third-party services, review your privacy impact.</p>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-box final">
+          <h3>Automate Your Privacy Audit</h3>
+          <p>PolicyLens can scan your website automatically and identify privacy compliance issues in minutes. Get a detailed report with actionable recommendations.</p>
+          <a href="/analyzer" class="cta-button">Run Free Audit Now</a>
+        </div>
+      </section>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    font-family: var(--font-body, system-ui, sans-serif);
+    color: var(--text-primary, #1a1a2e);
+    background: var(--bg-primary, #ffffff);
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary, #6b7280);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumbs a {
+    color: var(--accent, #4f46e5);
+    text-decoration: none;
+  }
+
+  .breadcrumbs a:hover {
+    text-decoration: underline;
+  }
+
+  .separator {
+    color: var(--text-tertiary, #9ca3af);
+  }
+
+  .current {
+    color: var(--text-secondary, #6b7280);
+  }
+
+  .page-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+    color: var(--text-primary, #1a1a2e);
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0;
+  }
+
+  .intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  section h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0 0 1.25rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .step {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .step h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .step ul {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .step li {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary, #6b7280);
+    line-height: 1.5;
+  }
+
+  .look-items, .issues-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .look-item, .issue {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .look-item h3, .issue h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  .look-item p, .issue p {
+    margin: 0;
+    color: var(--text-secondary, #6b7280);
+    line-height: 1.6;
+  }
+
+  .checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .checklist-column {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .checklist-column h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    color: var(--text-primary, #1a1a2e);
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+  }
+
+  .checklist-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .checklist-items li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+  }
+
+  .checklist-items input[type="checkbox"] {
+    width: 1.125rem;
+    height: 1.125rem;
+    accent-color: var(--accent, #4f46e5);
+  }
+
+  .highlight-box {
+    background: #ecfdf5;
+    border: 1px solid #10b981;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .highlight-box h3 {
+    color: #065f46;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+  }
+
+  .highlight-box p {
+    color: #065f46;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .cta-box {
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border: 1px solid var(--border, #e5e7eb);
+  }
+
+  .cta-box h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+  }
+
+  .cta-box p {
+    margin: 0 0 1rem;
+    color: var(--text-secondary, #6b7280);
+  }
+
+  .cta-section .cta-box {
+    background: linear-gradient(135deg, var(--accent, #4f46e5), #7c3aed);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .cta-section .cta-box h3 {
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  .cta-section .cta-box p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: white;
+    color: var(--accent, #4f46e5);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 640px) {
+    .page-container {
+      padding: 1.5rem 1rem;
+    }
+
+    .page-header h1 {
+      font-size: 1.75rem;
+    }
+
+    .subtitle {
+      font-size: 1.125rem;
+    }
+
+    .checklist-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

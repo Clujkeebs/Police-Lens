@@ -1,0 +1,392 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "Amazon Privacy Policy Analysis";
+const description = "Comprehensive analysis of Amazon's privacy policy covering purchase history, Alexa voice data, Ring cameras, AWS, and advertising data practices.";
+const keywords = "Amazon privacy policy analysis, Alexa privacy, Ring camera privacy, AWS data privacy, Amazon advertising";
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <div class="container">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a>
+      <span class="separator">›</span>
+      <a href="/brand-analysis">Brand Analysis</a>
+      <span class="separator">›</span>
+      <span class="current">Amazon</span>
+    </nav>
+
+    <article class="brand-analysis">
+      <header class="brand-header">
+        <div class="brand-badge amazon">High Risk</div>
+        <h1>Amazon Privacy Policy Analysis</h1>
+        <p class="brand-tagline">In-depth look at Amazon's data collection across retail, voice, smart home, and cloud services</p>
+      </header>
+
+      <section class="analysis-section">
+        <h2>Purchase History and Browsing Data</h2>
+        <p>Amazon maintains detailed records of virtually every interaction customers have on its platform. The company collects and analyzes purchase history, product searches, browsing patterns, wish lists, and customer reviews to build comprehensive consumer profiles.</p>
+        
+        <div class="key-finding warning">
+          <h4>Complete Purchase Timeline</h4>
+          <p>Amazon retains your complete purchase history indefinitely, including items viewed but not purchased, enabling detailed behavioral analysis and targeted advertising.</p>
+        </div>
+
+        <ul class="data-list">
+          <li><strong>Transaction Data:</strong> Items purchased, prices paid, payment methods, shipping addresses</li>
+          <li><strong>Browsing History:</strong> Products viewed, search queries, time spent on product pages</li>
+          <li><strong>Wish Lists:</strong> Items saved for later, gift registries, public wishlists</li>
+          <li><strong>Product Reviews:</strong> Ratings, written reviews, helpful votes, photo uploads</li>
+          <li><strong>Search Behavior:</strong> Search terms, filters used, results clicked</li>
+          <li><strong>Prime Membership Data:</strong> Video streaming, music listening, reading habits</li>
+        </ul>
+      </section>
+
+      <section class="analysis-section">
+        <h2>Alexa Voice Data Concerns</h2>
+        <p>Amazon's Alexa ecosystem collects voice recordings and contextual data from hundreds of millions of smart speakers, Echo devices, and Alexa-enabled products. This creates one of the largest voice data repositories in the world.</p>
+
+        <ul class="data-list">
+          <li>Voice recordings of all voice commands and ambient conversations</li>
+          <li>Transcripts of voice interactions stored indefinitely unless manually deleted</li>
+          <li>Voice profiles identifying individual household members</li>
+          <li>Smart home device status and automation patterns</li>
+          <li>Skill usage and interaction patterns</li>
+          <li>Location data from Alexa-enabled mobile devices</li>
+        </ul>
+
+        <div class="key-finding danger">
+          <h4>Always-On Microphone</h4>
+          <p>Alexa devices continuously listen for wake words, recording and transmitting voice data to Amazon servers where it's analyzed, stored, and potentially reviewed by humans for quality improvement.</p>
+        </div>
+      </section>
+
+      <section class="analysis-section">
+        <h2>Ring Camera Privacy Concerns</h2>
+        <p>Amazon's Ring subsidiary has faced significant privacy scrutiny over its video doorbells and security cameras. The company collects extensive video data from millions of homes worldwide.</p>
+
+        <ul class="data-list">
+          <li>Continuous or motion-triggered video recordings from Ring devices</li>
+          <li>Audio recordings captured by Ring cameras</li>
+          <li>Neighbor feature sharing video clips with nearby users</li>
+          <li>Integration with over 600 law enforcement agencies</li>
+          <li>Facial recognition and person detection metadata</li>
+          <li>Device network information and Wi-Fi details</li>
+        </ul>
+
+        <div class="key-finding danger">
+          <h4>Law Enforcement Partnerships</h4>
+          <p>Ring maintains partnerships with over 600 police and fire departments, enabling law enforcement to request video footage from Ring users through a voluntary Neighbor Requests system.</p>
+        </div>
+      </section>
+
+      <section class="analysis-section">
+        <h2>AWS Business Data Handling</h2>
+        <p>Amazon Web Services hosts data for millions of businesses, government agencies, and organizations globally. While AWS provides security features, the breadth of data stored on AWS infrastructure raises important considerations.</p>
+
+        <ul class="data-list">
+          <li>Customer data stored across AWS data centers globally</li>
+          <li>AWS employees potentially accessing customer data for support</li>
+          <li>Metadata about resource usage and performance</li>
+          <li>Compliance certifications and security controls vary by service</li>
+          <li>Cross-region data replication for redundancy</li>
+          <li>Government requests for customer data stored on AWS</li>
+        </ul>
+
+        <div class="key-finding warning">
+          <h4>Shared Responsibility Model</h4>
+          <p>AWS operates a "shared responsibility" model where Amazon secures infrastructure but customers are responsible for securing their own data and configuring access controls properly.</p>
+        </div>
+      </section>
+
+      <section class="analysis-section">
+        <h2>Advertising Practices</h2>
+        <p>Amazon's advertising business has grown to become the third-largest digital advertising platform, leveraging its vast e-commerce data to deliver highly targeted ads across Amazon properties and third-party sites.</p>
+
+        <ul class="data-list">
+          <li>Purchase intent signals based on search and browsing behavior</li>
+          <li>Product recommendations driven by purchase history and preferences</li>
+          <li>Amazon DSP for programmatic advertising across the web</li>
+          <li>Custom audience targeting from first-party purchase data</li>
+          <li>Attribution tracking measuring ad effectiveness on purchases</li>
+          <li>Third-party data partnerships for expanded targeting</li>
+        </ul>
+
+        <div class="key-finding warning">
+          <h4>Comprehensive Shopping Profiles</h4>
+          <p>Amazon's advertising platform leverages one of the most detailed consumer purchase databases in existence, combining browsing behavior, transaction history, and demographic information.</p>
+        </div>
+      </section>
+
+      <section class="analysis-section">
+        <h2>AI-Powered Analysis Summary</h2>
+        <div class="summary-box">
+          <h3>Privacy Risk Assessment: <span class="risk-high">HIGH</span></h3>
+          <p>Amazon's privacy risk profile is uniquely complex due to its presence across e-commerce, voice assistants, smart home devices, and cloud services. The company creates comprehensive data profiles from multiple data sources.</p>
+          
+          <h4>Primary Concerns:</h4>
+          <ul>
+            <li>Indefinite retention of complete purchase history</li>
+            <li>Always-on microphone in Alexa devices with human review processes</li>
+            <li>Extensive video surveillance through Ring devices</li>
+            <li>Law enforcement partnerships enabling video requests</li>
+            <li>AWS data access by employees and government</li>
+            <li>Detailed advertising profiles from e-commerce data</li>
+          </ul>
+
+          <h4>Positive Aspects:</h4>
+          <ul>
+            <li>Voice recording deletion available through Alexa app</li>
+            <li>Purchase history management and download options</li>
+            <li>Ring privacy zones and sharing controls</li>
+            <li>AWS offers encryption and access controls</li>
+            <li>Ad personalization settings available</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <h3>Analyze Amazon's Actual Privacy Policy</h3>
+        <p>Paste Amazon's current privacy policy to get our AI-powered analysis with specific clause breakdowns, risk scoring, and plain English explanations.</p>
+        <a href="/" class="btn-primary">Analyze Policy Now</a>
+      </section>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .breadcrumbs {
+    padding: 24px 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+
+  .breadcrumbs a {
+    color: var(--text-secondary);
+  }
+
+  .breadcrumbs a:hover {
+    color: var(--accent-cyan);
+  }
+
+  .separator {
+    margin: 0 8px;
+    color: var(--text-muted);
+  }
+
+  .current {
+    color: var(--text-primary);
+  }
+
+  .brand-analysis {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+
+  .brand-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .brand-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+
+  .brand-badge.amazon {
+    background: linear-gradient(135deg, rgba(255, 153, 0, 0.2), rgba(255, 183, 77, 0.2));
+    border: 1px solid rgba(255, 153, 0, 0.4);
+    color: #ff9900;
+  }
+
+  .brand-header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .brand-tagline {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .analysis-section {
+    margin-bottom: 40px;
+    padding: 32px;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+  }
+
+  .analysis-section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--accent-cyan);
+  }
+
+  .analysis-section h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 24px 0 12px;
+    color: var(--text-primary);
+  }
+
+  .analysis-section p {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+
+  .key-finding {
+    padding: 20px;
+    border-radius: var(--radius-md);
+    margin: 24px 0;
+    border-left: 4px solid;
+  }
+
+  .key-finding h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .key-finding p {
+    margin: 0;
+    font-size: 15px;
+  }
+
+  .key-finding.warning {
+    background: rgba(255, 193, 7, 0.1);
+    border-color: #ffc107;
+  }
+
+  .key-finding.warning h4 {
+    color: #ffc107;
+  }
+
+  .key-finding.danger {
+    background: rgba(255, 82, 82, 0.1);
+    border-color: #ff5252;
+  }
+
+  .key-finding.danger h4 {
+    color: #ff5252;
+  }
+
+  .key-finding.info {
+    background: rgba(0, 212, 255, 0.1);
+    border-color: var(--accent-cyan);
+  }
+
+  .key-finding.info h4 {
+    color: var(--accent-cyan);
+  }
+
+  .data-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .data-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+  }
+
+  .data-list li:last-child {
+    border-bottom: none;
+  }
+
+  .data-list li strong {
+    color: var(--text-primary);
+  }
+
+  .summary-box {
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+  }
+
+  .summary-box h3 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+
+  .risk-high {
+    color: #ff5252;
+    font-weight: 700;
+  }
+
+  .summary-box h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    margin: 20px 0 12px;
+  }
+
+  .summary-box ul {
+    list-style: disc;
+    margin-left: 20px;
+    color: var(--text-secondary);
+  }
+
+  .summary-box ul li {
+    margin-bottom: 8px;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 48px 32px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 128, 0.1));
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+    margin-top: 40px;
+  }
+
+  .cta-section h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+
+  .cta-section p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 16px 32px;
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+    color: white;
+  }
+</style>
