@@ -1,26 +1,4 @@
 ---
-export interface Props {
-  result: {
-    domain: string;
-    url?: string;
-    title: string;
-    analysis: {
-      riskScore: number;
-      riskLevel: 'low' | 'medium' | 'high';
-      confidenceScore: number;
-      wordCount: number;
-      categories: Record<string, any>;
-      redFlags: Array<{ message: string; severity: string }>;
-      goodSigns: Array<{ message: string }>;
-      summary: {
-        overview: string;
-        detailedPoints: Array<{ category: string; severity: string; points: string[] }>;
-      };
-    };
-    keyClauses?: Array<{ text: string; keywords: string[] }>;
-  };
-}
-
 const { result } = Astro.props;
 const { analysis } = result;
 
@@ -85,14 +63,13 @@ const riskBg = analysis.riskLevel === 'low' ? 'rgba(34, 197, 94, 0.15)' : analys
       Summary
     </h2>
     <p class="overview">{analysis.summary.overview}</p>
-    {analysis.summary.detailedPoints.length > 0 && (
+    {analysis.summary.keyPoints && analysis.summary.keyPoints.length > 0 && (
       <div class="detailed-points">
-        {analysis.summary.detailedPoints.map(point => (
+        {analysis.summary.keyPoints.map((point, i) => (
           <div class="point-item">
-            <span class={`severity-dot ${point.severity}`}></span>
+            <span class="severity-dot info"></span>
             <div>
-              <strong>{point.category}</strong>
-              {point.points.map(p => <p>{p}.</p>)}
+              <p>{point}</p>
             </div>
           </div>
         ))}
