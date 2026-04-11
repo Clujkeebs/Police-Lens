@@ -3,5 +3,6 @@ dist
 .env
 .netlify
 .netlify/functions
+.vercel
 .DS_Store
 *.log
