@@ -1,0 +1,264 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { blogPosts } from '../../data/blog-posts';
+---
+
+<Layout
+  title="Privacy & Policy Analysis Blog"
+  description="Expert guides on privacy policies, data protection laws, GDPR compliance, and how to protect your digital rights. Stay informed with PolicyLens."
+  keywords="privacy policy blog, GDPR blog, CCPA guide, data privacy tips, online privacy, digital rights, privacy law news"
+>
+  <section class="blog-hero">
+    <div class="container">
+      <h1>The PolicyLens <span class="gradient-text">Blog</span></h1>
+      <p class="hero-subtitle">Expert insights on privacy, data protection, and digital rights</p>
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <div class="blog-grid">
+        {blogPosts.map(post => (
+          <article class="blog-card">
+            <div class="blog-card-image">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+            </div>
+            <div class="blog-card-content">
+              <div class="blog-meta">
+                <span class="blog-category">{post.category}</span>
+                <span class="blog-date">{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                <span class="blog-readtime">{post.readTime}</span>
+              </div>
+              <h2><a href={`/blog/${post.slug}`}>{post.title}</a></h2>
+              <p class="blog-excerpt">{post.excerpt}</p>
+              <a href={`/blog/${post.slug}`} class="read-more">
+                Read Article
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <section class="newsletter-section">
+        <h2>Stay Informed</h2>
+        <p>Get the latest privacy insights delivered to your inbox.</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Enter your email" class="newsletter-input" />
+          <button class="btn btn-primary">Subscribe</button>
+        </div>
+      </section>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .blog-hero {
+    padding: 80px 24px 60px;
+    text-align: center;
+    background: radial-gradient(ellipse at top, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+  }
+
+  .blog-hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+  }
+
+  .blog-content {
+    padding: 60px 24px 80px;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .blog-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .blog-card {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  .blog-card:nth-child(2) { animation-delay: 0.1s; }
+  .blog-card:nth-child(3) { animation-delay: 0.2s; }
+  .blog-card:nth-child(4) { animation-delay: 0.3s; }
+  .blog-card:nth-child(5) { animation-delay: 0.4s; }
+  .blog-card:nth-child(6) { animation-delay: 0.5s; }
+
+  .blog-card:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: var(--shadow-glow);
+    transform: translateX(6px);
+  }
+
+  .blog-card-image {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 212, 255, 0.08);
+    border-radius: var(--radius-md);
+    color: var(--accent-cyan);
+    flex-shrink: 0;
+  }
+
+  .blog-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .blog-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .blog-category {
+    padding: 4px 10px;
+    background: rgba(0, 212, 255, 0.15);
+    color: var(--accent-cyan);
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .blog-date {
+    color: var(--text-muted);
+  }
+
+  .blog-readtime {
+    color: var(--text-muted);
+  }
+
+  .blog-card h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .blog-card h2 a {
+    color: var(--text-primary);
+  }
+
+  .blog-card h2 a:hover {
+    color: var(--accent-cyan);
+  }
+
+  .blog-excerpt {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent-cyan);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: gap 0.2s ease;
+  }
+
+  .read-more:hover {
+    gap: 10px;
+    color: var(--accent-magenta);
+  }
+
+  .newsletter-section {
+    text-align: center;
+    margin-top: 80px;
+    padding: 48px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+  }
+
+  .newsletter-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+
+  .newsletter-section p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 12px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .newsletter-input {
+    flex: 1;
+    padding: 14px 20px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .newsletter-input:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+  }
+
+  @media (max-width: 600px) {
+    .blog-card {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .blog-card-image {
+      margin: 0 auto;
+    }
+
+    .blog-meta {
+      justify-content: center;
+    }
+
+    .read-more {
+      justify-content: center;
+    }
+
+    .newsletter-form {
+      flex-direction: column;
+    }
+  }
+</style>

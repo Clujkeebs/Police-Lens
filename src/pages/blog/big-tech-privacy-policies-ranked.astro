@@ -1,0 +1,144 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+---
+
+<ContentLayout
+  title="Big Tech Privacy Policies Ranked: Best to Worst 2026"
+  description="We analyzed the privacy policies of Google, Apple, Meta, Amazon, and TikTok. See which tech giant best protects your privacy and who collects the most data."
+  keywords="big tech privacy policy, Google privacy, Apple privacy, Meta privacy, Amazon privacy, TikTok privacy, tech privacy comparison"
+>
+  <slot name="breadcrumb">
+    <a href="/blog">Blog</a>
+  </slot>
+
+  <slot name="toc">
+    <a href="#rankings">The Rankings</a>
+    <a href="#apple">Apple — Best</a>
+    <a href="#google">Google</a>
+    <a href="#amazon">Amazon</a>
+    <a href="#meta">Meta</a>
+    <a href="#tiktok">TikTok — Worst</a>
+    <a href="#key-findings">Key Findings</a>
+  </slot>
+
+  <h2 id="rankings">Big Tech Privacy Rankings 2026</h2>
+  <p>We analyzed the privacy policies of the five biggest tech companies to see where your data is safest. Here's how they rank, from best to worst:</p>
+
+  <div class="highlight-box">
+    <strong>Our Methodology:</strong> Each policy was scored on data collection scope, third-party sharing, user rights, security measures, transparency, and regulatory compliance. Higher scores mean better privacy protection.
+  </div>
+
+  <h2 id="apple">#1: Apple — Best Privacy Protection</h2>
+  <p><strong>Privacy Score: 85/100</strong></p>
+  <p>Apple has built privacy into its brand identity with the slogan "Privacy. That's iPhone." Their policy reflects this commitment:</p>
+
+  <h3>What Apple Does Well</h3>
+  <ul>
+    <li><strong>Data Minimization:</strong> Apple collects significantly less data than competitors, emphasizing on-device processing</li>
+    <li><strong>End-to-End Encryption:</strong> iMessages, FaceTime, and Health data are encrypted so even Apple can't access them</li>
+    <li><strong>App Tracking Transparency:</strong> Requires apps to get explicit permission before tracking you across other apps</li>
+    <li><strong>Privacy Labels:</strong> Each app in the App Store has a clear privacy "nutrition label"</li>
+    <li><strong>No Advertising Business Model:</strong> Apple makes money from hardware and services, not selling your data</li>
+  </ul>
+
+  <h3>Areas for Improvement</h3>
+  <ul>
+    <li>iCloud backups aren't end-to-end encrypted by default</li>
+    <li>Siri recordings may be reviewed by human contractors (though you can opt out)</li>
+    <li>Apple's advertising platform still collects some data for personalized ads in the App Store</li>
+  </ul>
+
+  <h2 id="google">#2: Google — Moderate Privacy Protection</h2>
+  <p><strong>Privacy Score: 62/100</strong></p>
+  <p>Google's privacy policy has improved significantly in recent years but still reflects its advertising-based business model:</p>
+
+  <h3>What Google Does Well</h3>
+  <ul>
+    <li><strong>Privacy Dashboard:</strong> A centralized place to see and control your data across all Google services</li>
+    <li><strong>Auto-Delete:</strong> Option to automatically delete activity data after 3, 18, or 36 months</li>
+    <li><strong>Incognito Mode:</strong> Available across Chrome, YouTube, and Maps</li>
+    <li><strong>Transparency Reports:</strong> Detailed government request disclosures</li>
+  </ul>
+
+  <h3>Areas of Concern</h3>
+  <ul>
+    <li>Massive data collection across search, email, maps, YouTube, and Android</li>
+    <li>Data is used for ad personalization across their vast advertising network</li>
+    <li>Location history tracking can be confusing to fully disable</li>
+    <li>Past issues with tracking users in Incognito mode (settled lawsuit)</li>
+  </ul>
+
+  <h2 id="amazon">#3: Amazon — Mixed Privacy Record</h2>
+  <p><strong>Privacy Score: 58/100</strong></p>
+  <p>Amazon's privacy picture is complex, spanning e-commerce, cloud services, smart devices, and advertising:</p>
+
+  <h3>What Amazon Does Well</h3>
+  <ul>
+    <li>AWS has strong enterprise privacy controls</li>
+    <li>Alexa privacy hub allows reviewing and deleting voice recordings</li>
+    <li>Choice to opt out of "saved" payment methods</li>
+  </ul>
+
+  <h3>Areas of Concern</h3>
+  <ul>
+    <li>Extensive shopping behavior tracking and profiling</li>
+    <li>Ring doorbell and Alexa devices raise surveillance concerns</li>
+    <li>Amazon Sidewalk shares a small portion of your internet bandwidth with neighbors</li>
+    <li>Aggressive cross-service data sharing between retail, devices, and advertising</li>
+    <li>$877 million GDPR fine for cookie consent violations</li>
+  </ul>
+
+  <h2 id="meta">#4: Meta (Facebook) — Significant Privacy Concerns</h2>
+  <p><strong>Privacy Score: 35/100</strong></p>
+  <p>Meta's business model is fundamentally based on collecting and monetizing user data through advertising:</p>
+
+  <h3>Areas of Serious Concern</h3>
+  <ul>
+    <li><strong>Massive Data Collection:</strong> Tracks activity across Facebook, Instagram, WhatsApp, and third-party sites via pixel</li>
+    <li><strong>Shadow Profiles:</strong> Creates profiles of non-users based on data from users' contact lists</li>
+    <li><strong>Emotion Manipulation:</strong> Past experiments manipulating users' emotional states through content curation</li>
+    <li><strong>Vague Policy Language:</strong> Uses broad terms like "partners" without specifying who gets your data</li>
+    <li><strong>€1.2 Billion Fine:</strong> Largest GDPR fine ever for improper data transfers</li>
+  </ul>
+
+  <h3>Glacial Improvements</h3>
+  <ul>
+    <li>Privacy Checkup tool helps review settings</li>
+    <li>Off-Facebook Activity tool shows some third-party tracking</li>
+    <li>End-to-end encryption on WhatsApp messages (though metadata is still collected)</li>
+  </ul>
+
+  <h2 id="tiktok">#5: TikTok — Most Privacy Concerns</h2>
+  <p><strong>Privacy Score: 28/100</strong></p>
+  <p>TikTok has faced intense scrutiny over its data practices, particularly regarding its Chinese parent company ByteDance:</p>
+
+  <h3>Major Red Flags</h3>
+  <ul>
+    <li><strong>Aggressive Data Collection:</strong> Collects keystroke patterns, device motion data, clipboard content, and biometric data</li>
+    <li><strong>Algorithmic Transparency:</strong> Highly opaque about how its recommendation algorithm works</li>
+    <li><strong>Chinese Data Access Concerns:</strong> Potential for Chinese government access under national security laws</li>
+    <li><strong>Children's Data:</strong> $345 million GDPR fine partly for failing to protect children's data</li>
+    <li><strong>Location Tracking:</strong> Collects precise location data even when not actively using the app</li>
+    <li><strong>Shadow Banning:</strong> Uneven content moderation without clear criteria</li>
+  </ul>
+
+  <div class="warning-box">
+    <strong>Bottom Line:</strong> While all collected data raises concerns, TikTok's combination of aggressive data collection, Chinese ownership, and opaque practices makes it the riskiest choice for privacy-conscious users.
+  </div>
+
+  <h2 id="key-findings">Key Takeaways from Our Analysis</h2>
+
+  <h3>Business Model Determines Privacy</h3>
+  <p>Companies that make money from hardware (Apple) tend to protect privacy. Companies that make money from advertising (Meta, Google) have an inherent incentive to collect more data.</p>
+
+  <h3>Privacy Policies Get Longer Every Year</h3>
+  <p>Meta's privacy policy has grown from 4,000 to over 15,000 words. More words don't mean more protection — often it's the opposite.</p>
+
+  <h3>Regulation Is Working</h3>
+  <p>GDPR and CCPA have forced all of these companies to improve their privacy practices. Features like auto-delete and privacy dashboards exist largely because of regulation.</p>
+
+  <h3>You Can't Opt Out of Everything</h3>
+  <p>Even Apple collects some data. The question isn't whether data is collected — it's how much, why, and what happens to it.</p>
+
+  <p>Use our <a href="/">free privacy policy checker</a> to analyze any company's policy yourself.</p>
+</ContentLayout>

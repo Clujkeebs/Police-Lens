@@ -1,200 +1,242 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://policylens.app/</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://policylens.app/about</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/about</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://policylens.app/faq</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/faq</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://policylens.app/contact</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/contact</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://policylens.app/privacy-policy</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/privacy-policy</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://policylens.app/terms-of-service</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/terms-of-service</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://policylens.app/privacy-basics/what-is-privacy-policy</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://policylens.app/privacy-basics/privacy-policy-vs-terms</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://policylens.app/privacy-basics/do-i-need-privacy-policy</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://policylens.app/privacy-basics/gdpr-privacy-policy-guide</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/blog</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://policylens.app/privacy-basics/ccpa-compliance-checklist</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://policylens.app/privacy-laws/gdpr</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://policylens.app/privacy-laws/ccpa</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://policylens.app/privacy-laws/coppa</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/blog/why-you-need-privacy-policy-checker</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://policylens.app/privacy-laws/state-privacy-laws</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/blog/ai-privacy-policies-explained</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://policylens.app/privacy-laws/gdpr-vs-ccpa</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/blog/gdpr-compliance-guide-2026</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://policy-lens-ai-app.vercel.app/blog/big-tech-privacy-policies-ranked</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://policy-lens-ai-app.vercel.app/blog/state-privacy-laws-comparison</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://policy-lens-ai-app.vercel.app/blog/how-to-read-privacy-policy</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://policy-lens-ai-app.vercel.app/privacy-basics/what-is-privacy-policy</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://policy-lens-ai-app.vercel.app/privacy-basics/privacy-policy-vs-terms</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://policy-lens-ai-app.vercel.app/privacy-basics/do-i-need-privacy-policy</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://policy-lens-ai-app.vercel.app/privacy-basics/gdpr-privacy-policy-guide</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://policylens.app/privacy-laws/gdpr-data-subject-rights</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/privacy-basics/ccpa-compliance-checklist</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://policylens.app/privacy-laws/gdpr-fines</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://policylens.app/privacy-laws/data-processing-agreement</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://policylens.app/brand-analysis/google-privacy-policy</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/privacy-laws/gdpr</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://policylens.app/brand-analysis/facebook-privacy-policy</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/privacy-laws/ccpa</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://policylens.app/brand-analysis/amazon-privacy-policy</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/privacy-laws/coppa</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://policy-lens-ai-app.vercel.app/privacy-laws/state-privacy-laws</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://policy-lens-ai-app.vercel.app/privacy-laws/gdpr-vs-ccpa</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://policylens.app/brand-analysis/apple-privacy-policy</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/privacy-laws/gdpr-data-subject-rights</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://policylens.app/brand-analysis/tiktok-privacy-policy</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/privacy-laws/gdpr-fines</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://policy-lens-ai-app.vercel.app/privacy-laws/data-processing-agreement</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://policy-lens-ai-app.vercel.app/brand-analysis/google-privacy-policy</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://policylens.app/guides/privacy-policy-checker</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/brand-analysis/facebook-privacy-policy</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://policylens.app/guides/website-privacy-audit</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/brand-analysis/amazon-privacy-policy</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://policy-lens-ai-app.vercel.app/brand-analysis/apple-privacy-policy</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://policy-lens-ai-app.vercel.app/brand-analysis/tiktok-privacy-policy</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://policy-lens-ai-app.vercel.app/guides/privacy-policy-checker</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://policy-lens-ai-app.vercel.app/guides/website-privacy-audit</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://policylens.app/guides/cookie-consent-guide</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/guides/cookie-consent-guide</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://policylens.app/guides/wordpress-privacy-policy</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/guides/wordpress-privacy-policy</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://policylens.app/guides/shopify-privacy-policy</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/guides/shopify-privacy-policy</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://policylens.app/guides/small-business-privacy-policy</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/guides/small-business-privacy-policy</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://policylens.app/guides/saas-privacy-policy</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/guides/saas-privacy-policy</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://policylens.app/guides/mobile-app-privacy-policy</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/guides/mobile-app-privacy-policy</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://policylens.app/guides/automated-compliance-scanning</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://policy-lens-ai-app.vercel.app/guides/automated-compliance-scanning</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

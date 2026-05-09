@@ -4,12 +4,13 @@ AI-powered privacy policy and terms of service analyzer. Understand what you're 
 
 ## Features
 
-- **AI-Powered Analysis** - Uses Claude AI for intelligent policy breakdown
-- **URL or Text Input** - Analyze from URL or paste text directly
-- **Risk Scoring** - Get instant risk scores (0-100)
-- **Red Flag Detection** - Identifies concerning clauses
-- **Policy Comparison** - Compare multiple policies side-by-side
-- **No Signup Required** - All history stored locally in your browser
+- **AI-Powered Analysis** — Uses Google Gemini Flash (free) or Claude AI for intelligent policy breakdown
+- **URL or Text Input** — Analyze from URL or paste text directly
+- **Risk Scoring** — Get instant risk scores (0-100)
+- **Red Flag Detection** — Identifies concerning clauses like data selling, class action waivers
+- **Policy Comparison** — Compare multiple policies side-by-side
+- **No Signup Required** — All history stored locally in your browser
+- **Blog & Guides** — In-depth articles on GDPR, CCPA, privacy best practices
 
 ## Quick Start
 
@@ -18,87 +19,79 @@ npm install
 npm run dev
 ```
 
-## Deployment to Netlify
+## Deployment to Vercel
 
 ### Prerequisites
 - GitHub account
-- Netlify account
-- Anthropic API key (for AI features)
+- Vercel account
+- Google Gemini API key (free — 1,500 requests/day)
 
-### Step 1: Push to GitHub
+### Step 1: Get a Free Gemini API Key
+1. Go to [Google AI Studio](https://aistudio.google.com)
+2. Sign in with your Google account
+3. Click "Get API Key" and create a new key
+4. Copy the key
 
+### Step 2: Push to GitHub
 ```bash
-# Initialize git (if not already)
-cd policylens
 git init
 git add .
 git commit -m "Initial commit"
-
-# Create repo on github.com first, then:
 git branch -M main
 git remote add origin https://github.com/YOUR_USERNAME/policylens.git
 git push -u origin main
 ```
 
-### Step 2: Connect to Netlify
+### Step 3: Deploy on Vercel
+1. Go to [vercel.com](https://vercel.com)
+2. Click **Import Project** → Select your GitHub repo
+3. Vercel auto-detects Astro — no config needed
+4. Under **Environment Variables**, add:
+   - **Key:** `GEMINI_API_KEY`
+   - **Value:** your Gemini API key from Step 1
+5. Click **Deploy**
 
-1. Go to [app.netlify.com](https://app.netlify.com)
-2. Click **Add new site → Import an existing project**
-3. Select **GitHub** as your Git provider
-4. Authorize Netlify to access your GitHub account
-5. Find and select the `policylens` repository
-6. Configure build settings:
-   - **Build command:** `npm run build`
-   - **Publish directory:** `dist`
-7. Click **Deploy site**
-
-### Step 3: Add Environment Variable
-
-1. Go to **Site Settings → Environment Variables**
-2. Click **Add a variable**
-3. Enter:
-   - **Key:** `ANTHROPIC_API_KEY`
-   - **Value:** `your-api-key-here`
-4. Click **Save**
-5. Go to **Deploys** and click **Trigger deploy → Deploy latest**
-
-### Step 4: Custom Domain (Optional)
-
-1. Go to **Site Settings → Domain Management**
-2. Click **Add custom domain**
-3. Enter `policylens.app` (or your domain)
-4. Follow DNS instructions to point your domain to Netlify
+### Alternative: Use Claude AI
+If you prefer Anthropic's Claude, set `ANTHROPIC_API_KEY` instead. The app uses whichever key you provide (Gemini is tried first if both are set).
 
 ## Project Structure
 
 ```
 policylens/
 ├── src/
-│   ├── components/     # UI components
-│   ├── layouts/       # Page layouts
-│   ├── pages/         # Routes (including API endpoints)
-│   │   ├── api/      # Serverless functions
-│   │   └── *.astro   # Static pages
-│   └── scripts/       # Utility scripts
-├── public/            # Static assets
-├── netlify.toml       # Netlify configuration
-└── package.json      # Dependencies
+│   ├── components/     # UI components (PolicyAnalyzer, AnalysisResult, ComparisonView)
+│   ├── data/           # Shared data (blog posts)
+│   ├── layouts/        # Page layouts (Layout, ContentLayout)
+│   ├── pages/          # Routes + API endpoints
+│   │   ├── api/        # Serverless functions (analyze.ts)
+│   │   ├── blog/       # Blog section (6 SEO-optimized posts)
+│   │   ├── brand-analysis/  # Big tech privacy analysis
+│   │   ├── guides/     # In-depth guides
+│   │   ├── privacy-basics/  # Privacy fundamentals
+│   │   └── privacy-laws/    # Privacy law guides
+│   └── scripts/        # Client-side analyzer
+├── public/             # Static assets
+├── scripts/            # Build scripts (sitemap)
+├── astro.config.mjs    # Astro + Vercel config
+└── package.json
 ```
-
-## Getting Your Own Anthropic API Key
-
-1. Go to [console.anthropic.com](https://console.anthropic.com)
-2. Sign up or log in
-3. Go to **API Keys** section
-4. Create a new API key
-5. Copy and use in Netlify environment variables
 
 ## Tech Stack
 
-- **Framework:** Astro
-- **Adapter:** Netlify
-- **AI:** Claude (Anthropic)
+- **Framework:** Astro 6.x
+- **Deployment:** Vercel (with Speed Insights)
+- **AI:** Google Gemini Flash 2.0 (free tier) or Claude Haiku (fallback)
 - **Styling:** Custom CSS with Midnight Neon theme
+- **Ads:** Google AdSense (auto ads on public pages)
+
+## Environment Variables
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `GEMINI_API_KEY` | Yes* | Free API key from [Google AI Studio](https://aistudio.google.com) |
+| `ANTHROPIC_API_KEY` | No | Fallback to Claude if Gemini key is not set |
+
+*Either `GEMINI_API_KEY` or `ANTHROPIC_API_KEY` must be set for AI analysis to work.
 
 ## License
 

@@ -1,70 +1,81 @@
 export const prerender = false;
 
-const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
 const ANALYSIS_PROMPT = `You are PolicyLens, an AI privacy policy and terms of service analyzer. Analyze the provided legal document and return a comprehensive analysis in JSON format.
 
-Return ONLY valid JSON with this exact structure, no markdown:
+Return ONLY valid JSON with this exact structure, no markdown formatting, no code fences:
 {
   "riskScore": <number 0-100>,
-  "riskLevel": "low" or "medium" or "high",
+  "riskLevel": "low" | "medium" | "high",
   "confidenceScore": <number 0-100>,
   "wordCount": <number>,
   "redFlags": [
-    {"message": "<warning>", "severity": "high|medium|low", "matchedText": "<text>"}
+    {"message": "<warning>", "severity": "high|medium|low", "matchedText": "<text from document>"}
   ],
   "goodSigns": [
-    {"message": "<positive finding>", "matchedText": "<text>"}
+    {"message": "<positive finding>", "matchedText": "<text from document>"}
   ],
   "categories": {
-    "dataCollection": {"category": "Data Collection", "description": "Methods of collecting personal information", "severity": "info|low|medium|high", "matchCount": 0, "matchedKeywords": [], "findings": []},
+    "dataCollection": {"category": "Data Collection", "description": "What personal information is collected", "severity": "info|low|medium|high", "matchCount": 0, "matchedKeywords": [], "findings": []},
     "dataSharing": {"category": "Data Sharing", "description": "How data is shared with third parties", "severity": "info|low|medium|high", "matchCount": 0, "matchedKeywords": [], "findings": []},
-    "dataRetention": {"category": "Data Retention", "description": "How long data is kept", "severity": "info|low|medium|high", "matchCount": 0, "matchedKeywords": [], "findings": []},
+    "dataRetention": {"category": "Data Retention", "description": "How long data is stored", "severity": "info|low|medium|high", "matchCount": 0, "matchedKeywords": [], "findings": []},
     "security": {"category": "Security Measures", "description": "How data is protected", "severity": "info|low|medium|high", "matchCount": 0, "matchedKeywords": [], "findings": []},
     "advertising": {"category": "Advertising", "description": "Use of data for advertising", "severity": "info|low|medium|high", "matchCount": 0, "matchedKeywords": [], "findings": []},
     "userRights": {"category": "User Rights", "description": "Your rights over your data", "severity": "info|low|medium|high", "matchCount": 0, "matchedKeywords": [], "findings": []},
     "liability": {"category": "Liability", "description": "Service provider limitations", "severity": "info|low|medium|high", "matchCount": 0, "matchedKeywords": [], "findings": []}
   },
   "summary": {
-    "overview": "<2-3 sentence summary>",
-    "keyPoints": ["<point1>", "<point2>"]
+    "overview": "<2-3 sentence plain English summary>",
+    "keyPoints": ["<point 1>", "<point 2>", "<point 3>"]
   }
 }
 
-Score guide: 0-30 low, 31-60 medium, 61-100 high risk.
+Scoring guide:
+- 0-30: Low risk (reasonable privacy protections)
+- 31-60: Medium risk (some concerns worth reviewing)
+- 61-100: High risk (significant privacy implications)
 
-Red flags (HIGH): data selling, class action waivers, unlimited liability, no deletion rights, keystroke tracking, SSN collection.
-Red flags (MEDIUM): vague third-party sharing, automatic policy changes, biometric data, facial recognition.
-Good signs: GDPR/CCPA compliance, end-to-end encryption, clear deletion process, security certifications.
+Red flags to look for:
+HIGH: data selling, class action waivers, unlimited liability, no deletion rights, keystroke/screen recording, SSN collection
+MEDIUM: vague third-party sharing, automatic policy changes without notice, biometric data, facial recognition
+LOW: ambiguous data retention periods, minimal user controls
 
-Now analyze this document:`;
+Good signs: GDPR/CCPA compliance, end-to-end encryption, clear deletion process, security certifications (ISO 27001, SOC 2), data minimization, privacy by design
 
-async function fetchPolicyFromUrl(url) {
+Now analyze this document and return only the JSON:`;
+
+async function fetchPolicyFromUrl(url: string) {
   const normalizedUrl = url.startsWith('http') ? url : `https://${url}`;
-  const response = await fetch(normalizedUrl, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (compatible; PolicyLens/1.0; +https://policylens.app)'
-    }
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
 
-  if (!response.ok) {
-    throw new Error(`Failed to fetch: ${response.status}`);
+  try {
+    const response = await fetch(normalizedUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; PolicyLens/1.0; +https://policylens.app)'
+      },
+      signal: controller.signal
+    });
+    clearTimeout(timeout);
+    if (!response.ok) throw new Error(`Failed to fetch: ${response.status}`);
+    return { html: await response.text(), url: normalizedUrl };
+  } catch (err: any) {
+    clearTimeout(timeout);
+    if (err.name === 'AbortError') throw new Error('Request timed out');
+    throw err;
   }
-
-  return { html: await response.text(), url: normalizedUrl };
 }
 
-function extractPolicyText(html) {
+function extractPolicyText(html: string): string {
   const selectors = ['policy', 'privacy', 'terms', 'legal', 'agreement', 'disclaimer'];
-  
+
   for (const selector of selectors) {
     const classMatch = html.match(new RegExp(`<[^>]*(?:class|id)=["'][^"']*${selector}[^"']*["'][^>]*>([\\s\\S]*?)</(?:div|section|article|main|div)`, 'gi'));
     if (classMatch) {
       for (const match of classMatch) {
         const text = match.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-        if (text.length > 500) {
-          return cleanText(text);
-        }
+        if (text.length > 500) return cleanText(text);
       }
     }
   }
@@ -83,19 +94,14 @@ function extractPolicyText(html) {
       .trim();
     return cleanText(text);
   }
-
   return '';
 }
 
-function cleanText(text) {
-  return text
-    .replace(/\s+/g, ' ')
-    .replace(/[\r\n]+/g, '. ')
-    .replace(/\.\s*\./g, '.')
-    .trim();
+function cleanText(text: string): string {
+  return text.replace(/\s+/g, ' ').replace(/[\r\n]+/g, '. ').replace(/\.\s*\./g, '.').trim();
 }
 
-function extractTitle(html) {
+function extractTitle(html: string): string | null {
   const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i);
   if (titleMatch) return titleMatch[1].trim();
   const ogMatch = html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i);
@@ -103,8 +109,8 @@ function extractTitle(html) {
   return null;
 }
 
-async function analyzeWithClaude(text, apiKey) {
-  const response = await fetch(ANTHROPIC_API_URL, {
+async function analyzeWithClaude(text: string, apiKey: string) {
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -131,11 +137,48 @@ async function analyzeWithClaude(text, apiKey) {
   return data.content[0].text;
 }
 
-function ensureCompleteAnalysis(analysis, originalText) {
-  const defaults = {
-    dataCollection: { category: 'Data Collection', description: 'Methods of collecting personal information', severity: 'medium', matchCount: 0, matchedKeywords: [], findings: [] },
+async function analyzeWithGemini(text: string, apiKey: string) {
+  const response = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents: [{
+        parts: [{ text: `${ANALYSIS_PROMPT}\n\n${text}` }]
+      }],
+      generationConfig: {
+        temperature: 0.2,
+        maxOutputTokens: 4096,
+        topP: 0.95
+      },
+      safetySettings: [
+        { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
+        { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' },
+        { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_NONE' },
+        { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' }
+      ]
+    })
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`Gemini API error: ${response.status} - ${error}`);
+  }
+
+  const data = await response.json();
+
+  if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
+    console.error('Unexpected Gemini response:', JSON.stringify(data).substring(0, 500));
+    throw new Error('Empty response from Gemini API');
+  }
+
+  return data.candidates[0].content.parts[0].text;
+}
+
+function ensureCompleteAnalysis(analysis: any, originalText: string) {
+  const defaults: Record<string, any> = {
+    dataCollection: { category: 'Data Collection', description: 'What personal information is collected', severity: 'medium', matchCount: 0, matchedKeywords: [], findings: [] },
     dataSharing: { category: 'Data Sharing', description: 'How data is shared with third parties', severity: 'medium', matchCount: 0, matchedKeywords: [], findings: [] },
-    dataRetention: { category: 'Data Retention', description: 'How long data is kept', severity: 'low', matchCount: 0, matchedKeywords: [], findings: [] },
+    dataRetention: { category: 'Data Retention', description: 'How long data is stored', severity: 'low', matchCount: 0, matchedKeywords: [], findings: [] },
     security: { category: 'Security Measures', description: 'How data is protected', severity: 'low', matchCount: 0, matchedKeywords: [], findings: [] },
     advertising: { category: 'Advertising', description: 'Use of data for advertising', severity: 'low', matchCount: 0, matchedKeywords: [], findings: [] },
     userRights: { category: 'User Rights', description: 'Your rights over your data', severity: 'info', matchCount: 0, matchedKeywords: [], findings: [] },
@@ -153,11 +196,9 @@ function ensureCompleteAnalysis(analysis, originalText) {
 
   if (!analysis.riskScore) {
     let score = 35;
-    const weights = { high: 15, medium: 8, low: 3, info: 0 };
-    for (const cat of Object.values(analysis.categories)) {
-      if (cat && cat.matchCount > 0) {
-        score += cat.matchCount * (weights[cat.severity] || 5);
-      }
+    const weights: Record<string, number> = { high: 15, medium: 8, low: 3, info: 0 };
+    for (const cat of Object.values(analysis.categories) as any[]) {
+      if (cat?.matchCount > 0) score += cat.matchCount * (weights[cat.severity] || 5);
     }
     analysis.riskScore = Math.max(0, Math.min(100, score));
   }
@@ -167,7 +208,7 @@ function ensureCompleteAnalysis(analysis, originalText) {
   }
 
   if (!analysis.confidenceScore) {
-    const total = Object.values(analysis.categories).reduce((sum, c) => sum + (c?.matchCount || 0), 0);
+    const total = Object.values(analysis.categories).reduce((sum: number, c: any) => sum + (c?.matchCount || 0), 0);
     analysis.confidenceScore = Math.min(95, 50 + total * 3);
   }
 
@@ -187,7 +228,7 @@ function ensureCompleteAnalysis(analysis, originalText) {
   return analysis;
 }
 
-export async function POST({ request }) {
+export async function POST({ request }: { request: Request }) {
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
@@ -195,22 +236,23 @@ export async function POST({ request }) {
   };
 
   try {
-    const apiKey = process.env.ANTHROPIC_API_KEY;
-    
+    const geminiKey = process.env.GEMINI_API_KEY;
+    const anthropicKey = process.env.ANTHROPIC_API_KEY;
+    const apiKey = geminiKey || anthropicKey;
+
     if (!apiKey) {
-      return new Response(JSON.stringify({ error: 'API key not configured. Set ANTHROPIC_API_KEY in Vercel environment variables.' }), {
-        status: 500,
-        headers
-      });
+      return new Response(JSON.stringify({
+        error: 'AI API key not configured. Please set GEMINI_API_KEY (free from https://aistudio.google.com) or ANTHROPIC_API_KEY in Vercel environment variables.'
+      }), { status: 500, headers });
     }
 
     const body = await request.json();
     const { url, text: inputText } = body;
 
-    let policyText;
+    let policyText: string;
     let extractedDomain = 'Unknown';
     let extractedTitle = 'Policy Analysis';
-    let fetchedUrl = null;
+    let fetchedUrl: string | null = null;
 
     if (url) {
       try {
@@ -219,52 +261,51 @@ export async function POST({ request }) {
         fetchedUrl = normalizedUrl;
         extractedDomain = new URL(normalizedUrl).hostname;
         extractedTitle = extractTitle(html) || extractedDomain;
-      } catch (error) {
-        return new Response(JSON.stringify({ error: `Failed to fetch URL: ${error.message}` }), {
-          status: 400,
-          headers
-        });
+      } catch (error: any) {
+        return new Response(JSON.stringify({ error: `Failed to fetch URL: ${error.message}` }), { status: 400, headers });
       }
     } else if (inputText) {
       policyText = inputText;
+      extractedDomain = 'Manual Analysis';
+      extractedTitle = 'Custom Policy Text';
     } else {
-      return new Response(JSON.stringify({ error: 'Either URL or text must be provided' }), {
-        status: 400,
-        headers
-      });
+      return new Response(JSON.stringify({ error: 'Either URL or text must be provided' }), { status: 400, headers });
     }
 
     if (!policyText || policyText.length < 100) {
-      return new Response(JSON.stringify({ error: 'Policy text too short or could not be extracted' }), {
-        status: 400,
-        headers
-      });
+      return new Response(JSON.stringify({ error: 'Policy text too short or could not be extracted. Try pasting the text directly.' }), { status: 400, headers });
     }
 
-    const truncatedText = policyText.length > 50000 
-      ? policyText.substring(0, 50000) + '...'
-      : policyText;
+    const truncatedText = policyText.length > 50000 ? policyText.substring(0, 50000) + '...' : policyText;
 
-    const aiResponse = await analyzeWithClaude(truncatedText, apiKey);
-    
+    const useGemini = !!geminiKey;
+    let aiResponse: string;
+    try {
+      if (useGemini) {
+        aiResponse = await analyzeWithGemini(truncatedText, geminiKey);
+      } else {
+        aiResponse = await analyzeWithClaude(truncatedText, anthropicKey!);
+      }
+    } catch (aiError: any) {
+      console.error('AI API error:', aiError.message);
+      return new Response(JSON.stringify({ error: `AI analysis failed: ${aiError.message}` }), { status: 500, headers });
+    }
+
     let cleanJson = aiResponse.trim()
-      .replace(/^```json\n?/, '')
-      .replace(/^```\n?/, '')
-      .replace(/\n?```$/, '')
+      .replace(/^```json\s*/i, '')
+      .replace(/^```\s*/, '')
+      .replace(/\s*```$/, '')
       .trim();
 
-    let analysis;
+    let analysis: any;
     try {
       analysis = JSON.parse(cleanJson);
     } catch (parseError) {
-      console.error('Parse error:', parseError, 'Raw:', cleanJson.substring(0, 500));
-      return new Response(JSON.stringify({ 
-        error: 'Failed to parse AI response',
+      console.error('Parse error:', parseError, 'Raw response:', cleanJson.substring(0, 500));
+      return new Response(JSON.stringify({
+        error: 'Failed to parse AI response. Please try again.',
         raw: cleanJson.substring(0, 200)
-      }), {
-        status: 500,
-        headers
-      });
+      }), { status: 500, headers });
     }
 
     analysis = ensureCompleteAnalysis(analysis, truncatedText);
@@ -282,12 +323,9 @@ export async function POST({ request }) {
 
     return new Response(JSON.stringify(result), { status: 200, headers });
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Analysis error:', error);
-    return new Response(JSON.stringify({ error: error.message || 'Analysis failed' }), {
-      status: 500,
-      headers
-    });
+    return new Response(JSON.stringify({ error: error.message || 'Analysis failed' }), { status: 500, headers });
   }
 }
 

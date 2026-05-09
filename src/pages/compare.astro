@@ -16,14 +16,92 @@ if (p1Param && p2Param) {
   try {
     policy1 = JSON.parse(decodeURIComponent(p1Param));
     policy2 = JSON.parse(decodeURIComponent(p2Param));
-    
-    const { comparePolicies } = await import('../scripts/analyzer.js');
-    comparison = comparePolicies(policy1, policy2);
+    comparison = comparePolicyResults(policy1, policy2);
   } catch (e) {
     error = 'Could not load comparison data';
   }
 } else {
   error = 'Missing comparison data';
+}
+
+interface CategoryResult {
+  category?: string;
+  matchCount: number;
+  severity: string;
+  matchedKeywords?: string[];
+  findings?: string[];
+}
+
+interface PolicyResult {
+  domain: string;
+  url?: string;
+  title: string;
+  analysis?: {
+    riskScore: number;
+    riskLevel: string;
+    categories?: Record<string, CategoryResult>;
+    redFlags?: Array<{ message: string; severity: string }>;
+    goodSigns?: Array<{ message: string }>;
+    summary?: { overview: string; keyPoints: string[] };
+  };
+}
+
+function comparePolicyResults(policy1: PolicyResult, policy2: PolicyResult) {
+  const categories: Record<string, Record<string, { matchCount: number; severity: string } | null>> = {};
+  const differences: Array<{ category: string; type: string; message: string }> = [];
+  const similarities: string[] = [];
+
+  const cats1 = Object.keys(policy1.analysis?.categories || {});
+  const cats2 = Object.keys(policy2.analysis?.categories || {});
+  const allCats = [...new Set([...cats1, ...cats2])];
+
+  for (const cat of allCats) {
+    const c1 = policy1.analysis?.categories?.[cat];
+    const c2 = policy2.analysis?.categories?.[cat];
+    categories[cat] = {
+      [policy1.domain]: c1 ? { matchCount: c1.matchCount || 0, severity: c1.severity || 'info' } : null,
+      [policy2.domain]: c2 ? { matchCount: c2.matchCount || 0, severity: c2.severity || 'info' } : null
+    };
+    if (c1 && c2 && c1.matchCount !== c2.matchCount) {
+      differences.push({
+        category: c1.category || cat,
+        type: 'frequency',
+        message: `${policy1.domain} has ${c1.matchCount > c2.matchCount ? 'more' : 'fewer'} mentions of "${c1.category || cat}" than ${policy2.domain}`
+      });
+    } else if (c1 && !c2) {
+      differences.push({
+        category: c1.category || cat,
+        type: 'uniqueness',
+        message: `${policy1.domain} addresses "${c1.category || cat}" while ${policy2.domain} does not`
+      });
+    } else if (!c1 && c2) {
+      differences.push({
+        category: c2.category || cat,
+        type: 'uniqueness',
+        message: `${policy2.domain} addresses "${c2.category || cat}" while ${policy1.domain} does not`
+      });
+    }
+  }
+
+  const score1 = policy1.analysis?.riskScore || 50;
+  const score2 = policy2.analysis?.riskScore || 50;
+  const winner = score1 <= score2 ? policy1.domain : policy2.domain;
+
+  return {
+    riskScores: { [policy1.domain]: score1, [policy2.domain]: score2 },
+    riskLevels: { [policy1.domain]: policy1.analysis?.riskLevel || 'medium', [policy2.domain]: policy2.analysis?.riskLevel || 'medium' },
+    categories,
+    differences,
+    similarities,
+    summary: {
+      winner,
+      saferScore: Math.min(score1, score2),
+      riskierScore: Math.max(score1, score2),
+      recommendation: score1 === score2
+        ? 'Both policies have similar risk profiles.'
+        : `${winner} has a better privacy posture.`
+    }
+  };
 }
 ---
 

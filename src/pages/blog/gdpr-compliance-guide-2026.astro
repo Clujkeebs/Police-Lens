@@ -1,0 +1,143 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+---
+
+<ContentLayout
+  title="Complete GDPR Compliance Guide for 2026"
+  description="Everything businesses need to know about GDPR compliance in 2026 — from cookie consent requirements to data subject rights, potential fines, and practical implementation steps."
+  keywords="GDPR compliance 2026, GDPR guide, EU data protection, cookie consent, data subject rights, GDPR fines, privacy compliance"
+>
+  <slot name="breadcrumb">
+    <a href="/blog">Blog</a>
+  </slot>
+
+  <slot name="toc">
+    <a href="#what-is-gdpr">What Is GDPR</a>
+    <a href="#who-must-comply">Who Must Comply</a>
+    <a href="#key-requirements">Key Requirements</a>
+    <a href="#data-subject-rights">Data Subject Rights</a>
+    <a href="#cookie-consent">Cookie Consent</a>
+    <a href="#dpias">DPIAs Explained</a>
+    <a href="#fines">Fines & Penalties</a>
+    <a href="#implementation">Implementation Steps</a>
+  </slot>
+
+  <h2 id="what-is-gdpr">What Is GDPR?</h2>
+  <p>The General Data Protection Regulation (GDPR) is the European Union's comprehensive data privacy law, effective since May 25, 2018. It's widely considered the gold standard for privacy regulation worldwide and has inspired similar laws in over 100 countries.</p>
+
+  <div class="highlight-box">
+    <strong>GDPR at a Glance:</strong> GDPR gives EU residents control over their personal data and requires organizations to be transparent about data collection, processing, and sharing. It applies to any organization handling EU residents' data — regardless of where the organization is based.
+  </div>
+
+  <h2 id="who-must-comply">Who Must Comply with GDPR?</h2>
+  <p>GDPR applies to:</p>
+  <ul>
+    <li><strong>Controllers:</strong> Organizations that determine the purposes and means of processing personal data</li>
+    <li><strong>Processors:</strong> Organizations that process data on behalf of controllers</li>
+    <li><strong>Any organization worldwide</strong> that offers goods or services to EU residents or monitors their behavior</li>
+  </ul>
+
+  <p>There's no minimum size threshold. Whether you're a solo entrepreneur or a multinational corporation, if you handle EU residents' data, GDPR applies to you.</p>
+
+  <h2 id="key-requirements">Key GDPR Requirements</h2>
+
+  <h3>1. Lawful Basis for Processing</h3>
+  <p>You must have a valid legal basis for collecting and processing personal data. The six lawful bases are:</p>
+  <ul>
+    <li><strong>Consent:</strong> The individual has given clear consent</li>
+    <li><strong>Contract:</strong> Processing is necessary for a contract</li>
+    <li><strong>Legal obligation:</strong> Required by law</li>
+    <li><strong>Vital interests:</strong> Protecting someone's life</li>
+    <li><strong>Public task:</strong> Necessary for public interest</li>
+    <li><strong>Legitimate interests:</strong> Your interests don't override individual rights</li>
+  </ul>
+
+  <h3>2. Transparency & Notice</h3>
+  <p>Your privacy policy must be:</p>
+  <ul>
+    <li>Written in clear, plain language</li>
+    <li>Easily accessible (not buried in fine print)</li>
+    <li>Comprehensive about what data you collect and why</li>
+    <li>Transparent about third-party sharing</li>
+    <li>Clear about data retention periods</li>
+  </ul>
+
+  <h3>3. Data Minimization</h3>
+  <p>Only collect data that is "adequate, relevant, and limited to what is necessary" for your stated purposes. Don't collect data "just in case" you might need it later.</p>
+
+  <h3>4. Storage Limitation</h3>
+  <p>Don't keep personal data longer than necessary. Define clear retention periods and delete data when it's no longer needed.</p>
+
+  <h3>5. Security Measures</h3>
+  <p>Implement "appropriate technical and organizational measures" to protect personal data. This includes encryption, access controls, regular security testing, and incident response plans.</p>
+
+  <h2 id="data-subject-rights">Data Subject Rights Under GDPR</h2>
+  <p>GDPR grants individuals eight fundamental rights:</p>
+
+  <div class="checklist">
+    <ol>
+      <li><strong>Right to be informed:</strong> Know what data is collected and how it's used</li>
+      <li><strong>Right of access:</strong> Request a copy of your personal data</li>
+      <li><strong>Right to rectification:</strong> Correct inaccurate personal data</li>
+      <li><strong>Right to erasure:</strong> Have your data deleted ("right to be forgotten")</li>
+      <li><strong>Right to restrict processing:</strong> Limit how your data is used</li>
+      <li><strong>Right to data portability:</strong> Receive your data in a machine-readable format</li>
+      <li><strong>Right to object:</strong> Object to processing for marketing or legitimate interests</li>
+      <li><strong>Rights related to automated decision-making:</strong> Not be subject to decisions made solely by algorithms</li>
+    </ol>
+  </div>
+
+  <h2 id="cookie-consent">Cookie Consent Requirements</h2>
+  <p>Under GDPR (as interpreted with the ePrivacy Directive), cookie consent must be:</p>
+  <ul>
+    <li><strong>Freely given:</strong> No pre-checked boxes or cookie walls that block access</li>
+    <li><strong>Specific:</strong> Separate consent for different cookie categories</li>
+    <li><strong>Informed:</strong> Clear explanation of what each cookie does</li>
+    <li><strong>Unambiguous:</strong> Clear affirmative action (not passive acceptance)</li>
+    <li><strong>Easy to withdraw:</strong> Just as easy to opt out as it was to opt in</li>
+  </ul>
+
+  <h2 id="dpias">Data Protection Impact Assessments</h2>
+  <p>A DPIA is required when processing is "likely to result in a high risk" to individuals. You need a DPIA for:</p>
+  <ul>
+    <li>Systematic and extensive profiling</li>
+    <li>Large-scale processing of sensitive data</li>
+    <li>Systematic monitoring of public areas</li>
+    <li>New technologies that may impact rights</li>
+  </ul>
+
+  <h2 id="fines">GDPR Fines and Penalties</h2>
+  <p>GDPR has teeth. Penalties are structured in two tiers:</p>
+
+  <div class="warning-box">
+    <h4>Tier 1: Up to €10 million or 2% of global annual turnover</h4>
+    <p>For violations related to: data processing records, security measures, data protection officers, data protection impact assessments, and breach notifications.</p>
+  </div>
+
+  <div class="warning-box">
+    <h4>Tier 2: Up to €20 million or 4% of global annual turnover</h4>
+    <p>For violations related to: basic processing principles (consent, lawfulness), data subject rights, and international data transfers.</p>
+  </div>
+
+  <p>Notable fines include Meta (€1.2 billion), Amazon (€746 million), and TikTok (€345 million). Regulators are increasingly aggressive about enforcement.</p>
+
+  <h2 id="implementation">GDPR Implementation Checklist</h2>
+  <p>Follow these steps to achieve GDPR compliance:</p>
+
+  <div class="checklist">
+    <ol>
+      <li><strong>Data Audit:</strong> Map all personal data you collect, process, and store</li>
+      <li><strong>Legal Basis:</strong> Identify the lawful basis for each data processing activity</li>
+      <li><strong>Privacy Policy:</strong> Update your privacy policy to meet transparency requirements</li>
+      <li><strong>Cookie Consent:</strong> Implement a compliant cookie consent mechanism</li>
+      <li><strong>Data Rights Process:</strong> Create procedures for handling data subject requests</li>
+      <li><strong>Security Measures:</strong> Implement appropriate technical and organizational safeguards</li>
+      <li><strong>Data Processing Agreements:</strong> Sign DPAs with all third-party processors</li>
+      <li><strong>Breach Notification Plan:</strong> Prepare to notify authorities within 72 hours</li>
+      <li><strong>Staff Training:</strong> Train all employees on GDPR requirements</li>
+      <li><strong>Regular Review:</strong> Schedule ongoing compliance reviews and updates</li>
+    </ol>
+  </div>
+
+  <p>GDPR compliance isn't a one-time project — it's an ongoing commitment. But the benefits go beyond avoiding fines: it builds trust with your users and demonstrates that you value their privacy.</p>
+</ContentLayout>

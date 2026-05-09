@@ -133,6 +133,7 @@ const faqSchema = {
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/favicon.svg" />
   <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="PolicyLens Blog RSS" href="/blog/rss.xml" />
   
   <meta property="og:type" content={ogType} />
   <meta property="og:url" content={currentUrl} />
@@ -164,6 +165,7 @@ const faqSchema = {
   {schemaType === 'faq' && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
   
   <link rel="stylesheet" href="/styles/global.css" />
+  <slot name="head" />
 </head>
 <body>
   <header class="site-header">
@@ -189,9 +191,9 @@ const faqSchema = {
       <ul class="nav-links">
         <li><a href="/">Analyze</a></li>
         <li><a href="/about">How It Works</a></li>
+        <li><a href="/blog">Blog</a></li>
         <li><a href="/privacy-laws/gdpr">Privacy Laws</a></li>
         <li><a href="/faq">FAQ</a></li>
-        <li><a href="/contact">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -224,19 +226,21 @@ const faqSchema = {
           <ul>
             <li><a href="/">Analyze Policy</a></li>
             <li><a href="/about">How It Works</a></li>
-            <li><a href="/privacy-policy-analyzer">Free Checker</a></li>
+            <li><a href="/guides/privacy-policy-checker">Free Checker</a></li>
+            <li><a href="/compare">Compare Policies</a></li>
           </ul>
         </div>
         <div class="footer-column">
-          <h4>Resources</h4>
+          <h4>Learn</h4>
           <ul>
+            <li><a href="/blog">Blog</a></li>
             <li><a href="/privacy-laws/gdpr">GDPR Guide</a></li>
             <li><a href="/privacy-laws/ccpa">CCPA Guide</a></li>
             <li><a href="/faq">FAQ</a></li>
           </ul>
         </div>
         <div class="footer-column">
-          <h4>Legal</h4>
+          <h4>Company</h4>
           <ul>
             <li><a href="/privacy-policy">Privacy Policy</a></li>
             <li><a href="/terms-of-service">Terms of Service</a></li>
@@ -264,10 +268,14 @@ const faqSchema = {
   </script>
   
   <SpeedInsights />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3526440256333845" crossorigin="anonymous"></script>
-  <script>
-    window.adsbygoogle = window.adsbygoogle || [];
-    adsbygoogle.push({});
-  </script>
+  {!noindex && (
+    <>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3526440256333845" crossorigin="anonymous"></script>
+      <script>
+        window.adsbygoogle = window.adsbygoogle || [];
+        adsbygoogle.push({});
+      </script>
+    </>
+  )}
 </body>
 </html>

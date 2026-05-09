@@ -1,0 +1,153 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+---
+
+<ContentLayout
+  title="US State Privacy Laws: A Complete Comparison Guide 2026"
+  description="Compare privacy laws across California, Virginia, Colorado, Connecticut, Texas, and 20+ other states. Learn what each law requires and who must comply."
+  keywords="state privacy laws, CCPA, CPRA, US privacy law comparison, Virginia CDPA, Colorado CPA, Texas privacy law, state privacy regulations"
+>
+  <slot name="breadcrumb">
+    <a href="/blog">Blog</a>
+  </slot>
+
+  <slot name="toc">
+    <a href="#overview">Overview</a>
+    <a href="#california">California (CCPA/CPRA)</a>
+    <a href="#virginia">Virginia (VCDPA)</a>
+    <a href="#colorado">Colorado (CPA)</a>
+    <a href="#connecticut">Connecticut (CTDPA)</a>
+    <a href="#texas">Texas (TDPSA)</a>
+    <a href="#other-states">Other States</a>
+    <a href="#comparison-table">Comparison Table</a>
+    <a href="#federal">Federal Outlook</a>
+  </slot>
+
+  <h2 id="overview">The US Privacy Law Landscape</h2>
+  <p>The United States has no comprehensive federal privacy law (yet). Instead, a patchwork of state laws has emerged, creating one of the most complex privacy regulatory environments in the world. As of 2026, over 20 states have enacted comprehensive consumer privacy legislation.</p>
+
+  <div class="highlight-box">
+    <strong>Key Context:</strong> Unlike GDPR which applies uniformly across the EU, each US state law has different thresholds, requirements, and enforcement mechanisms. If you do business nationally, you likely need to comply with multiple state laws.
+  </div>
+
+  <h2 id="california">California — CCPA & CPRA (The Gold Standard)</h2>
+  <p>California leads US privacy regulation with the most comprehensive framework:</p>
+
+  <h3>Who Must Comply</h3>
+  <p>For-profit businesses that collect California residents' data and meet ONE of:</p>
+  <ul>
+    <li>Annual gross revenue over $25 million</li>
+    <li>Buy, sell, or share data of 100,000+ consumers/households (CCPA) or 50,000+ (CPRA)</li>
+    <li>Derive 50%+ of revenue from selling personal data</li>
+  </ul>
+
+  <h3>Consumer Rights Under CPRA (2023+)</h3>
+  <ul>
+    <li>Right to know what data is collected</li>
+    <li>Right to delete personal information</li>
+    <li>Right to opt-out of sale and sharing</li>
+    <li>Right to correct inaccurate information</li>
+    <li>Right to limit use of sensitive personal information</li>
+    <li>Right to access information about automated decisions</li>
+  </ul>
+
+  <h3>Enforcement</h3>
+  <p>The California Privacy Protection Agency (CPPA) enforces CPRA. Fines: $2,500 per violation (unintentional), $7,500 per violation (intentional or involving minors). Private right of action for data breaches.</p>
+
+  <h2 id="virginia">Virginia — VCDPA</h2>
+  <p>Virginia was the second state to pass comprehensive privacy legislation:</p>
+  <ul>
+    <li><strong>Threshold:</strong> Control/process data of 100,000+ consumers OR derive 50%+ of revenue from selling data of 25,000+ consumers</li>
+    <li><strong>Key Rights:</strong> Access, correction, deletion, data portability, opt-out of sale/targeted advertising/profiling</li>
+    <li><strong>Enforcement:</strong> Attorney General only (no private right of action)</li>
+    <li><strong>Notable:</strong> No requirement for a global privacy control signal recognition</li>
+  </ul>
+
+  <h2 id="colorado">Colorado — CPA</h2>
+  <p>Colorado's law is considered one of the stronger state frameworks:</p>
+  <ul>
+    <li><strong>Threshold:</strong> Control/process data of 100,000+ consumers OR derive revenue from selling data of 25,000+ consumers</li>
+    <li><strong>Key Rights:</strong> Access, correction, deletion, portability, opt-out of sale/targeted advertising/profiling</li>
+    <li><strong>Unique Features:</strong> Requires universal opt-out mechanism recognition, mandates data protection assessments</li>
+    <li><strong>Enforcement:</strong> Attorney General and district attorneys</li>
+  </ul>
+
+  <h2 id="connecticut">Connecticut — CTDPA</h2>
+  <ul>
+    <li><strong>Threshold:</strong> Process data of 100,000+ consumers (excluding payment transactions) OR 25,000+ consumers with 25%+ revenue from data sale</li>
+    <li><strong>Key Rights:</strong> Similar to Virginia and Colorado</li>
+    <li><strong>Unique:</strong> Stronger protections for children (under 16), health data, and requires privacy policy accessibility standards</li>
+  </ul>
+
+  <h2 id="texas">Texas — TDPSA</h2>
+  <ul>
+    <li><strong>Threshold:</strong> No revenue or volume threshold — applies to any business processing Texas residents' data (except small businesses as defined by US SBA)</li>
+    <li><strong>Key Rights:</strong> Access, correction, deletion, portability, opt-out of sale/targeted advertising</li>
+    <li><strong>Notable:</strong> Broad scope due to the lack of revenue thresholds</li>
+  </ul>
+
+  <h2 id="other-states">Other States with Privacy Laws</h2>
+  <p>By 2026, comprehensive privacy laws also exist in:</p>
+  <ul>
+    <li>Florida (Digital Bill of Rights)</li>
+    <li>Oregon, Montana, Tennessee, Iowa, Indiana, Delaware</li>
+    <li>Utah (more business-friendly, weaker consumer protections)</li>
+    <li>New Jersey, New Hampshire, Kentucky, Nebraska, Maryland, Minnesota, Rhode Island</li>
+  </ul>
+
+  <h2 id="comparison-table">Quick Comparison: Major State Laws</h2>
+
+  <div class="checklist">
+    <table style="width:100%; border-collapse: collapse; color: var(--text-secondary); font-size: 0.9rem;">
+      <tr style="border-bottom: 2px solid var(--border-color);">
+        <th style="text-align: left; padding: 12px 8px; color: var(--text-primary);">Feature</th>
+        <th style="padding: 12px 8px; color: var(--text-primary);">California</th>
+        <th style="padding: 12px 8px; color: var(--text-primary);">Virginia</th>
+        <th style="padding: 12px 8px; color: var(--text-primary);">Colorado</th>
+        <th style="padding: 12px 8px; color: var(--text-primary);">Texas</th>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--border-color);">
+        <td style="padding: 8px;">Private Right of Action</td>
+        <td style="padding: 8px; text-align: center;">✅ Limited</td>
+        <td style="padding: 8px; text-align: center;">❌</td>
+        <td style="padding: 8px; text-align: center;">❌</td>
+        <td style="padding: 8px; text-align: center;">❌</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--border-color);">
+        <td style="padding: 8px;">Sensitive Data Rules</td>
+        <td style="padding: 8px; text-align: center;">✅ Strong</td>
+        <td style="padding: 8px; text-align: center;">✅</td>
+        <td style="padding: 8px; text-align: center;">✅ Strong</td>
+        <td style="padding: 8px; text-align: center;">✅</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--border-color);">
+        <td style="padding: 8px;">Universal Opt-Out</td>
+        <td style="padding: 8px; text-align: center;">✅ Required</td>
+        <td style="padding: 8px; text-align: center;">❌</td>
+        <td style="padding: 8px; text-align: center;">✅ Required</td>
+        <td style="padding: 8px; text-align: center;">❌</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--border-color);">
+        <td style="padding: 8px;">Data Protection Assessments</td>
+        <td style="padding: 8px; text-align: center;">✅ Required</td>
+        <td style="padding: 8px; text-align: center;">✅ Required</td>
+        <td style="padding: 8px; text-align: center;">✅ Required</td>
+        <td style="padding: 8px; text-align: center;">✅ Required</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px;">Cure Period</td>
+        <td style="padding: 8px; text-align: center;">None (CPRA)</td>
+        <td style="padding: 8px; text-align: center;">30 days</td>
+        <td style="padding: 8px; text-align: center;">60 days</td>
+        <td style="padding: 8px; text-align: center;">30 days</td>
+      </tr>
+    </table>
+  </div>
+
+  <h2 id="federal">The Federal Privacy Law Outlook</h2>
+  <p>The American Data Privacy and Protection Act (ADPPA) has been proposed in Congress multiple times but has yet to pass. If enacted, it would create a comprehensive federal standard that preempts (replaces) many state laws. Until then, businesses must navigate the state-by-state patchwork.</p>
+
+  <div class="warning-box">
+    <strong>Practical Advice:</strong> If you handle consumer data in the US, aim for CCPA/CPRA compliance as your baseline. It's the strictest US law, and meeting its requirements will put you in good shape for other states. Or better yet, aim for GDPR compliance — it exceeds all US state laws.
+  </div>
+</ContentLayout>

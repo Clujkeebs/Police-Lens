@@ -18,9 +18,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="container">
       <div class="contact-grid">
         <div class="contact-form-wrapper">
-          <form name="contact" method="POST" data-netlify="true" class="contact-form">
-            <input type="hidden" name="form-name" value="contact" />
-            
+          <form name="contact" action="https://formspree.io/f/yourFormId" method="POST" class="contact-form">
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" required placeholder="Your name" />

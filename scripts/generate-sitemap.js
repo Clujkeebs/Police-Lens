@@ -1,7 +1,7 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
-const siteUrl = 'https://policylens.app';
+const siteUrl = 'https://policy-lens-ai-app.vercel.app';
 const today = new Date().toISOString().split('T')[0];
 
 const allPages = [
@@ -11,6 +11,13 @@ const allPages = [
   { url: '/contact', priority: '0.7', changefreq: 'monthly' },
   { url: '/privacy-policy', priority: '0.5', changefreq: 'yearly' },
   { url: '/terms-of-service', priority: '0.5', changefreq: 'yearly' },
+  { url: '/blog', priority: '0.9', changefreq: 'weekly' },
+  { url: '/blog/why-you-need-privacy-policy-checker', priority: '0.8', changefreq: 'monthly' },
+  { url: '/blog/ai-privacy-policies-explained', priority: '0.8', changefreq: 'monthly' },
+  { url: '/blog/gdpr-compliance-guide-2026', priority: '0.8', changefreq: 'monthly' },
+  { url: '/blog/big-tech-privacy-policies-ranked', priority: '0.8', changefreq: 'monthly' },
+  { url: '/blog/state-privacy-laws-comparison', priority: '0.8', changefreq: 'monthly' },
+  { url: '/blog/how-to-read-privacy-policy', priority: '0.8', changefreq: 'monthly' },
   { url: '/privacy-basics/what-is-privacy-policy', priority: '0.9', changefreq: 'monthly' },
   { url: '/privacy-basics/privacy-policy-vs-terms', priority: '0.8', changefreq: 'monthly' },
   { url: '/privacy-basics/do-i-need-privacy-policy', priority: '0.9', changefreq: 'monthly' },
@@ -37,12 +44,12 @@ const allPages = [
   { url: '/guides/small-business-privacy-policy', priority: '0.8', changefreq: 'monthly' },
   { url: '/guides/saas-privacy-policy', priority: '0.8', changefreq: 'monthly' },
   { url: '/guides/mobile-app-privacy-policy', priority: '0.8', changefreq: 'monthly' },
-  { url: '/guides/automated-compliance-scanning', priority: '0.7', changefreq: 'monthly' },
+  { url: '/guides/automated-compliance-scanning', priority: '0.7', changefreq: 'monthly' }
 ];
 
 function generateSitemap() {
-  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
-  xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+  let xml = '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n';
+  xml += '<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n';
   
   for (const page of allPages) {
     xml += '  <url>\n';
@@ -55,11 +62,7 @@ function generateSitemap() {
   
   xml += '</urlset>';
   
-  fs.writeFileSync(
-    path.join(process.cwd(), 'public', 'sitemap.xml'),
-    xml
-  );
-  
+  fs.writeFileSync(path.join(process.cwd(), 'public', 'sitemap.xml'), xml);
   console.log(`Sitemap generated with ${allPages.length} pages`);
 }
 
