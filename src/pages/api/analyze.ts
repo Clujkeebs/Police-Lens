@@ -1,5 +1,7 @@
 export const prerender = false;
 
+const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const GROQ_MODEL = 'llama-3.3-70b-versatile';
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
 interface CategoryResult {
@@ -132,6 +134,43 @@ function extractTitle(html: string): string | null {
   return null;
 }
 
+async function analyzeWithGroq(text: string, apiKey: string) {
+  const response = await fetch(GROQ_API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({
+      model: GROQ_MODEL,
+      messages: [{
+        role: 'user',
+        content: `${ANALYSIS_PROMPT}\n\n${text}`
+      }],
+      temperature: 0.2,
+      max_tokens: 4096
+    })
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`Groq API error: ${response.status} - ${error}`);
+  }
+
+  const data = await response.json();
+
+  if (data.error) {
+    throw new Error(`Groq API error: ${data.error.message || JSON.stringify(data.error)}`);
+  }
+
+  if (!data.choices?.[0]?.message?.content) {
+    console.error('Unexpected Groq response:', JSON.stringify(data).substring(0, 500));
+    throw new Error('Empty response from Groq API');
+  }
+
+  return data.choices[0].message.content;
+}
+
 async function analyzeWithClaude(text: string, apiKey: string) {
   const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -259,13 +298,14 @@ export async function POST({ request }: { request: Request }) {
   };
 
   try {
+    const groqKey = process.env.GROQ_API_KEY;
     const geminiKey = process.env.GEMINI_API_KEY;
     const anthropicKey = process.env.ANTHROPIC_API_KEY;
-    const apiKey = geminiKey || anthropicKey;
+    const apiKey = groqKey || geminiKey || anthropicKey;
 
     if (!apiKey) {
       return new Response(JSON.stringify({
-        error: 'AI API key not configured. Please set GEMINI_API_KEY (free from https://aistudio.google.com) or ANTHROPIC_API_KEY in Vercel environment variables.'
+        error: 'AI API key not configured. Please set GROQ_API_KEY (free from https://console.groq.com) in Vercel environment variables.'
       }), { status: 500, headers });
     }
 
@@ -302,10 +342,13 @@ export async function POST({ request }: { request: Request }) {
 
     const truncatedText = policyText.length > 50000 ? policyText.substring(0, 50000) + '...' : policyText;
 
-    const useGemini = !!geminiKey;
+    const useGroq = !!groqKey;
+    const useGemini = !useGroq && !!geminiKey;
     let aiResponse: string;
     try {
-      if (useGemini) {
+      if (useGroq) {
+        aiResponse = await analyzeWithGroq(truncatedText, groqKey);
+      } else if (useGemini) {
         aiResponse = await analyzeWithGemini(truncatedText, geminiKey);
       } else {
         aiResponse = await analyzeWithClaude(truncatedText, anthropicKey!);

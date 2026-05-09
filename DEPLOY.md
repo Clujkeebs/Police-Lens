@@ -31,15 +31,18 @@
 
 ## Add API Key (2 minutes)
 
-1. In Netlify, go to "Site settings"
-2. Find "Environment variables"
-3. Click "Add a variable"
-4. Fill in:
-   - Key: `ANTHROPIC_API_KEY`
-   - Value: `your-api-key-here`
-5. Click "Save"
-6. Go to "Deploys" tab
-7. Click "Trigger deploy" → "Deploy latest"
+1. In Vercel, go to your project → "Settings" → "Environment Variables"
+2. Click "Add"
+3. Fill in:
+   - Key: `GROQ_API_KEY`
+   - Value: `your-groq-api-key-here`
+4. Click "Save"
+5. Go to "Deployments" tab
+6. Click "..." → "Redeploy"
+
+**Get a free Groq API key at https://console.groq.com**
+
+Alternatively, you can use `GEMINI_API_KEY` (Google Gemini) or `ANTHROPIC_API_KEY` (Claude) as fallbacks.
 
 ## Verify (1 minute)
 

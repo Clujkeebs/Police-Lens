@@ -4,7 +4,7 @@ AI-powered privacy policy and terms of service analyzer. Understand what you're 
 
 ## Features
 
-- **AI-Powered Analysis** — Uses Google Gemini Flash (free) or Claude AI for intelligent policy breakdown
+- **AI-Powered Analysis** — Uses Groq (free Llama 3.3) or Claude AI for intelligent policy breakdown
 - **URL or Text Input** — Analyze from URL or paste text directly
 - **Risk Scoring** — Get instant risk scores (0-100)
 - **Red Flag Detection** — Identifies concerning clauses like data selling, class action waivers
@@ -24,12 +24,12 @@ npm run dev
 ### Prerequisites
 - GitHub account
 - Vercel account
-- Google Gemini API key (free — 1,500 requests/day)
+- Groq API key (free — generous rate limits on open-source models)
 
-### Step 1: Get a Free Gemini API Key
-1. Go to [Google AI Studio](https://aistudio.google.com)
-2. Sign in with your Google account
-3. Click "Get API Key" and create a new key
+### Step 1: Get a Free Groq API Key
+1. Go to [Groq Console](https://console.groq.com)
+2. Sign in with your Google or GitHub account
+3. Go to "API Keys" and create a new key
 4. Copy the key
 
 ### Step 2: Push to GitHub
@@ -47,12 +47,12 @@ git push -u origin main
 2. Click **Import Project** → Select your GitHub repo
 3. Vercel auto-detects Astro — no config needed
 4. Under **Environment Variables**, add:
-   - **Key:** `GEMINI_API_KEY`
-   - **Value:** your Gemini API key from Step 1
+   - **Key:** `GROQ_API_KEY`
+   - **Value:** your Groq API key from Step 1
 5. Click **Deploy**
 
-### Alternative: Use Claude AI
-If you prefer Anthropic's Claude, set `ANTHROPIC_API_KEY` instead. The app uses whichever key you provide (Gemini is tried first if both are set).
+### Alternative: Use Other AI Providers
+If you prefer Google Gemini, set `GEMINI_API_KEY` instead. For Anthropic's Claude, set `ANTHROPIC_API_KEY`. The app uses whichever key you provide (Groq is tried first, then Gemini, then Claude).
 
 ## Project Structure
 
@@ -80,7 +80,7 @@ policylens/
 
 - **Framework:** Astro 6.x
 - **Deployment:** Vercel (with Speed Insights)
-- **AI:** Google Gemini Flash 2.0 (free tier) or Claude Haiku (fallback)
+- **AI:** Groq Llama 3.3 70B (free tier) with Gemini Flash and Claude Haiku fallbacks
 - **Styling:** Custom CSS with Midnight Neon theme
 - **Ads:** Google AdSense (auto ads on public pages)
 
@@ -88,10 +88,11 @@ policylens/
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `GEMINI_API_KEY` | Yes* | Free API key from [Google AI Studio](https://aistudio.google.com) |
-| `ANTHROPIC_API_KEY` | No | Fallback to Claude if Gemini key is not set |
+| `GROQ_API_KEY` | Yes* | Free API key from [Groq Console](https://console.groq.com) |
+| `GEMINI_API_KEY` | No | Fallback — free API key from [Google AI Studio](https://aistudio.google.com) |
+| `ANTHROPIC_API_KEY` | No | Fallback to Claude if neither Groq nor Gemini keys are set |
 
-*Either `GEMINI_API_KEY` or `ANTHROPIC_API_KEY` must be set for AI analysis to work.
+*At least one API key must be set for AI analysis to work. Groq is the recommended free option.
 
 ## License
 
