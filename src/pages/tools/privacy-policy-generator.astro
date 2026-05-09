@@ -1,0 +1,659 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Free Privacy Policy Generator — Create Your Policy in Minutes"
+  description="Generate a custom privacy policy for your website or app. Free, no signup required. Covers GDPR, CCPA, and other privacy laws. Copy-paste ready template."
+  keywords="privacy policy generator, free privacy policy template, generate privacy policy, website privacy policy, GDPR privacy policy, CCPA privacy policy, privacy policy maker"
+>
+  <section class="generator-page">
+    <div class="container">
+      <header class="page-header">
+        <div class="badge-row">
+          <span class="badge">Free Tool</span>
+          <span class="badge">No Signup</span>
+          <span class="badge">GDPR + CCPA Ready</span>
+        </div>
+        <h1>Free Privacy Policy <span class="gradient-text">Generator</span></h1>
+        <p class="page-description">Answer a few questions about your business and get a ready-to-use privacy policy template. Covers GDPR, CCPA, and best practices.</p>
+      </header>
+
+      <div class="generator-form">
+        <div class="form-section">
+          <h2>About Your Business</h2>
+          
+          <div class="form-group">
+            <label for="company-name">Company / Website Name *</label>
+            <input type="text" id="company-name" placeholder="e.g. MyAwesomeApp" class="input" required />
+          </div>
+
+          <div class="form-group">
+            <label for="company-url">Website URL *</label>
+            <input type="url" id="company-url" placeholder="https://myawesomeapp.com" class="input" required />
+          </div>
+
+          <div class="form-group">
+            <label for="company-email">Contact Email *</label>
+            <input type="email" id="company-email" placeholder="privacy@myawesomeapp.com" class="input" required />
+          </div>
+
+          <div class="form-group">
+            <label for="business-type">What type of business?</label>
+            <select id="business-type" class="input">
+              <option value="website">Website / Blog</option>
+              <option value="saas">SaaS / Web App</option>
+              <option value="ecommerce">E-commerce Store</option>
+              <option value="mobile">Mobile App</option>
+              <option value="service">Service Business</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>Data Collection</h2>
+
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="collects-email" checked />
+              Email addresses (for newsletters, accounts)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="collects-analytics" checked />
+              Analytics (page views, user behavior)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="collects-cookies" checked />
+              Cookies (for functionality, preferences)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="collects-payment" />
+              Payment information
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="collects-location" />
+              Location data
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="collects-social" />
+              Social media data (if social login)
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>Third-Party Services</h2>
+
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="uses-google-analytics" />
+              Google Analytics
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="uses-advertising" />
+              Advertising (Google Ads, Facebook Ads)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="uses-email-service" />
+              Email service (Mailchimp, ConvertKit)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="uses-payment-processor" />
+              Payment processor (Stripe, PayPal)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="uses-hosting" />
+              Hosting / Cloud provider
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>Privacy Law Compliance</h2>
+
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="has-eu-users" />
+              Have users in the EU (need GDPR compliance)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="has-ca-users" />
+              Have users in California (need CCPA compliance)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="targets-children" />
+              Target children under 13 (need COPPA compliance)
+            </label>
+          </div>
+        </div>
+
+        <button id="generate-btn" class="btn btn-primary btn-lg">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+          </svg>
+          Generate My Privacy Policy
+        </button>
+      </div>
+
+      <div id="result-section" class="result-section hidden">
+        <div class="result-header">
+          <h2>Your Privacy Policy <span class="gradient-text">Is Ready</span></h2>
+          <p>Review the generated policy below, fill in any [bracketed] placeholders, and copy-paste it to your website.</p>
+          <div class="result-actions">
+            <button id="copy-btn" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              Copy to Clipboard
+            </button>
+            <button id="download-btn" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download as Text
+            </button>
+          </div>
+        </div>
+        <div id="policy-output" class="policy-output"></div>
+      </div>
+
+      <section class="info-section">
+        <h2>Why You Need a Privacy Policy</h2>
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Legal Requirement</h3>
+            <p>Privacy laws like GDPR (EU), CCPA (California), and others legally require you to have a privacy policy if you collect any personal data from users.</p>
+          </div>
+          <div class="info-card">
+            <h3>App Store Requirement</h3>
+            <p>Apple's App Store and Google Play both require apps to have a privacy policy. Without one, your app can't be published.</p>
+          </div>
+          <div class="info-card">
+            <h3>Build Trust</h3>
+            <p>Transparency builds trust. Users are more likely to use services that clearly explain how their data is handled.</p>
+          </div>
+          <div class="info-card">
+            <h3>Advertising Platforms</h3>
+            <p>Google AdSense, Facebook Ads, and other ad platforms require you to have a privacy policy before you can run ads.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <h2>Want to Check an Existing Privacy Policy?</h2>
+        <p>Use our free AI analyzer to see what's really in any privacy policy.</p>
+        <a href="/" class="btn btn-primary">Analyze a Privacy Policy</a>
+      </section>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .generator-page {
+    padding: 40px 0 80px;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .badge-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .badge-row .badge {
+    padding: 6px 14px;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 100px;
+    color: var(--accent-cyan);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .page-description {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .generator-form {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 40px;
+    margin-bottom: 48px;
+  }
+
+  .form-section {
+    margin-bottom: 36px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .form-section:last-of-type {
+    border-bottom: none;
+  }
+
+  .form-section h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--accent-cyan);
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 8px 0;
+    transition: color 0.2s ease;
+  }
+
+  .checkbox-label:hover {
+    color: var(--text-primary);
+  }
+
+  .checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-cyan);
+  }
+
+  .input, select {
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    transition: border-color 0.2s ease;
+  }
+
+  .input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1);
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .btn-lg {
+    width: 100%;
+    padding: 18px 32px;
+    font-size: 1.1rem;
+    margin-top: 8px;
+  }
+
+  .result-section {
+    margin-bottom: 48px;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .result-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .result-header h2 {
+    font-size: 1.75rem;
+    margin-bottom: 8px;
+  }
+
+  .result-header p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+
+  .result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .policy-output {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-height: 600px;
+    overflow-y: auto;
+    font-family: var(--font-sans);
+  }
+
+  .policy-output :global(h2) {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin: 32px 0 16px;
+  }
+
+  .policy-output :global(h3) {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin: 24px 0 12px;
+  }
+
+  .policy-output :global(p) {
+    margin-bottom: 12px;
+  }
+
+  .policy-output :global(ul), .policy-output :global(ol) {
+    margin: 12px 0 20px 24px;
+  }
+
+  .policy-output :global(li) {
+    margin-bottom: 6px;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  .info-section {
+    padding: 60px 0;
+  }
+
+  .info-section h2 {
+    text-align: center;
+    font-size: 1.75rem;
+    margin-bottom: 32px;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    transition: all 0.3s ease;
+  }
+
+  .info-card:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .info-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--accent-cyan);
+  }
+
+  .info-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 64px 24px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+  }
+
+  .cta-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 12px;
+  }
+
+  .cta-section p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 600px) {
+    .generator-form {
+      padding: 24px;
+    }
+
+    .policy-output {
+      padding: 24px;
+      font-size: 0.85rem;
+    }
+  }
+</style>
+
+<script>
+  function generatePolicy() {
+    const name = (document.getElementById('company-name') as HTMLInputElement)?.value || '[Your Company Name]';
+    const url = (document.getElementById('company-url') as HTMLInputElement)?.value || '[Your Website URL]';
+    const email = (document.getElementById('company-email') as HTMLInputElement)?.value || '[Your Contact Email]';
+    const bizType = (document.getElementById('business-type') as HTMLSelectElement)?.value || 'website';
+    
+    const hasEU = (document.getElementById('has-eu-users') as HTMLInputElement)?.checked;
+    const hasCA = (document.getElementById('has-ca-users') as HTMLInputElement)?.checked;
+    const targetsChildren = (document.getElementById('targets-children') as HTMLInputElement)?.checked;
+    
+    const collectsEmail = (document.getElementById('collects-email') as HTMLInputElement)?.checked;
+    const collectsAnalytics = (document.getElementById('collects-analytics') as HTMLInputElement)?.checked;
+    const collectsCookies = (document.getElementById('collects-cookies') as HTMLInputElement)?.checked;
+    const collectsPayment = (document.getElementById('collects-payment') as HTMLInputElement)?.checked;
+    const collectsLocation = (document.getElementById('collects-location') as HTMLInputElement)?.checked;
+    
+    const usesGA = (document.getElementById('uses-google-analytics') as HTMLInputElement)?.checked;
+    const usesAds = (document.getElementById('uses-advertising') as HTMLInputElement)?.checked;
+    const usesEmail = (document.getElementById('uses-email-service') as HTMLInputElement)?.checked;
+    const usesPayment = (document.getElementById('uses-payment-processor') as HTMLInputElement)?.checked;
+
+    const date = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+    let dataCollection = '<p>We collect the following types of information:</p><ul>';
+    dataCollection += '<li><strong>Information you provide:</strong> When you use our service, you may provide us with personal information such as';
+    if (collectsEmail) dataCollection += ' your email address, name,';
+    if (collectsPayment) dataCollection += ' payment information,';
+    dataCollection += ' and any other information you choose to share.</li>';
+    
+    if (collectsAnalytics) {
+      dataCollection += '<li><strong>Usage data:</strong> We automatically collect information about how you interact with our service, including pages visited, time spent, and referring URLs.</li>';
+    }
+    if (collectsCookies) {
+      dataCollection += '<li><strong>Cookies and similar technologies:</strong> We use cookies and similar tracking technologies to remember your preferences and understand how you use our service.</li>';
+    }
+    if (collectsLocation) {
+      dataCollection += '<li><strong>Location data:</strong> We may collect information about your general location based on your IP address.</li>';
+    }
+    dataCollection += '</ul>';
+
+    let thirdParty = '<p>We may share your information with the following third-party service providers:</p><ul>';
+    if (usesGA) thirdParty += '<li><strong>Google Analytics:</strong> For website analytics and usage tracking. Google\'s privacy policy is available at https://policies.google.com/privacy.</li>';
+    if (usesAds) thirdParty += '<li><strong>Advertising partners:</strong> To deliver relevant advertisements and measure their effectiveness.</li>';
+    if (usesEmail) thirdParty += '<li><strong>Email service providers:</strong> To send newsletters and communications you\'ve subscribed to.</li>';
+    if (usesPayment) thirdParty += '<li><strong>Payment processors:</strong> To process payments securely. We do not store full payment card details on our servers.</li>';
+    thirdParty += '<li><strong>Hosting providers:</strong> To host and deliver our service.</li>';
+    thirdParty += '</ul>';
+    thirdParty += '<p>We do not sell your personal information to third parties.</p>';
+
+    let legalBasis = '';
+    if (hasEU) {
+      legalBasis += '<h3>Legal Basis for Processing (GDPR)</h3>';
+      legalBasis += '<p>If you are located in the European Economic Area (EEA), we process your personal data under the following legal bases:</p><ul>';
+      legalBasis += '<li><strong>Consent:</strong> You have given us permission to process your data for specific purposes.</li>';
+      legalBasis += '<li><strong>Legitimate interests:</strong> Processing is necessary for our legitimate business purposes.</li>';
+      legalBasis += '<li><strong>Contractual necessity:</strong> Processing is necessary to provide the service you\'ve requested.</li>';
+      legalBasis += '</ul>';
+
+      legalBasis += '<h3>Your GDPR Rights</h3>';
+      legalBasis += '<p>Under GDPR, you have the following rights:</p><ul>';
+      legalBasis += '<li>The right to access your personal data</li>';
+      legalBasis += '<li>The right to rectify inaccurate data</li>';
+      legalBasis += '<li>The right to erasure ("right to be forgotten")</li>';
+      legalBasis += '<li>The right to restrict processing</li>';
+      legalBasis += '<li>The right to data portability</li>';
+      legalBasis += '<li>The right to object to processing</li>';
+      legalBasis += '<li>Rights related to automated decision-making</li>';
+      legalBasis += '</ul>';
+      legalBasis += '<p>To exercise these rights, contact us at ' + email + '.</p>';
+    }
+
+    if (hasCA) {
+      legalBasis += '<h3>Your CCPA Rights (California Residents)</h3>';
+      legalBasis += '<p>Under the California Consumer Privacy Act, California residents have the right to:</p><ul>';
+      legalBasis += '<li>Know what personal information we collect, use, and share</li>';
+      legalBasis += '<li>Delete personal information we\'ve collected</li>';
+      legalBasis += '<li>Opt out of the sale of personal information (we do not sell personal data)</li>';
+      legalBasis += '<li>Non-discrimination for exercising CCPA rights</li>';
+      legalBasis += '</ul>';
+      legalBasis += '<p>To exercise your CCPA rights, contact us at ' + email + '.</p>';
+    }
+
+    if (targetsChildren) {
+      legalBasis += '<h3>Children\'s Privacy (COPPA)</h3>';
+      legalBasis += '<p>Our service is not intended for children under 13. We do not knowingly collect personal information from children under 13. If you are a parent and believe your child has provided us with personal data, please contact us immediately at ' + email + '.</p>';
+    }
+
+    const policy = `
+<h2>Privacy Policy</h2>
+<p><strong>Last Updated:</strong> ${date}</p>
+
+<p>${name} ("we," "us," or "our") operates the website at ${url} (the "Service"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Service.</p>
+
+<p>By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
+
+<h2>Information We Collect</h2>
+${dataCollection}
+
+<h2>How We Use Your Information</h2>
+<p>We use the collected information for the following purposes:</p>
+<ul>
+  <li>To provide, maintain, and improve our Service</li>
+  <li>To communicate with you, including responding to inquiries and sending updates</li>
+  ${collectsAnalytics ? '<li>To analyze usage patterns and improve user experience</li>' : ''}
+  ${collectsAds ? '<li>To deliver relevant advertising</li>' : ''}
+  ${collectsEmail ? '<li>To send newsletters and promotional materials (with your consent)</li>' : ''}
+  <li>To detect, prevent, and address technical issues</li>
+  <li>To comply with legal obligations</li>
+</ul>
+
+<h2>Third-Party Sharing</h2>
+${thirdParty}
+
+<h2>Data Retention</h2>
+<p>We retain your personal information only for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required by law.</p>
+
+<h2>Data Security</h2>
+<p>We implement appropriate technical and organizational security measures to protect your personal information. However, no method of electronic transmission or storage is 100% secure, and we cannot guarantee absolute security.</p>
+
+${legalBasis}
+
+<h2>International Data Transfers</h2>
+<p>Your information may be transferred to and processed in countries other than your country of residence. We take appropriate safeguards to ensure your data remains protected.</p>
+
+<h2>Changes to This Privacy Policy</h2>
+<p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+
+<h2>Contact Us</h2>
+<p>If you have any questions about this Privacy Policy, please contact us:</p>
+<ul>
+  <li>By email: ${email}</li>
+  <li>By visiting: ${url}</li>
+</ul>
+
+<p><em>This privacy policy was generated using PolicyLens and should be reviewed by a legal professional for your specific circumstances.</em></p>
+`;
+
+    return policy;
+  }
+
+  document.getElementById('generate-btn')?.addEventListener('click', () => {
+    const name = (document.getElementById('company-name') as HTMLInputElement)?.value.trim();
+    const url = (document.getElementById('company-url') as HTMLInputElement)?.value.trim();
+    const email = (document.getElementById('company-email') as HTMLInputElement)?.value.trim();
+
+    if (!name || !url || !email) {
+      alert('Please fill in your company name, website URL, and contact email.');
+      return;
+    }
+
+    const policy = generatePolicy();
+    const output = document.getElementById('policy-output');
+    const resultSection = document.getElementById('result-section');
+    
+    if (output) output.innerHTML = policy;
+    if (resultSection) {
+      resultSection.classList.remove('hidden');
+      resultSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  document.getElementById('copy-btn')?.addEventListener('click', () => {
+    const output = document.getElementById('policy-output');
+    if (output) {
+      navigator.clipboard.writeText(output.textContent || '').then(() => {
+        const btn = document.getElementById('copy-btn');
+        if (btn) {
+          const original = btn.textContent;
+          btn.textContent = '✓ Copied!';
+          setTimeout(() => { btn.textContent = original; }, 2000);
+        }
+      });
+    }
+  });
+
+  document.getElementById('download-btn')?.addEventListener('click', () => {
+    const output = document.getElementById('policy-output');
+    if (output) {
+      const text = output.textContent || '';
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'privacy-policy.txt';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+  });
+</script>

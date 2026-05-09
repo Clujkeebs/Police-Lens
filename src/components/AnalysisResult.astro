@@ -601,3 +601,33 @@ const riskBg = analysis.riskLevel === 'low' ? 'rgba(34, 197, 94, 0.15)' : analys
     }
   }
 </style>
+
+<script>
+  document.getElementById('share-btn')?.addEventListener('click', () => {
+    const url = window.location.href;
+    const dataParam = new URLSearchParams(window.location.search).get('data');
+    let shareText = 'I just analyzed a privacy policy with PolicyLens!';
+    
+    if (dataParam) {
+      try {
+        const result = JSON.parse(decodeURIComponent(dataParam));
+        const riskLevel = result.analysis?.riskLevel || 'unknown';
+        const score = Math.round(result.analysis?.riskScore || 0);
+        const domain = result.domain || 'a service';
+        const emoji = riskLevel === 'low' ? '🟢' : riskLevel === 'medium' ? '🟡' : '🔴';
+        shareText = `${emoji} ${domain}'s privacy policy scored ${score}/100 (${riskLevel.toUpperCase()} RISK) on PolicyLens. Check what you're agreeing to!`;
+      } catch {}
+    }
+
+    if (navigator.share) {
+      navigator.share({
+        title: 'PolicyLens Privacy Analysis',
+        text: shareText,
+        url: url
+      }).catch(() => {});
+    } else {
+      const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(url)}&via=policylens`;
+      window.open(shareUrl, '_blank', 'width=600,height=400');
+    }
+  });
+</script>

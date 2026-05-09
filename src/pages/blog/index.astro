@@ -50,10 +50,17 @@ import { blogPosts } from '../../data/blog-posts';
 
       <section class="newsletter-section">
         <h2>Stay Informed</h2>
-        <p>Get the latest privacy insights delivered to your inbox.</p>
-        <div class="newsletter-form">
-          <input type="email" placeholder="Enter your email" class="newsletter-input" />
-          <button class="btn btn-primary">Subscribe</button>
+        <p>Get the latest privacy insights delivered to your inbox. No spam, unsubscribe anytime.</p>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" id="newsletter-email" placeholder="Enter your email" class="newsletter-input" required />
+          <button type="submit" class="btn btn-primary" id="newsletter-submit">Subscribe</button>
+        </form>
+        <div class="newsletter-success hidden" id="newsletter-success">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <p>Thanks for subscribing! Check your inbox for a confirmation.</p>
+        </div>
+        <div class="newsletter-error hidden" id="newsletter-error">
+          <p id="newsletter-error-msg">Please enter a valid email address.</p>
         </div>
       </section>
     </div>
@@ -239,6 +246,28 @@ import { blogPosts } from '../../data/blog-posts';
     border-color: var(--accent-cyan);
   }
 
+  .newsletter-success {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 16px;
+    color: #22c55e;
+    font-weight: 500;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .newsletter-error {
+    margin-top: 12px;
+    color: #ef4444;
+    font-size: 0.9rem;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
   @media (max-width: 600px) {
     .blog-card {
       grid-template-columns: 1fr;
@@ -262,3 +291,56 @@ import { blogPosts } from '../../data/blog-posts';
     }
   }
 </style>
+
+<script>
+  const form = document.getElementById('newsletter-form');
+  const emailInput = document.getElementById('newsletter-email') as HTMLInputElement;
+  const submitBtn = document.getElementById('newsletter-submit') as HTMLButtonElement;
+  const success = document.getElementById('newsletter-success');
+  const error = document.getElementById('newsletter-error');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailInput?.value.trim();
+    
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      error?.classList.remove('hidden');
+      success?.classList.add('hidden');
+      return;
+    }
+
+    error?.classList.add('hidden');
+    if (submitBtn) {
+      submitBtn.textContent = 'Subscribing...';
+      submitBtn.disabled = true;
+    }
+
+    // POST to the subscribe API endpoint
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      
+      if (response.ok) {
+        success?.classList.remove('hidden');
+        form?.classList.add('hidden');
+      } else {
+        const data = await response.json().catch(() => ({}));
+        const errMsg = document.getElementById('newsletter-error-msg');
+        if (errMsg) errMsg.textContent = data.error || 'Something went wrong. Please try again.';
+        error?.classList.remove('hidden');
+      }
+    } catch {
+      const errMsg = document.getElementById('newsletter-error-msg');
+      if (errMsg) errMsg.textContent = 'Network error. Please check your connection and try again.';
+      error?.classList.remove('hidden');
+    } finally {
+      if (submitBtn) {
+        submitBtn.textContent = 'Subscribe';
+        submitBtn.disabled = false;
+      }
+    }
+  });
+</script>

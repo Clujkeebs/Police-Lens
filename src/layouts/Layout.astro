@@ -190,6 +190,7 @@ const faqSchema = {
       </button>
       <ul class="nav-links">
         <li><a href="/">Analyze</a></li>
+        <li><a href="/tools/privacy-policy-generator">Generator</a></li>
         <li><a href="/about">How It Works</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/privacy-laws/gdpr">Privacy Laws</a></li>
@@ -225,6 +226,7 @@ const faqSchema = {
           <h4>Tool</h4>
           <ul>
             <li><a href="/">Analyze Policy</a></li>
+            <li><a href="/tools/privacy-policy-generator">Policy Generator</a></li>
             <li><a href="/about">How It Works</a></li>
             <li><a href="/guides/privacy-policy-checker">Free Checker</a></li>
             <li><a href="/compare">Compare Policies</a></li>
@@ -270,6 +272,14 @@ const faqSchema = {
   <SpeedInsights />
   {!noindex && (
     <>
+      <!-- Google Analytics — replace G-XXXXXXXXXX with your GA4 Measurement ID from https://analytics.google.com -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+      </script>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3526440256333845" crossorigin="anonymous"></script>
       <script>
         window.adsbygoogle = window.adsbygoogle || [];

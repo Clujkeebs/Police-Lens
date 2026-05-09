@@ -11,6 +11,7 @@ const allPages = [
   { url: '/contact', priority: '0.7', changefreq: 'monthly' },
   { url: '/privacy-policy', priority: '0.5', changefreq: 'yearly' },
   { url: '/terms-of-service', priority: '0.5', changefreq: 'yearly' },
+  { url: '/tools/privacy-policy-generator', priority: '0.9', changefreq: 'monthly' },
   { url: '/blog', priority: '0.9', changefreq: 'weekly' },
   { url: '/blog/why-you-need-privacy-policy-checker', priority: '0.8', changefreq: 'monthly' },
   { url: '/blog/ai-privacy-policies-explained', priority: '0.8', changefreq: 'monthly' },
