@@ -1,11 +1,19 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import { blogPosts } from '../../data/blog-posts';
+
+const currentSlug = 'why-you-need-privacy-policy-checker';
+const relatedPosts = blogPosts.filter(p => p.slug !== currentSlug).slice(0, 3);
 ---
 
 <ContentLayout
   title="Why You Need a Privacy Policy Checker in 2026"
   description="Discover why AI-powered privacy policy analysis is essential for protecting your digital rights in an era of increasing data collection and complex legal documents."
   keywords="privacy policy checker, AI privacy analysis, online privacy tool, digital rights, data protection, privacy scanner"
+  datePublished="2026-04-10"
+  dateModified="2026-04-10"
+  readTime="7 min read"
+  image="/og-image.svg"
 >
   <slot name="breadcrumb">
     <a href="/blog">Blog</a>
@@ -120,4 +128,15 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
   </ol>
 
   <p>In a world where data is the new oil, understanding privacy policies isn't just smart — it's essential. A privacy checker turns hours of legal reading into seconds of clear insights.</p>
+
+  <slot slot="related">
+    {relatedPosts.map(post => (
+      <a href={`/blog/${post.slug}`} class="related-card">
+        <span class="related-category">{post.category}</span>
+        <h4>{post.title}</h4>
+        <p>{post.excerpt}</p>
+        <span class="related-meta">{post.readTime} · {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+      </a>
+    ))}
+  </slot>
 </ContentLayout>

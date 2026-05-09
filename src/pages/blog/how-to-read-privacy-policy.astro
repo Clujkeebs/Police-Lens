@@ -1,11 +1,19 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import { blogPosts } from '../../data/blog-posts';
+
+const currentSlug = 'how-to-read-privacy-policy';
+const relatedPosts = blogPosts.filter(p => p.slug !== currentSlug).slice(0, 3);
 ---
 
 <ContentLayout
   title="How to Read a Privacy Policy Like a Lawyer: Spot Red Flags Fast"
   description="Master the art of scanning privacy policies for red flags. Learn what sections matter most, how to spot concerning clauses, and protect your digital rights in minutes."
   keywords="how to read privacy policy, spot privacy red flags, privacy policy red flags, understand legal terms, privacy policy scanning, data privacy tips"
+  datePublished="2026-03-28"
+  dateModified="2026-03-28"
+  readTime="8 min read"
+  image="/og-image.svg"
 >
   <slot name="breadcrumb">
     <a href="/blog">Blog</a>
@@ -170,4 +178,15 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
   </div>
 
   <p>The best way to protect yourself? Don't just trust companies — verify. Use <a href="/">PolicyLens</a> to automatically scan any privacy policy for these red flags in seconds.</p>
+
+  <slot slot="related">
+    {relatedPosts.map(post => (
+      <a href={`/blog/${post.slug}`} class="related-card">
+        <span class="related-category">{post.category}</span>
+        <h4>{post.title}</h4>
+        <p>{post.excerpt}</p>
+        <span class="related-meta">{post.readTime} · {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+      </a>
+    ))}
+  </slot>
 </ContentLayout>

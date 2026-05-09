@@ -6,9 +6,22 @@ export interface Props {
   description: string;
   keywords?: string;
   schemaType?: 'article' | 'faq';
+  datePublished?: string;
+  dateModified?: string;
+  readTime?: string;
+  image?: string;
 }
 
-const { title, description, keywords, schemaType = 'article' } = Astro.props;
+const {
+  title,
+  description,
+  keywords,
+  schemaType = 'article',
+  datePublished = '2026-04-10',
+  dateModified = '2026-04-11',
+  readTime = '10 min read',
+  image = '/og-image.svg'
+} = Astro.props;
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -27,8 +40,9 @@ const articleSchema = {
       "url": "https://policylens.app/favicon.svg"
     }
   },
-  "datePublished": "2026-04-10",
-  "dateModified": "2026-04-11"
+  "datePublished": datePublished,
+  "dateModified": dateModified,
+  "image": `https://policylens.app${image}`
 };
 ---
 
@@ -49,8 +63,8 @@ const articleSchema = {
         <h1>{title}</h1>
         <p class="page-description">{description}</p>
         <div class="page-meta">
-          <span class="read-time">10 min read</span>
-          <span class="updated">Updated April 2026</span>
+          <span class="read-time">{readTime}</span>
+          <span class="updated">Updated {new Date(dateModified).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
         </div>
       </header>
       

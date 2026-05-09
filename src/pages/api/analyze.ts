@@ -2,6 +2,29 @@ export const prerender = false;
 
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
+interface CategoryResult {
+  category: string;
+  description: string;
+  severity: 'info' | 'low' | 'medium' | 'high';
+  matchCount: number;
+  matchedKeywords: string[];
+  findings: string[];
+}
+
+interface AnalysisResult {
+  riskScore: number;
+  riskLevel: 'low' | 'medium' | 'high';
+  confidenceScore: number;
+  wordCount: number;
+  redFlags: Array<{ message: string; severity: string; matchedText: string }>;
+  goodSigns: Array<{ message: string; matchedText: string }>;
+  categories: Record<string, CategoryResult>;
+  summary: {
+    overview: string;
+    keyPoints: string[];
+  };
+}
+
 const ANALYSIS_PROMPT = `You are PolicyLens, an AI privacy policy and terms of service analyzer. Analyze the provided legal document and return a comprehensive analysis in JSON format.
 
 Return ONLY valid JSON with this exact structure, no markdown formatting, no code fences:
@@ -60,9 +83,9 @@ async function fetchPolicyFromUrl(url: string) {
     clearTimeout(timeout);
     if (!response.ok) throw new Error(`Failed to fetch: ${response.status}`);
     return { html: await response.text(), url: normalizedUrl };
-  } catch (err: any) {
+  } catch (err: unknown) {
     clearTimeout(timeout);
-    if (err.name === 'AbortError') throw new Error('Request timed out');
+    if (err instanceof Error && err.name === 'AbortError') throw new Error('Request timed out');
     throw err;
   }
 }
@@ -174,8 +197,8 @@ async function analyzeWithGemini(text: string, apiKey: string) {
   return data.candidates[0].content.parts[0].text;
 }
 
-function ensureCompleteAnalysis(analysis: any, originalText: string) {
-  const defaults: Record<string, any> = {
+function ensureCompleteAnalysis(analysis: AnalysisResult, originalText: string): AnalysisResult {
+  const defaults: Record<string, CategoryResult> = {
     dataCollection: { category: 'Data Collection', description: 'What personal information is collected', severity: 'medium', matchCount: 0, matchedKeywords: [], findings: [] },
     dataSharing: { category: 'Data Sharing', description: 'How data is shared with third parties', severity: 'medium', matchCount: 0, matchedKeywords: [], findings: [] },
     dataRetention: { category: 'Data Retention', description: 'How long data is stored', severity: 'low', matchCount: 0, matchedKeywords: [], findings: [] },
@@ -197,7 +220,7 @@ function ensureCompleteAnalysis(analysis: any, originalText: string) {
   if (!analysis.riskScore) {
     let score = 35;
     const weights: Record<string, number> = { high: 15, medium: 8, low: 3, info: 0 };
-    for (const cat of Object.values(analysis.categories) as any[]) {
+    for (const cat of Object.values(analysis.categories)) {
       if (cat?.matchCount > 0) score += cat.matchCount * (weights[cat.severity] || 5);
     }
     analysis.riskScore = Math.max(0, Math.min(100, score));
@@ -208,7 +231,7 @@ function ensureCompleteAnalysis(analysis: any, originalText: string) {
   }
 
   if (!analysis.confidenceScore) {
-    const total = Object.values(analysis.categories).reduce((sum: number, c: any) => sum + (c?.matchCount || 0), 0);
+    const total = Object.values(analysis.categories).reduce((sum: number, c: CategoryResult) => sum + (c?.matchCount || 0), 0);
     analysis.confidenceScore = Math.min(95, 50 + total * 3);
   }
 
@@ -261,8 +284,9 @@ export async function POST({ request }: { request: Request }) {
         fetchedUrl = normalizedUrl;
         extractedDomain = new URL(normalizedUrl).hostname;
         extractedTitle = extractTitle(html) || extractedDomain;
-      } catch (error: any) {
-        return new Response(JSON.stringify({ error: `Failed to fetch URL: ${error.message}` }), { status: 400, headers });
+      } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : 'Unknown error';
+        return new Response(JSON.stringify({ error: `Failed to fetch URL: ${message}` }), { status: 400, headers });
       }
     } else if (inputText) {
       policyText = inputText;
@@ -286,9 +310,10 @@ export async function POST({ request }: { request: Request }) {
       } else {
         aiResponse = await analyzeWithClaude(truncatedText, anthropicKey!);
       }
-    } catch (aiError: any) {
-      console.error('AI API error:', aiError.message);
-      return new Response(JSON.stringify({ error: `AI analysis failed: ${aiError.message}` }), { status: 500, headers });
+    } catch (aiError: unknown) {
+      const message = aiError instanceof Error ? aiError.message : 'Unknown error';
+      console.error('AI API error:', message);
+      return new Response(JSON.stringify({ error: `AI analysis failed: ${message}` }), { status: 500, headers });
     }
 
     let cleanJson = aiResponse.trim()
@@ -297,9 +322,9 @@ export async function POST({ request }: { request: Request }) {
       .replace(/\s*```$/, '')
       .trim();
 
-    let analysis: any;
+    let analysis: AnalysisResult;
     try {
-      analysis = JSON.parse(cleanJson);
+      analysis = JSON.parse(cleanJson) as AnalysisResult;
     } catch (parseError) {
       console.error('Parse error:', parseError, 'Raw response:', cleanJson.substring(0, 500));
       return new Response(JSON.stringify({
@@ -323,9 +348,10 @@ export async function POST({ request }: { request: Request }) {
 
     return new Response(JSON.stringify(result), { status: 200, headers });
 
-  } catch (error: any) {
-    console.error('Analysis error:', error);
-    return new Response(JSON.stringify({ error: error.message || 'Analysis failed' }), { status: 500, headers });
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Analysis failed';
+    console.error('Analysis error:', message);
+    return new Response(JSON.stringify({ error: message }), { status: 500, headers });
   }
 }
 

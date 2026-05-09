@@ -1,11 +1,19 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import { blogPosts } from '../../data/blog-posts';
+
+const currentSlug = 'gdpr-compliance-guide-2026';
+const relatedPosts = blogPosts.filter(p => p.slug !== currentSlug).slice(0, 3);
 ---
 
 <ContentLayout
   title="Complete GDPR Compliance Guide for 2026"
   description="Everything businesses need to know about GDPR compliance in 2026 — from cookie consent requirements to data subject rights, potential fines, and practical implementation steps."
   keywords="GDPR compliance 2026, GDPR guide, EU data protection, cookie consent, data subject rights, GDPR fines, privacy compliance"
+  datePublished="2026-04-05"
+  dateModified="2026-04-05"
+  readTime="12 min read"
+  image="/og-image.svg"
 >
   <slot name="breadcrumb">
     <a href="/blog">Blog</a>
@@ -140,4 +148,15 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
   </div>
 
   <p>GDPR compliance isn't a one-time project — it's an ongoing commitment. But the benefits go beyond avoiding fines: it builds trust with your users and demonstrates that you value their privacy.</p>
+
+  <slot slot="related">
+    {relatedPosts.map(post => (
+      <a href={`/blog/${post.slug}`} class="related-card">
+        <span class="related-category">{post.category}</span>
+        <h4>{post.title}</h4>
+        <p>{post.excerpt}</p>
+        <span class="related-meta">{post.readTime} · {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+      </a>
+    ))}
+  </slot>
 </ContentLayout>

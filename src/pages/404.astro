@@ -1,0 +1,266 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Page Not Found - PolicyLens"
+  description="The page you're looking for doesn't exist. Try our free privacy policy analyzer or browse our guides."
+  noindex={true}
+>
+  <main class="not-found">
+    <div class="container">
+      <div class="content">
+        <div class="error-code">
+          <span class="digit">4</span>
+          <span class="icon">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </span>
+          <span class="digit">4</span>
+        </div>
+        
+        <h1>Page Not Found</h1>
+        <p class="subtitle">The page you're looking for doesn't exist or has been moved.</p>
+        
+        <div class="suggestions">
+          <h2>Try one of these instead:</h2>
+          <div class="links-grid">
+            <a href="/" class="suggestion-link">
+              <span class="link-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <polyline points="9 12 11 14 15 10"/>
+                </svg>
+              </span>
+              <span class="link-text">
+                <strong>Analyze a Policy</strong>
+                <small>Check any privacy policy or ToS for free</small>
+              </span>
+            </a>
+            <a href="/compare" class="suggestion-link">
+              <span class="link-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="3" y1="9" x2="21" y2="9"/>
+                  <line x1="9" y1="21" x2="9" y2="9"/>
+                </svg>
+              </span>
+              <span class="link-text">
+                <strong>Compare Policies</strong>
+                <small>Side-by-side policy comparison</small>
+              </span>
+            </a>
+            <a href="/blog" class="suggestion-link">
+              <span class="link-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                </svg>
+              </span>
+              <span class="link-text">
+                <strong>Privacy Blog</strong>
+                <small>Guides, analysis, and privacy tips</small>
+              </span>
+            </a>
+            <a href="/privacy-laws/gdpr" class="suggestion-link">
+              <span class="link-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+              </span>
+              <span class="link-text">
+                <strong>GDPR Guide</strong>
+                <small>Complete GDPR compliance overview</small>
+              </span>
+            </a>
+            <a href="/guides/privacy-policy-checker" class="suggestion-link">
+              <span class="link-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"/>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+              </span>
+              <span class="link-text">
+                <strong>Privacy Checker Guide</strong>
+                <small>How to audit your privacy policy</small>
+              </span>
+            </a>
+            <a href="/faq" class="suggestion-link">
+              <span class="link-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+              </span>
+              <span class="link-text">
+                <strong>FAQ</strong>
+                <small>Frequently asked questions</small>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <a href="/" class="home-link">← Back to Homepage</a>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .not-found {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding: 60px 24px;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  .error-code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .digit {
+    font-size: 8rem;
+    font-weight: 900;
+    line-height: 1;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .icon {
+    color: var(--accent-cyan);
+    opacity: 0.6;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+    line-height: 1.6;
+  }
+
+  .suggestions {
+    margin-bottom: 40px;
+  }
+
+  .suggestions h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 12px;
+    text-align: left;
+  }
+
+  .suggestion-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .suggestion-link:hover {
+    border-color: var(--accent-cyan);
+    transform: translateX(4px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .link-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: var(--radius-sm);
+    color: var(--accent-cyan);
+    flex-shrink: 0;
+  }
+
+  .link-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .link-text strong {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .link-text small {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .home-link {
+    display: inline-block;
+    color: var(--accent-cyan);
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .home-link:hover {
+    opacity: 0.8;
+  }
+
+  @media (max-width: 640px) {
+    .digit {
+      font-size: 5rem;
+    }
+    .icon svg {
+      width: 56px;
+      height: 56px;
+    }
+    .links-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

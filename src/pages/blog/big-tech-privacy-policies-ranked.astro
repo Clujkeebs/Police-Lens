@@ -1,11 +1,19 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import { blogPosts } from '../../data/blog-posts';
+
+const currentSlug = 'big-tech-privacy-policies-ranked';
+const relatedPosts = blogPosts.filter(p => p.slug !== currentSlug).slice(0, 3);
 ---
 
 <ContentLayout
   title="Big Tech Privacy Policies Ranked: Best to Worst 2026"
   description="We analyzed the privacy policies of Google, Apple, Meta, Amazon, and TikTok. See which tech giant best protects your privacy and who collects the most data."
   keywords="big tech privacy policy, Google privacy, Apple privacy, Meta privacy, Amazon privacy, TikTok privacy, tech privacy comparison"
+  datePublished="2026-04-03"
+  dateModified="2026-04-03"
+  readTime="10 min read"
+  image="/og-image.svg"
 >
   <slot name="breadcrumb">
     <a href="/blog">Blog</a>
@@ -141,4 +149,15 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
   <p>Even Apple collects some data. The question isn't whether data is collected — it's how much, why, and what happens to it.</p>
 
   <p>Use our <a href="/">free privacy policy checker</a> to analyze any company's policy yourself.</p>
+
+  <slot slot="related">
+    {relatedPosts.map(post => (
+      <a href={`/blog/${post.slug}`} class="related-card">
+        <span class="related-category">{post.category}</span>
+        <h4>{post.title}</h4>
+        <p>{post.excerpt}</p>
+        <span class="related-meta">{post.readTime} · {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+      </a>
+    ))}
+  </slot>
 </ContentLayout>

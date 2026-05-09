@@ -1,11 +1,19 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import { blogPosts } from '../../data/blog-posts';
+
+const currentSlug = 'ai-privacy-policies-explained';
+const relatedPosts = blogPosts.filter(p => p.slug !== currentSlug).slice(0, 3);
 ---
 
 <ContentLayout
   title="How AI Is Making Privacy Policies More Transparent"
   description="Learn how artificial intelligence is transforming the way we understand complex legal documents, making privacy policies accessible and understandable for everyone."
   keywords="AI privacy policy, artificial intelligence privacy, machine learning legal documents, AI policy checker, transparent privacy"
+  datePublished="2026-04-08"
+  dateModified="2026-04-08"
+  readTime="5 min read"
+  image="/og-image.svg"
 >
   <slot name="breadcrumb">
     <a href="/blog">Blog</a>
@@ -91,4 +99,15 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
   <p>AI will compare policies against the latest legal requirements across jurisdictions, flagging potential compliance issues before they become legal problems.</p>
 
   <p>The future of privacy is transparent, and AI is making that future possible today.</p>
+
+  <slot slot="related">
+    {relatedPosts.map(post => (
+      <a href={`/blog/${post.slug}`} class="related-card">
+        <span class="related-category">{post.category}</span>
+        <h4>{post.title}</h4>
+        <p>{post.excerpt}</p>
+        <span class="related-meta">{post.readTime} · {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+      </a>
+    ))}
+  </slot>
 </ContentLayout>

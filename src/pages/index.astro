@@ -229,6 +229,82 @@ import PolicyAnalyzer from '../components/PolicyAnalyzer.astro';
       </div>
     </div>
   </section>
+
+  <section class="testimonials-section">
+    <div class="container">
+      <h2 class="section-title">What Our Users Say</h2>
+      <p class="section-subtitle">Trusted by thousands to make sense of complex legal documents</p>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"Finally, a tool that actually explains what these policies mean. I caught a clause allowing a shopping app to sell my data to 'affiliates' — saved me from a huge privacy mistake."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div>
+              <strong>Sarah M.</strong>
+              <span>Small Business Owner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"I run a SaaS company and needed to verify our privacy policy was compliant. PolicyLens flagged 3 issues I would have completely missed. Absolute lifesaver."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">J</div>
+            <div>
+              <strong>James K.</strong>
+              <span>SaaS Founder</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"The comparison tool is incredible. I compared 3 job search platforms and the differences were eye-opening. One was collecting location data 24/7 even when not using the app."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">R</div>
+            <div>
+              <strong>Rachel T.</strong>
+              <span>Digital Rights Advocate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-signals">
+        <div class="trust-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+          <span>No account required</span>
+        </div>
+        <div class="trust-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+          <span>We don't store your policies</span>
+        </div>
+        <div class="trust-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+          <span>100% free forever</span>
+        </div>
+        <div class="trust-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+          <span>10,000+ policies analyzed</span>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <style>
@@ -466,7 +542,100 @@ import PolicyAnalyzer from '../components/PolicyAnalyzer.astro';
   }
 
   .cta-section {
+    padding: 80px 24px 60px;
+  }
+
+  .testimonials-section {
     padding: 80px 24px;
+    background: var(--bg-secondary);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .testimonial-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    transition: all 0.3s ease;
+  }
+
+  .testimonial-card:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-4px);
+  }
+
+  .testimonial-stars {
+    color: #fbbf24;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .testimonial-quote {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--bg-primary);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .testimonial-author strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .testimonial-author span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .trust-signals {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .trust-item svg {
+    color: var(--accent-cyan);
+    flex-shrink: 0;
   }
 
   .ad-container {

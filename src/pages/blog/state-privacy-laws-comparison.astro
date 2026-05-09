@@ -1,11 +1,19 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import { blogPosts } from '../../data/blog-posts';
+
+const currentSlug = 'state-privacy-laws-comparison';
+const relatedPosts = blogPosts.filter(p => p.slug !== currentSlug).slice(0, 3);
 ---
 
 <ContentLayout
   title="US State Privacy Laws: A Complete Comparison Guide 2026"
   description="Compare privacy laws across California, Virginia, Colorado, Connecticut, Texas, and 20+ other states. Learn what each law requires and who must comply."
   keywords="state privacy laws, CCPA, CPRA, US privacy law comparison, Virginia CDPA, Colorado CPA, Texas privacy law, state privacy regulations"
+  datePublished="2026-04-01"
+  dateModified="2026-04-01"
+  readTime="9 min read"
+  image="/og-image.svg"
 >
   <slot name="breadcrumb">
     <a href="/blog">Blog</a>
@@ -150,4 +158,15 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
   <div class="warning-box">
     <strong>Practical Advice:</strong> If you handle consumer data in the US, aim for CCPA/CPRA compliance as your baseline. It's the strictest US law, and meeting its requirements will put you in good shape for other states. Or better yet, aim for GDPR compliance — it exceeds all US state laws.
   </div>
+
+  <slot slot="related">
+    {relatedPosts.map(post => (
+      <a href={`/blog/${post.slug}`} class="related-card">
+        <span class="related-category">{post.category}</span>
+        <h4>{post.title}</h4>
+        <p>{post.excerpt}</p>
+        <span class="related-meta">{post.readTime} · {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+      </a>
+    ))}
+  </slot>
 </ContentLayout>
