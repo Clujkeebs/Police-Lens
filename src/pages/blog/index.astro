@@ -1,6 +1,47 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { blogPosts } from '../../data/blog-posts';
+
+const siteUrl = 'https://policy-lens-ai-app.vercel.app';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "PolicyLens Blog",
+  "description": "Expert guides on privacy policies, data protection laws, GDPR compliance, and how to protect your digital rights.",
+  "url": `${siteUrl}/blog`,
+  "publisher": {
+    "@type": "Organization",
+    "name": "PolicyLens",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/favicon.svg`
+    }
+  },
+  "blogPost": blogPosts.map((post, index) => ({
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt,
+    "url": `${siteUrl}/blog/${post.slug}`,
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "author": {
+      "@type": "Organization",
+      "name": "PolicyLens"
+    },
+    "position": index + 1
+  }))
+};
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": blogPosts.map((post, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "url": `${siteUrl}/blog/${post.slug}`
+  }))
+};
 ---
 
 <Layout
@@ -8,6 +49,8 @@ import { blogPosts } from '../../data/blog-posts';
   description="Expert guides on privacy policies, data protection laws, GDPR compliance, and how to protect your digital rights. Stay informed with PolicyLens."
   keywords="privacy policy blog, GDPR blog, CCPA guide, data privacy tips, online privacy, digital rights, privacy law news"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(blogSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} slot="head" />
   <section class="blog-hero">
     <div class="container">
       <h1>The PolicyLens <span class="gradient-text">Blog</span></h1>

@@ -3,6 +3,6 @@ Allow: /
 Disallow: /api/
 Disallow: /analyze
 
-Sitemap: https://policylens.app/sitemap.xml
+Sitemap: https://policy-lens-ai-app.vercel.app/sitemap.xml
 
 Crawl-delay: 1

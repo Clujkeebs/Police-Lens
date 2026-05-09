@@ -10,6 +10,8 @@ export interface Props {
   dateModified?: string;
   readTime?: string;
   image?: string;
+  canonical?: string;
+  breadcrumbItems?: Array<{ name: string; url: string }>;
 }
 
 const {
@@ -20,8 +22,12 @@ const {
   datePublished = '2026-04-10',
   dateModified = '2026-04-11',
   readTime = '10 min read',
-  image = '/og-image.svg'
+  image = '/og-image.svg',
+  canonical,
+  breadcrumbItems
 } = Astro.props;
+
+const siteUrl = 'https://policy-lens-ai-app.vercel.app';
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -37,17 +43,39 @@ const articleSchema = {
     "name": "PolicyLens",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://policylens.app/favicon.svg"
+      "url": `${siteUrl}/favicon.svg`
     }
   },
   "datePublished": datePublished,
   "dateModified": dateModified,
-  "image": `https://policylens.app${image}`
+  "image": `${siteUrl}${image}`,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonical || `${siteUrl}${Astro.url.pathname}`
+  }
 };
+
+const breadcrumbSchema = breadcrumbItems ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    ...breadcrumbItems.map((item, i) => ({
+      "@type": "ListItem",
+      "position": i + 2,
+      "name": item.name,
+      "item": `${siteUrl}${item.url}`
+    }))
+  ]
+} : null;
 ---
 
-<Layout title={title} description={description} keywords={keywords} schemaType={schemaType}>
+<Layout title={title} description={description} keywords={keywords} schemaType={schemaType} canonical={canonical}>
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} slot="head" />
+  {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />}
+  <meta property="article:published_time" content={datePublished} slot="head" />
+  <meta property="article:modified_time" content={dateModified} slot="head" />
+  <slot name="head" />
   
   <article class="content-page">
     <div class="container">

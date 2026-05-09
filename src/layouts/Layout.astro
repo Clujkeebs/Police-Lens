@@ -10,6 +10,7 @@ export interface Props {
   canonical?: string;
   noindex?: boolean;
   schemaType?: 'website' | 'article' | 'faq' | 'about';
+  breadcrumbItems?: Array<{ name: string; url: string }>;
 }
 
 const {
@@ -20,7 +21,8 @@ const {
   ogType = "website",
   canonical,
   noindex = false,
-  schemaType = "website"
+  schemaType = "website",
+  breadcrumbItems
 } = Astro.props;
 
 const siteUrl = "https://policy-lens-ai-app.vercel.app";
@@ -163,6 +165,21 @@ const faqSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
   {schemaType === 'faq' && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+  {breadcrumbItems && breadcrumbItems.length > 0 && (
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+        ...breadcrumbItems.map((item: { name: string; url: string }, i: number) => ({
+          "@type": "ListItem",
+          "position": i + 2,
+          "name": item.name,
+          "item": `${siteUrl}${item.url}`
+        }))
+      ]
+    })} />
+  )}
   
   <link rel="stylesheet" href="/styles/global.css" />
   <slot name="head" />
